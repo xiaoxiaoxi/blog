@@ -5,6 +5,7 @@ Godot是一款完全开源免费的游戏引擎，可以开发2D/2.5D/3D游戏�
 ## 常用链接 
 - 官网：https://godotengine.org/
 - 中文技术文档：https://docs.godotengine.org/zh_CN/latest/index.html
+- 源码：https://github.com/godotengine/godot
 
 ## 常用命令
 
@@ -12,7 +13,7 @@ Godot是一款完全开源免费的游戏引擎，可以开发2D/2.5D/3D游戏�
 > scons -j20 platform=windows
 
 ## 学习资源
-
+- 一个不错的教程 [ GODOT RECIPES ] (https://kidscancode.org/godot_recipes/)
 
 ## 相关软件 / 技术
 

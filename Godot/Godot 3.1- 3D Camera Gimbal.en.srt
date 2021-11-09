@@ -1,0 +1,1276 @@
+1
+00:00:00,210 --> 00:00:04,920
+welcome to another Godot recipe there
+
+2
+00:00:02,730 --> 00:00:07,500
+are many ways to handle cameras in 3d
+
+3
+00:00:04,920 --> 00:00:09,150
+first person third person fixed
+
+4
+00:00:07,500 --> 00:00:11,370
+perspective it all depends on what kind
+
+5
+00:00:09,150 --> 00:00:12,660
+of game you're making in this recipe
+
+6
+00:00:11,370 --> 00:00:14,280
+we'll look at how to make a camera that
+
+7
+00:00:12,660 --> 00:00:16,890
+can orbit a target while remaining
+
+8
+00:00:14,280 --> 00:00:20,310
+parallel to the ground let's get started
+
+9
+00:00:16,890 --> 00:00:21,990
+so here we have a camera setup and then
+
+10
+00:00:20,310 --> 00:00:24,269
+I have this window down here set to show
+
+11
+00:00:21,990 --> 00:00:25,769
+us a preview of what the camera sees now
+
+12
+00:00:24,269 --> 00:00:28,380
+let's say I wanted to tilt the camera up
+
+13
+00:00:25,769 --> 00:00:30,929
+a bit to look at something and then I
+
+14
+00:00:28,380 --> 00:00:34,040
+want to rotate to this side but when I
+
+15
+00:00:30,929 --> 00:00:38,489
+tilt it back down I'm now gonna be
+
+16
+00:00:34,040 --> 00:00:40,320
+misaligned and that's usually something
+
+17
+00:00:38,489 --> 00:00:43,770
+you don't want you want the camera to
+
+18
+00:00:40,320 --> 00:00:46,140
+stay level always parallel with the
+
+19
+00:00:43,770 --> 00:00:48,870
+ground regardless of how you rotate or
+
+20
+00:00:46,140 --> 00:00:51,030
+look up and down you don't want that
+
+21
+00:00:48,870 --> 00:00:52,980
+tilt to happen and so the solution to
+
+22
+00:00:51,030 --> 00:00:55,379
+this is something called a gimbal a
+
+23
+00:00:52,980 --> 00:00:59,039
+gimbal is a device that's designed to
+
+24
+00:00:55,379 --> 00:01:01,350
+keep an object always level like that
+
+25
+00:00:59,039 --> 00:01:04,409
+you would use them on ships back in the
+
+26
+00:01:01,350 --> 00:01:06,510
+old days to keep thee to keep a flat
+
+27
+00:01:04,409 --> 00:01:09,090
+surface level even as the ship is
+
+28
+00:01:06,510 --> 00:01:11,130
+rocking in the waves and so we're gonna
+
+29
+00:01:09,090 --> 00:01:14,939
+make a scene here and we're gonna start
+
+30
+00:01:11,130 --> 00:01:17,970
+with two spatial nodes so spatial and
+
+31
+00:01:14,939 --> 00:01:19,470
+then another spatial as a child and then
+
+32
+00:01:17,970 --> 00:01:24,330
+I'm going to add the camera as a child
+
+33
+00:01:19,470 --> 00:01:28,320
+of that so the spatial the outer one is
+
+34
+00:01:24,330 --> 00:01:32,750
+going to be our camera gimbal and then
+
+35
+00:01:28,320 --> 00:01:36,810
+the second one is going to be the inner
+
+36
+00:01:32,750 --> 00:01:38,340
+gimbal so we have the camera is a child
+
+37
+00:01:36,810 --> 00:01:42,329
+of the inner gimbal the inner gimbal is
+
+38
+00:01:38,340 --> 00:01:43,649
+a child of the camera gimbal and here's
+
+39
+00:01:42,329 --> 00:01:45,180
+how that's going to work let's go back
+
+40
+00:01:43,649 --> 00:01:48,899
+to preview so we can see what the camera
+
+41
+00:01:45,180 --> 00:01:52,170
+sees I'm gonna take the camera and I'm
+
+42
+00:01:48,899 --> 00:01:55,369
+going to just set its transform the Z to
+
+43
+00:01:52,170 --> 00:01:58,049
+about 4 so it's offset a little bit from
+
+44
+00:01:55,369 --> 00:02:01,680
+from where the center is so we're
+
+45
+00:01:58,049 --> 00:02:03,329
+looking towards the origin so the way
+
+46
+00:02:01,680 --> 00:02:06,930
+that the camera gimbal works is each of
+
+47
+00:02:03,329 --> 00:02:09,569
+these nodes is responsible for one axis
+
+48
+00:02:06,930 --> 00:02:11,569
+of rotation and it's going to be its
+
+49
+00:02:09,569 --> 00:02:13,440
+local mode so I'm going to turn this to
+
+50
+00:02:11,569 --> 00:02:15,840
+local mode here
+
+51
+00:02:13,440 --> 00:02:19,430
+so when we rotate we're only rotating
+
+52
+00:02:15,840 --> 00:02:22,230
+the nodes local axes not the global ones
+
+53
+00:02:19,430 --> 00:02:27,170
+so the outer node the camera gimbal node
+
+54
+00:02:22,230 --> 00:02:34,560
+only rotates in Y it is for us to rotate
+
+55
+00:02:27,170 --> 00:02:37,080
+horizontally and look at the center now
+
+56
+00:02:34,560 --> 00:02:38,940
+we're never gonna move this one on any
+
+57
+00:02:37,080 --> 00:02:42,090
+other axis okay
+
+58
+00:02:38,940 --> 00:02:46,560
+the inner gimbal is going to rotate on
+
+59
+00:02:42,090 --> 00:02:48,480
+its X and only on X so it tilts up and
+
+60
+00:02:46,560 --> 00:02:50,610
+down and so you see how it's X's are
+
+61
+00:02:48,480 --> 00:02:53,070
+changing so now say I'm angling down a
+
+62
+00:02:50,610 --> 00:02:56,820
+little bit if I switch back to the outer
+
+63
+00:02:53,070 --> 00:02:59,910
+one the outer one see how the X's are
+
+64
+00:02:56,820 --> 00:03:02,310
+still level for this one the outer one
+
+65
+00:02:59,910 --> 00:03:04,830
+only rotates in Y so now we're orbiting
+
+66
+00:03:02,310 --> 00:03:08,790
+around whatever object we're looking at
+
+67
+00:03:04,830 --> 00:03:10,890
+as long as we stick to that then there's
+
+68
+00:03:08,790 --> 00:03:15,150
+never gonna be a problem with our camera
+
+69
+00:03:10,890 --> 00:03:17,720
+not being level anymore you can see how
+
+70
+00:03:15,150 --> 00:03:23,370
+it's always staying pointing at the same
+
+71
+00:03:17,720 --> 00:03:25,500
+point and it's always parallel with the
+
+72
+00:03:23,370 --> 00:03:28,709
+ground to control the gimbal we're going
+
+73
+00:03:25,500 --> 00:03:30,660
+to use the W a s and D keys so I've
+
+74
+00:03:28,709 --> 00:03:34,020
+added input actions for those in the
+
+75
+00:03:30,660 --> 00:03:35,550
+input map and I've labeled them cam
+
+76
+00:03:34,020 --> 00:03:37,380
+underscore so we know these are the
+
+77
+00:03:35,550 --> 00:03:40,020
+input actions for controlling the camera
+
+78
+00:03:37,380 --> 00:03:43,560
+and then I've also added zoom in and out
+
+79
+00:03:40,020 --> 00:03:45,120
+for the up and down mouse wheel so now
+
+80
+00:03:43,560 --> 00:03:47,790
+let's add a script to this we're gonna
+
+81
+00:03:45,120 --> 00:03:48,540
+give it a variable here called rotation
+
+82
+00:03:47,790 --> 00:03:52,680
+speed
+
+83
+00:03:48,540 --> 00:03:54,060
+it's gonna control how fast the camera
+
+84
+00:03:52,680 --> 00:03:57,050
+rotates while we're holding the keys
+
+85
+00:03:54,060 --> 00:04:00,209
+down and we'll start with PI over 2
+
+86
+00:03:57,050 --> 00:04:02,610
+which is 90 degrees so that's 90 degrees
+
+87
+00:04:00,209 --> 00:04:06,090
+per segment is what that will be and
+
+88
+00:04:02,610 --> 00:04:08,580
+then we're going to in our process
+
+89
+00:04:06,090 --> 00:04:10,590
+function we're going to check the
+
+90
+00:04:08,580 --> 00:04:13,680
+keyboard input and I'm going to do it
+
+91
+00:04:10,590 --> 00:04:15,209
+this way we're gonna pass Delta and
+
+92
+00:04:13,680 --> 00:04:17,100
+along with it I'm gonna do it this way
+
+93
+00:04:15,209 --> 00:04:20,250
+because we're gonna also want to enable
+
+94
+00:04:17,100 --> 00:04:22,410
+mouse control after we do this so I'm
+
+95
+00:04:20,250 --> 00:04:26,930
+just going to start with keyboard so the
+
+96
+00:04:22,410 --> 00:04:26,930
+function to get to check keyboard input
+
+97
+00:04:27,680 --> 00:04:33,060
+needs to rotate those two spatial
+
+98
+00:04:31,080 --> 00:04:35,970
+depending on which Keys we pressed so
+
+99
+00:04:33,060 --> 00:04:38,669
+starting with we're gonna rotate the
+
+100
+00:04:35,970 --> 00:04:42,349
+outer gimbal that's the node that this
+
+101
+00:04:38,669 --> 00:04:46,979
+script is attached to around the y-axis
+
+102
+00:04:42,349 --> 00:04:50,639
+and so we're going to have a variable
+
+103
+00:04:46,979 --> 00:04:54,169
+here called Y rotation and then that's
+
+104
+00:04:50,639 --> 00:04:54,169
+going to get set by which key we press
+
+105
+00:04:59,970 --> 00:05:08,810
+so now we can rotate object local and we
+
+106
+00:05:04,680 --> 00:05:14,160
+want to rotate around the y axis and we
+
+107
+00:05:08,810 --> 00:05:21,270
+want to rotate by that Y rotation x
+
+108
+00:05:14,160 --> 00:05:24,000
+rotation speed times Delta and then for
+
+109
+00:05:21,270 --> 00:05:29,970
+the inner gimbal we want to rotate inner
+
+110
+00:05:24,000 --> 00:05:31,500
+gimbal around its local x axis so we're
+
+111
+00:05:29,970 --> 00:05:34,110
+gonna do the same thing here I'm gonna
+
+112
+00:05:31,500 --> 00:05:37,140
+copy and paste because I've copied and
+
+113
+00:05:34,110 --> 00:05:38,670
+pasted the input code just changed it to
+
+114
+00:05:37,140 --> 00:05:41,940
+the other input keys and we're rotating
+
+115
+00:05:38,670 --> 00:05:44,480
+around X this time and once we have that
+
+116
+00:05:41,940 --> 00:05:47,400
+result we're gonna have the inner gimbal
+
+117
+00:05:44,480 --> 00:05:52,500
+and we're gonna rotate object local but
+
+118
+00:05:47,400 --> 00:06:00,150
+this time around the x axis and then by
+
+119
+00:05:52,500 --> 00:06:02,250
+the same amount X rotation and that
+
+120
+00:06:00,150 --> 00:06:04,530
+should do it let's give it a try so
+
+121
+00:06:02,250 --> 00:06:07,500
+here's a test scene I've made with I
+
+122
+00:06:04,530 --> 00:06:08,910
+made a ground plane and I imported a
+
+123
+00:06:07,500 --> 00:06:11,070
+model so we have something to look at
+
+124
+00:06:08,910 --> 00:06:14,190
+and then I've instanced the camera
+
+125
+00:06:11,070 --> 00:06:18,300
+gimbal into this scene so when we play
+
+126
+00:06:14,190 --> 00:06:21,030
+it we can see that if I press the a and
+
+127
+00:06:18,300 --> 00:06:26,130
+D Keys I will rotate around and if I
+
+128
+00:06:21,030 --> 00:06:27,450
+press W and s my camera will pan up and
+
+129
+00:06:26,130 --> 00:06:30,419
+down left and right
+
+130
+00:06:27,450 --> 00:06:33,540
+so that's exactly what we want we're
+
+131
+00:06:30,419 --> 00:06:35,910
+staying centered on the center of the
+
+132
+00:06:33,540 --> 00:06:38,040
+ship but what you'll notice is that
+
+133
+00:06:35,910 --> 00:06:41,690
+since we haven't put any limits on it
+
+134
+00:06:38,040 --> 00:06:45,120
+you can rotate too far and go completely
+
+135
+00:06:41,690 --> 00:06:46,560
+upside down which is probably not
+
+136
+00:06:45,120 --> 00:06:49,500
+something that we want we want to
+
+137
+00:06:46,560 --> 00:06:52,140
+probably stop it around there and maybe
+
+138
+00:06:49,500 --> 00:06:56,250
+stop it at the ground so that you can't
+
+139
+00:06:52,140 --> 00:06:59,010
+rotate too far up and down we'll fix
+
+140
+00:06:56,250 --> 00:07:02,580
+that in our script will we're going to
+
+141
+00:06:59,010 --> 00:07:05,850
+say inner gimbal the rotation dot X we
+
+142
+00:07:02,580 --> 00:07:09,990
+want to clamp that and we want to clamp
+
+143
+00:07:05,850 --> 00:07:11,789
+it between not quite 90 degrees we don't
+
+144
+00:07:09,990 --> 00:07:12,889
+want to go fully up to 90 degrees so I'm
+
+145
+00:07:11,789 --> 00:07:16,580
+going to say
+
+146
+00:07:12,889 --> 00:07:19,099
+let's say around 1.4 and then zero and
+
+147
+00:07:16,580 --> 00:07:21,949
+what that's going to do is it's going to
+
+148
+00:07:19,099 --> 00:07:25,430
+make it so that when I pan up that's as
+
+149
+00:07:21,949 --> 00:07:28,419
+far up as I can go and when I go down I
+
+150
+00:07:25,430 --> 00:07:33,080
+go straight down to the ground now
+
+151
+00:07:28,419 --> 00:07:36,050
+because that plane is there at the exact
+
+152
+00:07:33,080 --> 00:07:38,449
+zero degrees here we can't see the plane
+
+153
+00:07:36,050 --> 00:07:42,289
+so you might want to limit it to maybe a
+
+154
+00:07:38,449 --> 00:07:45,889
+very very small number something like
+
+155
+00:07:42,289 --> 00:07:48,020
+that so that you can't go below the
+
+156
+00:07:45,889 --> 00:07:50,029
+surface of the water or the ground or
+
+157
+00:07:48,020 --> 00:07:50,500
+whatever you have that's totally up to
+
+158
+00:07:50,029 --> 00:07:54,259
+you
+
+159
+00:07:50,500 --> 00:07:57,710
+now we have our rotation good now we
+
+160
+00:07:54,259 --> 00:07:59,360
+need to work on the zoom so for zooming
+
+161
+00:07:57,710 --> 00:08:01,520
+I'm going to have a maximum and a
+
+162
+00:07:59,360 --> 00:08:04,340
+minimum zoom so we can't zoom in too far
+
+163
+00:08:01,520 --> 00:08:07,430
+or too far away and we're gonna have a
+
+164
+00:08:04,340 --> 00:08:08,870
+zoom speed how quickly the camera will
+
+165
+00:08:07,430 --> 00:08:11,270
+zoom in and out as we scroll the wheel
+
+166
+00:08:08,870 --> 00:08:13,159
+and then this variable zoom is going to
+
+167
+00:08:11,270 --> 00:08:15,680
+keep track of our current zoom levels so
+
+168
+00:08:13,159 --> 00:08:21,279
+we know what to change so we're going to
+
+169
+00:08:15,680 --> 00:08:21,279
+capture the zoom with unhandled input
+
+170
+00:08:21,909 --> 00:08:27,979
+and this is so that we will capture any
+
+171
+00:08:25,669 --> 00:08:29,779
+gooey stuff before this so you have if
+
+172
+00:08:27,979 --> 00:08:31,819
+you have a gooey overlay when you're
+
+173
+00:08:29,779 --> 00:08:33,110
+scrolling in a scroll box or something
+
+174
+00:08:31,819 --> 00:08:39,649
+like that you're not also zooming the
+
+175
+00:08:33,110 --> 00:08:41,300
+camera and so we have two events here we
+
+176
+00:08:39,649 --> 00:08:44,029
+have the cam zoom in and the camera zoom
+
+177
+00:08:41,300 --> 00:08:46,930
+out and zoom in is going to take our
+
+178
+00:08:44,029 --> 00:08:51,290
+zoom amount and we're gonna subtract
+
+179
+00:08:46,930 --> 00:08:53,269
+zoom speed and then zooming out is the
+
+180
+00:08:51,290 --> 00:08:56,209
+opposite we just add the Zoom speed and
+
+181
+00:08:53,269 --> 00:09:03,470
+then we set and then we're gonna clamp
+
+182
+00:08:56,209 --> 00:09:05,120
+it between the minimum and the maximum
+
+183
+00:09:03,470 --> 00:09:07,459
+so it doesn't ever go outside those
+
+184
+00:09:05,120 --> 00:09:08,990
+limits so how are we going to zoom it
+
+185
+00:09:07,459 --> 00:09:11,540
+we're gonna do it by changing the scale
+
+186
+00:09:08,990 --> 00:09:15,860
+of the gimbal system so scale equals
+
+187
+00:09:11,540 --> 00:09:18,620
+vector three one times zoom so we just
+
+188
+00:09:15,860 --> 00:09:22,100
+zoom equally in all directions now what
+
+189
+00:09:18,620 --> 00:09:24,350
+that's gonna look like is this let's go
+
+190
+00:09:22,100 --> 00:09:26,510
+up a little bit now as I click the mouse
+
+191
+00:09:24,350 --> 00:09:31,010
+you can see the increment right
+
+192
+00:09:26,510 --> 00:09:34,459
+a little bit by each click of the mouse
+
+193
+00:09:31,010 --> 00:09:36,350
+wheel but it's a little bit that makes
+
+194
+00:09:34,459 --> 00:09:38,240
+for a little bit of a jerky a factor
+
+195
+00:09:36,350 --> 00:09:43,750
+especially when you're close by so we
+
+196
+00:09:38,240 --> 00:09:46,730
+can make that better by using lerp to
+
+197
+00:09:43,750 --> 00:09:48,589
+interpolate our zoom as it goes we're
+
+198
+00:09:46,730 --> 00:09:52,810
+going to do that in the process will say
+
+199
+00:09:48,589 --> 00:09:57,170
+scale equals and we'll alert the scale
+
+200
+00:09:52,810 --> 00:10:04,000
+up to what we wanted it to lerp to which
+
+201
+00:09:57,170 --> 00:10:07,630
+was that by our zoom speed amount and
+
+202
+00:10:04,000 --> 00:10:10,399
+that's gonna make for a much smoother
+
+203
+00:10:07,630 --> 00:10:12,010
+zoom effect you can even see that at the
+
+204
+00:10:10,399 --> 00:10:14,860
+beginning when it zooms to the initial
+
+205
+00:10:12,010 --> 00:10:17,500
+amount and now we have a nice smooth
+
+206
+00:10:14,860 --> 00:10:20,990
+zoom that we can use while we're
+
+207
+00:10:17,500 --> 00:10:23,089
+rotating the camera around so that's it
+
+208
+00:10:20,990 --> 00:10:26,660
+and we could stop there and say we're
+
+209
+00:10:23,089 --> 00:10:30,410
+happy with the gimbal camera that we
+
+210
+00:10:26,660 --> 00:10:32,149
+have but some of you may want to also be
+
+211
+00:10:30,410 --> 00:10:35,510
+able to control the camera with the
+
+212
+00:10:32,149 --> 00:10:36,920
+mouse instead of the keys so I'm going
+
+213
+00:10:35,510 --> 00:10:40,029
+to show you how to do that as well
+
+214
+00:10:36,920 --> 00:10:42,589
+another variable here called mouse
+
+215
+00:10:40,029 --> 00:10:45,260
+control that we can set to true or false
+
+216
+00:10:42,589 --> 00:10:48,880
+whether we want to be using the mouse or
+
+217
+00:10:45,260 --> 00:10:55,670
+the keyboard and then mouse sensitivity
+
+218
+00:10:48,880 --> 00:10:57,319
+is going to be some amount that we can
+
+219
+00:10:55,670 --> 00:11:02,029
+adjust to make the mounts more or less
+
+220
+00:10:57,319 --> 00:11:03,440
+sensitive and so now in our process here
+
+221
+00:11:02,029 --> 00:11:07,610
+where we're getting the keyboard input
+
+222
+00:11:03,440 --> 00:11:11,329
+if Mouse control is true we want to not
+
+223
+00:11:07,610 --> 00:11:12,769
+capture those keyboard events and then
+
+224
+00:11:11,329 --> 00:11:15,319
+we're gonna go here into our unhandled
+
+225
+00:11:12,769 --> 00:11:19,190
+input and we're going to check for some
+
+226
+00:11:15,319 --> 00:11:25,420
+Mouse events so if Mouse control is true
+
+227
+00:11:19,190 --> 00:11:28,250
+and we get an input event mouse motion
+
+228
+00:11:25,420 --> 00:11:31,310
+then we know the mouse moved so we need
+
+229
+00:11:28,250 --> 00:11:34,069
+to capture the two axes of the mouse
+
+230
+00:11:31,310 --> 00:11:35,449
+movement at the x axis of the mouse is
+
+231
+00:11:34,069 --> 00:11:39,199
+the left and right that's going to be
+
+232
+00:11:35,449 --> 00:11:40,040
+our Y rotation of the gimbal and the y
+
+233
+00:11:39,199 --> 00:11:42,440
+axis
+
+234
+00:11:40,040 --> 00:11:44,270
+the mouse is going to be up and down so
+
+235
+00:11:42,440 --> 00:11:50,290
+that's going to be our X rotation of our
+
+236
+00:11:44,270 --> 00:11:54,110
+inner gimbal so if event dot relative
+
+237
+00:11:50,290 --> 00:11:57,440
+dot X is not zero then we must have
+
+238
+00:11:54,110 --> 00:12:00,670
+moved the mouse side-to-side so we're
+
+239
+00:11:57,440 --> 00:12:07,540
+going to do rotate l'objet object local
+
+240
+00:12:00,670 --> 00:12:13,670
+around the up and when we rotate by
+
+241
+00:12:07,540 --> 00:12:19,090
+event relative X how much we move to the
+
+242
+00:12:13,670 --> 00:12:22,400
+mouse x the mouse sensitivity and then
+
+243
+00:12:19,090 --> 00:12:25,220
+the alternative is that we move the
+
+244
+00:12:22,400 --> 00:12:29,900
+mouse up and down so if we also check
+
+245
+00:12:25,220 --> 00:12:33,020
+that the y axis of the mouse then we're
+
+246
+00:12:29,900 --> 00:12:38,650
+gonna rotate the inner gimbal I'm just
+
+247
+00:12:33,020 --> 00:12:43,540
+gonna go down here and grab that command
+
+248
+00:12:38,650 --> 00:12:47,900
+note that that by event dot relative
+
+249
+00:12:43,540 --> 00:12:50,720
+about Y times mouse sensitivity and now
+
+250
+00:12:47,900 --> 00:12:53,090
+if we try this out you'll see that we
+
+251
+00:12:50,720 --> 00:12:56,360
+can move the mouse up and down left and
+
+252
+00:12:53,090 --> 00:12:57,620
+right and control the camera now
+
+253
+00:12:56,360 --> 00:12:59,570
+something else you'll notice is that if
+
+254
+00:12:57,620 --> 00:13:01,820
+you move the mouse really quickly you're
+
+255
+00:12:59,570 --> 00:13:03,860
+going to have a problem with our clamp
+
+256
+00:13:01,820 --> 00:13:05,900
+that's stopping the movement so if I
+
+257
+00:13:03,860 --> 00:13:08,090
+move up you can see I'm stopping at the
+
+258
+00:13:05,900 --> 00:13:10,120
+limits but I move quickly I can snap
+
+259
+00:13:08,090 --> 00:13:13,400
+through there and once I've done that
+
+260
+00:13:10,120 --> 00:13:15,800
+now I'm stuck there unless I move
+
+261
+00:13:13,400 --> 00:13:18,710
+quickly again and that's because our
+
+262
+00:13:15,800 --> 00:13:21,230
+movement with the mouse can potentially
+
+263
+00:13:18,710 --> 00:13:22,850
+be very very high this event dot
+
+264
+00:13:21,230 --> 00:13:26,920
+relative dot Y could be a large number
+
+265
+00:13:22,850 --> 00:13:29,990
+so we're rotating by a large angle which
+
+266
+00:13:26,920 --> 00:13:31,850
+since and goers are circular it's going
+
+267
+00:13:29,990 --> 00:13:35,480
+to clamp us to the wrong side of the 90
+
+268
+00:13:31,850 --> 00:13:39,200
+degrees then we wanted and so we can fix
+
+269
+00:13:35,480 --> 00:13:41,570
+that by capping our amount of movement
+
+270
+00:13:39,200 --> 00:13:43,820
+so I'm going to make a variable here
+
+271
+00:13:41,570 --> 00:13:52,390
+right Y rotation and there's going to
+
+272
+00:13:43,820 --> 00:13:56,660
+clamp the event relative x dot y between
+
+273
+00:13:52,390 --> 00:13:58,160
+- values about there again that's
+
+274
+00:13:56,660 --> 00:14:01,700
+another one you can play with depending
+
+275
+00:13:58,160 --> 00:14:05,180
+on your size of your screen and and the
+
+276
+00:14:01,700 --> 00:14:08,750
+sensitivity of your mouse but this is
+
+277
+00:14:05,180 --> 00:14:11,030
+good enough for a an example and then
+
+278
+00:14:08,750 --> 00:14:15,020
+we're gonna say Y rotation times mouse
+
+279
+00:14:11,030 --> 00:14:18,500
+sensitivity and now that'll stop that
+
+280
+00:14:15,020 --> 00:14:21,380
+from moving too quickly when we move the
+
+281
+00:14:18,500 --> 00:14:24,950
+mouse really quickly so one other thing
+
+282
+00:14:21,380 --> 00:14:27,800
+I've added here before we wrap up is two
+
+283
+00:14:24,950 --> 00:14:30,080
+flags here to invert the X and y axis if
+
+284
+00:14:27,800 --> 00:14:33,110
+you want the mouse movement to be the
+
+285
+00:14:30,080 --> 00:14:34,910
+opposite of the direction it is now
+
+286
+00:14:33,110 --> 00:14:38,090
+which people often want for different
+
+287
+00:14:34,910 --> 00:14:40,070
+projects so here what we're doing is
+
+288
+00:14:38,090 --> 00:14:42,770
+we're just going to make a direction
+
+289
+00:14:40,070 --> 00:14:45,890
+variable we'll make it equal to one if
+
+290
+00:14:42,770 --> 00:14:48,350
+in vertex is true otherwise we'll make
+
+291
+00:14:45,890 --> 00:14:52,610
+it negative one and then that way we can
+
+292
+00:14:48,350 --> 00:14:54,470
+multiply by direction in the rotation
+
+293
+00:14:52,610 --> 00:14:56,170
+and it will rotate in the opposite
+
+294
+00:14:54,470 --> 00:14:58,130
+direction that it was doing before
+
+295
+00:14:56,170 --> 00:15:00,589
+that'll do it for this camera gimbal
+
+296
+00:14:58,130 --> 00:15:03,140
+tutorial as I said at the beginning this
+
+297
+00:15:00,589 --> 00:15:05,810
+is only one of many possible camera
+
+298
+00:15:03,140 --> 00:15:08,960
+control schemes so keep an eye out on
+
+299
+00:15:05,810 --> 00:15:12,020
+this channel for more tutorials on other
+
+300
+00:15:08,960 --> 00:15:13,850
+methods of camera control if you want a
+
+301
+00:15:12,020 --> 00:15:16,760
+little bit more detail I've linked in
+
+302
+00:15:13,850 --> 00:15:19,070
+the description below to the text
+
+303
+00:15:16,760 --> 00:15:21,710
+version of this tutorial on my go-to
+
+304
+00:15:19,070 --> 00:15:23,600
+recipes website where you can see a full
+
+305
+00:15:21,710 --> 00:15:27,260
+version of the script where I've added
+
+306
+00:15:23,600 --> 00:15:29,120
+in export properties for all of the
+
+307
+00:15:27,260 --> 00:15:31,610
+different values so that you can have a
+
+308
+00:15:29,120 --> 00:15:34,430
+nice interface over here in the
+
+309
+00:15:31,610 --> 00:15:36,830
+inspector to turn on and off and set
+
+310
+00:15:34,430 --> 00:15:39,200
+different properties thanks for watching
+
+311
+00:15:36,830 --> 00:15:41,089
+and I'll see you in the next video this
+
+312
+00:15:39,200 --> 00:15:43,339
+tutorial is part of my new Godot recipes
+
+313
+00:15:41,089 --> 00:15:45,020
+website the goal is to collect all the
+
+314
+00:15:43,339 --> 00:15:47,030
+best tips and lessons to help make you a
+
+315
+00:15:45,020 --> 00:15:48,470
+better go to a developer if you like
+
+316
+00:15:47,030 --> 00:15:49,970
+this video I hope you'll go and check
+
+317
+00:15:48,470 --> 00:15:51,589
+out the site and make sure to hit
+
+318
+00:15:49,970 --> 00:15:55,690
+subscribe so you'll be notified whenever
+
+319
+00:15:51,589 --> 00:15:55,690
+I release new videos thanks for watching
+
