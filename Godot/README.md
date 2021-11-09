@@ -13,7 +13,8 @@ Godot是一款完全开源免费的游戏引擎，可以开发2D/2.5D/3D游戏�
 > scons -j20 platform=windows
 
 ## 学习资源
-- 一个不错的教程 [ GODOT RECIPES ] (https://kidscancode.org/godot_recipes/)
+- 一个不错的教程 [ GODOT RECIPES ](https://kidscancode.org/godot_recipes/)
+- 一个中文的帮助在线文档 [中文在线文档](https://www.bookstack.cn/read/godotengine-3.3-zh/%E5%B8%B8%E8%A7%84.md)
 
 ## 相关软件 / 技术
 

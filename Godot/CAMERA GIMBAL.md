@@ -252,6 +252,6 @@ func _process(delta):
 
 [视频](Godot%203.1-%203D%20Camera%20Gimbal.mp4)
 
-<iframe src="https://www.youtube.com/embed/4NLrfxNt3ps" allowfullscreen="" title="YouTube Video" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 1363px; height: 766.688px; border: 0px;"></iframe>
+<iframe src="Godot\Godot 3.1- 3D Camera Gimbal.mp4" allowfullscreen="" title="YouTube Video" style="box-sizing: border-box; position: absolute; top: 0px; left: 0px; width: 1363px; height: 766.688px; border: 0px;"></iframe>
 
 ### Comments
