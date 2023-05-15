@@ -10,22 +10,21 @@
 
 ## AGV 模型三维展示
 这里我们以FS的案例中的AGV模型为例，系统会根据当前FS模型中的设定，完成三维模型的构建，同时会根据系统中设定 AGV 数量动态生成相应的 AGV，并排队等待任务进行处理。后台FS计算得到具体的任务信息并发送到三维模型中，三维模型根据事件模型进行实时渲染绘制，同时三维模型根据自身的动画代码会控制 AGV 满载或空载、设备对工件的加工等动画展示。
-
 <video width="967" height="519" controls>
   <source src="3D_AGV.mp4" type="video/mp4">
-您的浏览器不支持Video标签。
+[3D_AGV](3D_AGV.mp4)
 </video>
 
-[3D_AGV](3D_AGV.mp4)
+
 
 ## 产线模型阻塞三维展示
 在2.5.0的FS版本中我们增加了产线阻塞模型，当产线出口被阻塞，例如等待加工，则产线上的工件会被阻塞，多个出口可能会出现比较复杂的阻塞模型，FS后台计算得到阻塞事件，前端三维模型负责解释这些事件的具体展示模型，根据阻塞和解除阻塞完成三维产线上工件的动画绘制。如下图所示
 <video width="967" height="519" controls>
   <source src="3D_ConveyorLine2.mp4" type="video/mp4">
-您的浏览器不支持Video标签。
+[3D_ConveyorLine2](3D_ConveyorLine2.mp4)
 </video>
 
-[3D_ConveyorLine2](3D_ConveyorLine2.mp4)
+
 
 
 ## 一个复杂产线模型的三维展示
@@ -36,7 +35,6 @@
 
 <video width="967" height="519" controls>
   <source src="3D_ProductionLine.mp4" type="video/mp4">
-您的浏览器不支持Video标签。
+[3D_ProductionLine](3D_ProductionLine.mp4)
 </video>
 
-[3D_ProductionLine](3D_ProductionLine.mp4)
