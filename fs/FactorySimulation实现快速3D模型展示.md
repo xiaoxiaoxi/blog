@@ -14,12 +14,7 @@
 > 2. 后台FS计算得到具体的任务信息并发送到三维模型中，三维模型根据事件模型进行实时渲染绘制
 > 3. 三维模型根据自身的动画代码会控制 AGV 满载或空载、设备对工件的加工等动画展示。
 
-<video width="967" height="519" controls>
-  <source src="3D_AGV.mp4" type="video/mp4">
-  您的浏览器不支持Video标签。
-</video>
-
-[3D_AGV](3D_AGV.mp4)
+[3D_AGV](3D_AGV.gif)
 
 
 
@@ -29,26 +24,16 @@
 >
 > 前端三维模型负责解释这些事件，根据阻塞和解除阻塞完成三维产线上工件的动画绘制。如下图所示：
 
-<video width="967" height="519" controls>
-  <source src="3D_ConveyorLine2.mp4" type="video/mp4">
-  您的浏览器不支持Video标签。
-</video>
-
-[3D_ConveyorLine2](3D_ConveyorLine2.mp4)
+[3D_ConveyorLine2](3D_ConveyorLine2.gif)
 
 
 
 
 ## 一个复杂产线模型的三维展示
 这里我们展示的是FS案例中比较复杂的一个产线模型，该模型中，除了前面案例的AGV、产线动画等内容，三维部分还需要完成：
-1. 参数化建模，例如多层立体货架需要根据货架的层数、列数等参数设定来绘制当前的货架。
-2. 机械臂运动控制，FS提供对象的事件，但是前端需要根据事件绘制相应的动画，这里根据机械臂需要达到的点，通过逆运动学结算当前机械臂的运动动画
-3. 报表数据展示，通过FS模型中设定的报表内容，在三维界面中绘制出报表内容并实时展示当前的数据。
+> 1. 参数化建模，例如多层立体货架需要根据货架的层数、列数等参数设定来绘制当前的货架。
+> 2. 机械臂运动控制，FS提供对象的事件，但是前端需要根据事件绘制相应的动画，这里根据机械臂需要达到的点，通过逆运动学结算当前机械臂的运动动画
+> 3. 报表数据展示，通过FS模型中设定的报表内容，在三维界面中绘制出报表内容并实时展示当前的数据。 我们通过加快执行仿真速度，来加速看到当前报表数据。
 
-<video width="967" height="519" controls>
-  <source src="3D_ProductionLine.mp4" type="video/mp4">
-  您的浏览器不支持Video标签。
-</video>
-
-[3D_ProductionLine](3D_ProductionLine.mp4)
+[3D_ProductionLine](3D_ProductionLine.gif)
 
