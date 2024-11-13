@@ -263,31 +263,37 @@ complex systems modeling, it provides an explicit structured spatial representat
 agents, environment and space-dependent agent behavioral and interaction mechanisms. A
 thorough description of the model is out of the scope of this chapter; the syntax and semantics 
 of SCA basic elements will be briefly introduced when required for sake of clarity.
-<I>A Situated Cellular Agent </I> is defined by the triple {Space, F, A} where <I>Space</I> models the
+<I>A Situated Cellular Agent </I> is defined by the triple ⟨Space, F, A⟩ where <I>Space</I> models the
 environment where the set <I>A</I> of agents is situated, acts autonomously and interacts at-a-distance, 
 through the propagation of the set F of fields, and locally through synchronous
 reaction operator. Figure 10.4 shows a diagram of the two interaction mechanisms provided
 by the model. More precisely Space consists of a set P of sites arranged in a network (i.e.,
 an undirected graph of sites).  The structure of the space can be represented as a neighborhood 
 function, N : P −→ 2<sup>P</sup> so that N (p) ⊆ P is the set of sites adjacent to p ∈ P; the
-previously introduced Space element is thus the pair {P, N}. Focusing instead on the single
+previously introduced Space element is thus the pair ⟨P, N⟩. Focusing instead on the single
 basic environmental elements, a site p ∈ P can contain at most one agent and is defined by
-the 3–tuple {ap, Fp, Pp} where:
+the 3–tuple ⟨a<sub>p</sub>, F<sub>p</sub>, P<sub>p</sub>⟩ where:
 ![img_17.png](img_17.png)
 > - a<sub>p</sub> ∈ A ∪ {⊥} is the agent situated in p (a<sub>p</sub> = ⊥ when no agent is situated in p that is, p is empty);
 > - F<sub>p</sub> ⊂ F is the set of fields active in p (F<sub>p</sub> = ∅ when no field is active in p);
 > - P<sub>p</sub> ⊂ P is the set of sites adjacent to p (i.e., N (p)).
 
-定位蜂窝代理 （SCA） 模型是多层多代理定位系统 （MMASS） [Bandini et al.， 2002] 的一类特定类别，在基于 MAS 的复杂系统建模方法中，它提供了代理、环境和空间依赖代理行为和交互机制的显式结构化空间表示。对该模型的全面描述超出了本章的范围;为了清楚起见，将在需要时简要介绍 SCA 基本元素的语法和语义。位于蜂窝代理由三元组 {Space， F， A} 定义，其中空间模拟代理集 A 所在的环境，通过一组场 F 的传播自主行动并在远处交互，并通过同步反应算子在本地进行交互。图 10.4 显示了模型提供的两种交互机制的示意图。更准确地说，空间由一组排列在网络中的站点 P（即，一个无向的站点图）组成。空间的结构可以表示为邻域函数 N : P −→ 2<sup>P</sup>，因此 N （p） ⊆ P 是与 p ∈ P 相邻的站点集;因此，前面介绍的 Space 元素是 {P， N} 对。相反，关注单个基本环境元素，一个位点 p ∈ P 最多可以包含一个代理，由 3 元组 {ap， Fp， Pp} 定义，其中：
+定位蜂窝代理 （SCA） 模型是多层多代理定位系统 （MMASS） [Bandini et al.， 2002] 的一类特定类别，在基于 MAS 的复杂系统建模方法中，
+它提供了代理、环境和空间依赖代理行为和交互机制的显式结构化空间表示。对该模型的全面描述超出了本章的范围;为了清楚起见，
+将在需要时简要介绍 SCA 基本元素的语法和语义。位于蜂窝代理由三元组 ⟨Space， F， A⟩ 定义，其中空间模拟代理集 A 所在的环境，
+通过一组场 F 的传播自主行动并在远处交互，并通过同步反应算子在本地进行交互。图 10.4 显示了模型提供的两种交互机制的示意图。
+更准确地说，空间由一组排列在网络中的站点 P（即，一个无向的站点图）组成。空间的结构可以表示为邻域函数 N : P −→ 2<sup>P</sup>，
+因此  N (p) ⊆ P 是与 p ∈ P 相邻的站点集;因此，前面介绍的 Space 元素是 ⟨P， N⟩ 对。
+相反，关注单个基本环境元素，一个位点 p ∈ P 最多可以包含一个代理，由 3 元组 ⟨a<sub>p</sub>, F<sub>p</sub>, P<sub>p</sub>⟩ 定义，其中：
 - a<sub>p</sub> ∈ A ∪ {⊥} 是位于 p 中的代理 (当 p 中没有代理时，a<sub>p</sub> = ⊥ , 即 p 为空);
 - F<sub>p</sub> ⊂ F 是 p 中活动的字段集 (当 p 中没有活动字段时， F<sub>p</sub> = ∅ );
 - P<sub>p</sub> ⊂ P 是与 p 相邻的位点集 (i.e., N (p)).
 
-> A SCA agent is defined by the 3–tuple { s, p, τ } where τ is the agent type, s ∈ Σ<sub>τ</sub> denotes
+> A SCA agent is defined by the 3–tuple ⟨ s, p, τ ⟩ where τ is the agent type, s ∈ Σ<sub>τ</sub> denotes
 the agent state and can assume one of the values specified by its type (see below for Σ<sub>τ</sub>
 definition), and p ∈ P is the site of the Space where the agent is situated. As previously
 stated, agent type is a specification of agent state set, perceptive capabilities and behavior.
-It is defined by the 3–tuple {Σ<sub>τ</sub>, Perception<sub>τ</sub>, Action<sub>τ</sub>}. Σ<sub>τ</sub> defines 
+It is defined by the 3–tuple ⟨Σ<sub>τ</sub>, Perception<sub>τ</sub>, Action<sub>τ</sub>⟩. Σ<sub>τ</sub> defines 
 the set of states that agents of type τ can assume. Perception<sub>τ</sub> : 
 Σ<sub>τ</sub> → [N × W<sub>f<sub>1</sub></sub>] . . . [N × W<sub>f<sub>|F|</sub></sub>] is a function
 associating to each agent state a vector of pairs representing the receptiveness coefficient
@@ -299,9 +305,9 @@ the structured SCA space can be perceived by other agents endowed with suitable 
 (e.g., noise emitted by a talking agent that can be perceived at-a-distance).
 
 
-SCA 代理由 3 元组 { s， p， τ } 定义，其中 τ 是代理类型，s ∈ Σ<sub>τ</sub> 表示代理状态，
+SCA 代理由 3 元组 ⟨ s， p， τ ⟩ 定义，其中 τ 是代理类型，s ∈ Σ<sub>τ</sub> 表示代理状态，
 可以采用其类型指定的值之一（请参见下面的 Σ<sub>τ</sub> 定义），p ∈ P 是代理所在的空间的站点。
-如前所述，代理类型是代理状态集、感知能力和行为的规范。它由 3 元组 {Σ<sub>τ</sub>， Perception<sub>τ</sub>， Action<sub>τ</sub>} 定义。
+如前所述，代理类型是代理状态集、感知能力和行为的规范。它由 3 元组 ⟨Σ<sub>τ</sub>， Perception<sub>τ</sub>， Action<sub>τ</sub>⟩ 定义。
 Σ<sub>τ</sub> 定义 τ 类型的代理可以承担的状态集。感知τ ： Σ<sub>τ</sub> → [N × W<sub>f<sub>1</sub></sub>] . . . [N × W<sub>f<sub>|F|</sub></sub>]是一个函数，
 它与每个代理状态相关联，一个对向量表示该类型区域的感受系数和灵敏度阈值。Action<sub>τ</sub> 表示 τ 类型的代理的行为规范。
 因此，每个 SCA 代理都提供了一组传感器（即，根据感知功能定义），允许它与环境和其他代理进行交互。
@@ -314,21 +320,182 @@ SCA 代理由 3 元组 { s， p， τ } 定义，其中 τ 是代理类型，s �
     must be included in the behavioral specification of all the involved agents; 
     moreover when this coordination process takes place, every involved agents may dynamically decide 
     to effectively agree to perform this operation;
-> - <I>transport(p, f , q)</I>: it allows one to <I>define agent movement/I> from site p to site q (that must be adjacent and vacant);
-> - <I>trigger(s, f , s′)</I>: it specifies that an agent must <I>change its state/I> when it senses 
+> - <I>transport(p, f , q)</I>: it allows one to <I>define agent movement</I> from site p to site q (that must be adjacent and vacant);
+> - <I>trigger(s, f , s′)</I>: it specifies that an agent must <I>change its state</I> when it senses 
     a particular condition in its local context (i.e., its own site and the adjacent ones); 
     this operation has the same effect of a reaction, but does not require a coordination with other agents.
 
 
 可以使用定义以下基元的语言来指定每种类型的 SCA 代理的行为：
 
-- <I>emit(s, f , p)</I>: 从代理所在的位点 p 开始场 F 的扩散;
-- <I>react(s, ap1, ap2, . . . , apn, s′)</I>: 它允许指定相邻代理之间的协调状态变化。为了保持代理的自主性，必须在所有相关代理的行为规范中包含一个兼容的原语;此外，当此协调过程发生时，每个参与的代理都可以动态地决定有效地同意执行此操作;
-- <I>transport(p, f , q)</I>: 它允许定义代理体从站点 p 到站点 q 的移动/I>（必须是相邻且空置的）;
-- <I>trigger(s, f , s′)</I>: 它指定代理在其本地上下文中感知到特定条件（即其自己的站点和相邻的站点）时必须更改其状态/I>;此操作具有与反应相同的效果，但不需要与其他代理协调。
+- <I>emit(s, f , p)（发出/排出）</I>: 从代理所在的位点 p 开始场 f 的扩散;
+- <I>react(s, ap1, ap2, . . . , apn, s′)（反应）</I>: 它允许指定相邻代理之间的协调状态变化。为了保持代理的自主性，必须在所有相关代理的行为规范中包含一个兼容的原语;此外，当此协调过程发生时，每个参与的代理都可以动态地决定有效地同意执行此操作;
+- <I>transport(p, f , q)（运输）</I>: 它允许定义代理体从站点 p 到站点 q 的移动（必须是相邻且空置的）;
+- <I>trigger(s, f , s′)（触发）</I>: 它指定代理在其本地上下文中感知到特定条件（即其自己的站点和相邻的站点）时必须更改其状态;此操作具有与反应相同的效果，但不需要与其他代理协调。
+
+### 10.3.1 Spatial Infrastructure and Active Elements of the Environment / 空间基础设施和环境中的活跃元素
+
+> SCA agents’ actions take place in a discrete and finite space. In order to obtain an appropriate
+<I>abstraction of space</I> suitable for the SCA model, a discrete abstraction of the
+space in which the pedestrian dynamics has to be studied must be defined as an undirected
+graph: nodes represent the positions that can be occupied by single pedestrians. SCA space
+represents thus an abstraction of a walking pavement, but it can be sufficiently detailed to
+be considered an approximation of the real environment surface, and it allows a realistic
+representation of the movements and paths that individuals would follow. The scale of discretization 
+can vary, but according to [Schadschneider et al., 2002] a cell dimension of 40
+× 40 cm<sup>2</sup> is adequate to represent the typical space occupied by a pedestrian in a dense
+crowd. Since <I> active elements of the environment </I> can be perceived and thus influence, or
+even determine, the movement of pedestrians, SCA approach suggests representing them
+as agents endowed with the ability of emitting a sort of presence field that can be perceived 
+by all agents situated on sites reached by its diffusion and endowed with a suitable
+perceptive ability (i.e., perception function). Typically the latter are objects of the environment 
+which constrain agent movement (e.g., gateways, doors), but also objects that can
+transmit some kind of conceptual information (e.g., exit signs or indications). To adopt
+field emission–diffusion–perception mechanism as a basic instrument to model at-a-distance
+influences between agents, a specific field type must be defined (i.e., diffusion, composition
+and comparison functions). This mechanism allows one to represent several types of fields;
+for instance, visual and acoustic perception of a signal may be modeled taking into account
+the different influence of obstacles in their diffusion (e.g., a sound can pass through a door
+even if at reduced intensity). A library of signal types can easily be build to support this 
+phase. By selecting a predefined field type the modeler is actually specifying the 4-tuple
+<I>⟨W<sub>t</sub>, Diffusion<sub>t</sub>, Compare<sub>t</sub>, Compose<sub>t</sub>⟩</I>, 
+that defines a field type (i.e., the set of values it
+can assume, how it diffuses within the spatial structure, how different emissions of the
+same field type combine and how to perform comparisons, e.g., to evaluate if a given field
+overcomes a threshold when non-numerical values are allowed).
+
+SCA 代理的操作发生在离散和有限的空间中。为了获得适合 SCA 模型的空间抽象，必须将必须研究行人动态的空间的离散抽象定义为无向图：
+节点表示单个行人可以占据的位置。因此，SCA 空间代表了人行道的抽象，但它可以足够详细，可以被视为真实环境表面的近似值，
+并且它允许真实地表示个人将遵循的运动和路径。离散化的规模可能会有所不同，但根据 [Schadschneider et al.， 2002]
+40 × 40 cm<sup>2</sup> 的像元尺寸足以表示行人在密集人群中占据的典型空间。由于环境的活跃元素可以被感知，
+从而影响甚至决定行人的运动，SCA 方法建议将他们表示为具有发射一种存在场的能力的代理，该场可以被位于其扩散到达的地点上的所有代理感知，
+并被赋予适当的感知能力（即 perception 函数）。通常，后者是限制主体移动的环境对象（例如，网关、门），
+但也可以是可以传递某种概念信息的对象（例如，出口标志或指示）。为了采用场发射-扩散-感知机制作为模拟智能体之间远距离影响的基本工具，
+必须定义特定的场类型（即扩散、组合和比较函数）。此机制允许表示多种类型的字段;例如，可以考虑障碍物在其传播中的不同影响
+（例如，即使强度降低，声音也可以穿过门）对信号的视觉和听觉感知进行建模。可以轻松构建信号类型库来支持此阶段。
+通过选择预定义的字段类型，建模者实际上是在指定定义字段类型的 4 元组
+<I>⟨W<sub>t</sub>, Diffusion<sub>t</sub>, Compare<sub>t</sub>, Compose<sub>t</sub>⟩</I>，
+它定义了一个字段类型（即，它可以假设的值集，它如何在空间结构中扩散，同一字段类型的不同发射如何组合以及如何执行比较，
+例如，在允许非数值时评估给定字段是否克服阈值）。
 
 
+> The behavioral specification of an agent representing an active element of the environment
+always include the following action:
+
+表示环境活动元素的代理的行为规范始终包括以下操作：
+
+> action      :emit(p, f<sub>t</sub>)  
+> condition   :a = ⟨s, p, τ⟩  
+> effect      :added(f<sub>t</sub>, p)  
+
+> where f<sub>t</sub> is a field of type t and a = ⟨s, p, τ⟩ specifies that the agent a of type τ is in state
+s and occupying site p. The effect of this emit action (i.e., added(f , p)) is a modification
+in a set of sites in the space (determined by function Diffusion<sub>t</sub>) to notify its presence
+to other agents. In particular, the set Pe of sites that will be affected by this action is
+P<sub>e</sub> = { q ∈ P | Diffusion<sub>t</sub>(p, ft, q) <> 0} (i.e., the set of sites for which the diffusion
+function is not the null field). Given q ∈ Pe, the set F′<sub>q</sub> of fields active in it after the
+diffusion will be: 
+> - F<sub>q</sub> ∪ { ⟨Diffusion<sub>t</sub>(p, f<sub>t</sub>, q), Compose<sub>t</sub>, Compare<sub>t</sub>⟩} 
+    if F<sub>q</sub> (i.e., the set of fields that were active in the site q before the emission) does not 
+    include fields of type t;
+> - (F<sub>q</sub> − {f′<sub>t</sub> }) ∪ {⟨Compose<sub>t</sub>(Diffusion<sub>t</sub>(p, f<sub>t</sub>, q), w′<sub>t</sub>), Compose<sub>t</sub>, Compare<sub>t</sub>⟩}
+    where f′<sub>t</sub> = ⟨w′<sub>t</sub>, Compose<sub>t</sub>, Compare<sub>t</sub>⟩ was the unique non null field of type t
+    active in q before the emission.
+
+其中 f<sub>t</sub> 是类型 t 的字段，a = ⟨s， p， τ⟩ 指定类型 τ 的代理 a 处于状态 s 并占据站点 p。
+这个发出动作的效果（即 added（f ， p））是对空间中一组位点的修改（由函数 Diffusion<sub>t</sub> 决定），
+以将其存在通知给其他代理。具体而言，将受此操作影响的网站集 P<sub>e</sub> 为 
+P<sub>e</sub> = { q ∈ P |Diffusion<sub>t</sub>（p， f<sub>t</sub>， q） <> 0}（即扩散函数不是空场的位点集）。
+给定 q ∈ P<sub>e</sub>，扩散后其中活动场的集合 F′<sub>q</sub> 将为：
+
+- 如果  F<sub>q</sub>（即发射前在站点 q 中处于活动状态的字段集）不包括 t 类型的字段，则  
+  F<sub>q</sub> ∪ { ⟨Diffusion<sub>t</sub>(p, f<sub>t</sub>, q), Compose<sub>t</sub>, Compare<sub>t</sub>⟩} ;
+- (F<sub>q</sub> − {f′<sub>t</sub> }) ∪ {⟨Compose<sub>t</sub>(Diffusion<sub>t</sub>(p, f<sub>t</sub>, q), w′<sub>t</sub>), Compose<sub>t</sub>, Compare<sub>t</sub>⟩} 
+  其中 f′<sub>t</sub> = ⟨w′<sub>t</sub>, Compose<sub>t</sub>, Compare<sub>t</sub>⟩  是发射前在 q 中激活的 t 类型的唯一非空字段。
 
 
+> More complex behaviors for active elements of the environment can also be defined if
+required, for instance to model active elements whose emission starts or stops only under
+specific conditions.
+
+如果需要，还可以为环境的主动元素定义更复杂的行为，例如，对仅在特定条件下开始或停止发射的主动元素进行建模。
+
+### 10.3.2 Pedestrians / 行人
+
+> The modeling of <I>pedestrians</I> populating the environment whose spatial structure and relevant 
+elements have been specified as above can take into account the possibility of modeling
+non homogeneous systems, where pedestrians with different behavioral specifications, perceptive 
+abilities and capabilities can interact thanks to homogeneous interaction mechanisms
+specified by SCA (i.e., field emission-diffusion-perception and local reaction). SCA model
+in fact supports the definition of heterogeneous agent systems thanks to the notion of agent
+type.
+
+对空间结构和相关元素已如上所述指定的环境中的行人进行建模可以考虑对非同质系统进行建模的可能性，其中具有不同行为规格、感知能力和能力的行人可以由于 SCA 指定的同质交互机制（即场发射-扩散-感知和局部反应）而进行交互。由于 agent type 的概念，SCA 模型实际上支持异构代理系统的定义。
+
+> The specification of agent behaviors can for instance represent different preferences of
+pedestrians toward one of multiple movement directions but also support more complex
+behavioral models in which reasoning, planning, scheduling and other abilities has to be
+properly integrated in the model. The basic agent behavioral specification of pedestrians is
+based on transport action that is, in the specification of how agents select next destination
+site:
+
+例如，代理行为的规范可以表示行人对多个移动方向之一的不同偏好，但也支持更复杂的行为模型，其中推理、计划、调度和其他能力必须适当地集成到模型中。行人的基本代理行为规范基于运输操作，即，在代理如何选择下一个目的地站点的规范中：
+
+> action:     transport(p, q)  
+> condition:  a = ⟨s, p, τ⟩, A<sub>q</sub> = ⊥, q ∈ P<sub>p</sub>, best(s, q)  
+> effect:     a = ⟨s, q, τ⟩, A<sub>p</sub> = ⊥  
+
+> where a = ⟨s, p, τ⟩ specifies that the agent a (for which the action is specified) is in state
+s, is occupying site p, and is of type τ; q ∈ P<sub>p</sub> belongs to the set of sites adjacent to p
+and best(s, q) is verified if, for state s, ∄r ∈ P<sub>p</sub> | utility(s, r) > utility(s, q) ∧ a<sub>r</sub> = ⊥. A
+possible way to define agent behavior, coherently with traditional notion of agents utility in
+Artificial Intelligence, can be: utility(s, r) = Σ<sub>t∈T</sub> w<sub>t</sub>(s)·fval(t, r) where w<sub>t</sub>(s) 
+denotes the weight associated to fields of type t for agents with a given attitude (i.e., the desirability of
+that kind of signal represented by or as function of agent state) and fval(t, r) denotes the
+value of field of type t in site r. In case of more sites having the same utility value the agent
+can make a non deterministic choice among them or adopt other strategies. The effect of
+the action is to free site p, and correspondingly change the position of agent a to site q.
+
+其中 a = ⟨s， p， τ⟩ 指定代理 A（为其指定操作）处于状态 s，正在占用站点 p，并且类型为 τ;q ∈ P<sub>p</sub> 属于与 p 相邻的站点集，
+如果对于状态 s，∄r ∈ P<sub>p</sub> |实用程序 （s， r） > 实用程序 （s， q） ∧ a<sub>r</sub> = ⊥。
+与人工智能中代理效用的传统概念相一致的定义代理行为的一种可能方法是：Σ<sub>t∈T</sub> w<sub>t</sub>(s)·fval(t, r) 
+其中 w<sub>t</sub>(s) 表示与具有给定态度的代理的 t 类型字段相关的权重（即，由代理状态表示或作为代理状态的函数表示的那种信号的可取性）
+和 fval（t， r） 表示站点 r 中类型 t 的字段的值。如果更多站点具有相同的效用值，代理可以在它们之间做出非确定性的选择或采用其他策略。
+该操作的效果是释放站点 p，并相应地将代理 a 的位置更改为站点 q。
+
+> For each agent type, the modeler can specify fields emitted by the agent and the sensitivity
+to fields emitted by other agents. A change in agent’s attitude can be defined either by a
+trigger or a react primitive. Both primitives in fact determine an agent state change. The
+first option can be used when the change of attitude can be mapped to a specific condition
+associated to a field, such as the fact that the current intensity of a signal exceeds a given
+threshold (i.e., the agent is close enough to a given point of interest):
+
+对于每种代理类型，建模者可以指定代理发出的字段以及对其他代理发出的字段的敏感度。代理态度的变化可以通过触发器或 React 原语来定义。实际上，这两个基元都确定代理状态更改。当姿态变化可以映射到与场相关的特定条件时，可以使用第一个选项，例如信号的当前强度超过给定阈值的事实（即，代理足够接近给定的兴趣点）：
+
+> action:     trigger(s<sub>1</sub>, f<sub>g</sub>, s<sub>2</sub>)  
+> condition:  a = ⟨s<sub>1</sub>, p, τ⟩, perceive(f<sub>g</sub>), compare(f<sub>g</sub>, f<sub>t</sub>)  
+> effect:     a = ⟨s<sub>2</sub>, p, τ⟩  
+
+> where f<sub>t</sub> represents the above introduced threshold. The second option, the react primitive,
+can be adopted when two agents coordinate themselves to state change:
+
+其中 f<sub>t</sub> 表示上述引入的阈值。第二个选项，react 原语，当两个代理协调自己进行状态更改时，可以采用：
+
+> action:     react(s<sub>1</sub>, b, s<sub>2</sub>)  
+> condition:  a = ⟨s<sub>1</sub>, p, τ<sub>1</sub>⟩, b = ⟨s<sub>b</sub>, q, τ<sub>2</sub>⟩, q ∈ P<sub>p</sub>, agreed(b)  
+> effect:     a = ⟨s<sub>2</sub>, p, τ<sub>1</sub>⟩
+
+> where the <I>agreed(b)</I> specifies that agent b has agreed to perform a coordinated change of
+state, a necessary condition for the reaction to take place. It must be noted that a compatible
+react action must be specified in another agent (that could be of the same type or not).
+The effect of both actions is to change the state of agent a from s<sub>1</sub> to s<sub>2</sub>, but in different
+conditions and exploiting different primitives. It must be noted that these are just sample
+action specifications, and that additional conditional elements can be defined to better fit
+the specific situation.
+
+当 agreed（b） 指定主体 B 已同意执行协调状态变化时，这是反应发生的必要条件。必须注意的是，
+必须在另一个代理中指定兼容的 react action（可以是相同类型，也可以是非相同类型）。
+这两个操作的效果是将代理体 a 的状态从 s<sub>1</sub> 更改为 s<sub>2</sub>，但在不同的条件下并利用不同的基元。
+必须注意的是，这些只是示例操作规范，可以定义其他条件元素以更好地适应特定情况。
 
 
