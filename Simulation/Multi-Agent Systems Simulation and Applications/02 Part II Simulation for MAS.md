@@ -6,7 +6,7 @@
 > - 7 Replicator Dynamics in Discrete and Continuous Strategy Spaces
 > - 8 Stigmergic Cues and Their Uses in Coordination: An Evolutionary Approach
 
-- 4 Polyagents：支持代理决策的模拟
+- 4 Polyagents：支持代理决策的仿真
 - 5 结合仿真和形式化工具开发自组织 MAS
 - 6 关于软件架构在仿真多智能体系统中的作用
 - 7 离散和连续策略空间中的复制器动力学
@@ -21,7 +21,7 @@ model of the world to see what might happen under various decision alternatives 
 the decision that leads to the most desirable outcome. This part presents five chapters that
 show different uses of simulation for MAS.
 
-MAS 的一个典型特征是固有的资源分布。代理只能访问环境的部分权限。系统范围的属性是由代理程序的本地操作及其交互产生的。由于 MAS 的分布式特性，在 MAS 的软件开发过程中，通过仿真进行测试变得势在必行。软件代理还可以使用基于代理的模拟来指导他们的决策。通过这种方式，代理运行一个世界模型，看看在各种决策选择下会发生什么，并做出导致最理想结果的决策。本部分将介绍五章，介绍仿真在 MAS 中的不同用途。
+MAS 的一个典型特征是固有的资源分布。代理只能访问环境的部分权限。系统范围的属性是由代理程序的本地操作及其交互产生的。由于 MAS 的分布式特性，在 MAS 的软件开发过程中，通过仿真进行测试变得势在必行。软件代理还可以使用基于代理的仿真来指导他们的决策。通过这种方式，代理运行一个世界模型，看看在各种决策选择下会发生什么，并做出导致最理想结果的决策。本部分将介绍五章，介绍仿真在 MAS 中的不同用途。
 
 > In “Polyagents: Simulation for Supporting Agents’ Decision Making”, Parunak and
 Brueckner, introduce a construct for multi-agent modeling that encapsulates a technique
@@ -53,7 +53,7 @@ beyond traditional code libraries and software frameworks. It supports consolida
 sharing expertise in the domain of multi-agent simulation in a form that has proven its
 value for software development.
 
-仿真平台中的常识通常具体化为可重用的代码、库和软件框架。在“论软件架构在模拟多代理系统中的作用”中，Alexander Helleboogh、Tom Holvoet 和 Danny Weyns 提出了除了此类代码库和软件框架之外的软件架构。软件架构在工件中捕获了仿真平台的精髓，从而超越了传统代码库和软件框架的重用。它支持以已证明其软件开发价值的形式整合和共享多智能体仿真领域的专业知识。
+仿真平台中的常识通常具体化为可重用的代码、库和软件框架。在“论软件架构在仿真多代理系统中的作用”中，Alexander Helleboogh、Tom Holvoet 和 Danny Weyns 提出了除了此类代码库和软件框架之外的软件架构。软件架构在工件中捕获了仿真平台的精髓，从而超越了传统代码库和软件框架的重用。它支持以已证明其软件开发价值的形式整合和共享多智能体仿真领域的专业知识。
 
 > In “Replicator Dynamics in Discrete and Continuous Strategy Spaces”, Karl Tuyls and
 Ronald Westra study multi-agent evolutionary dynamics from a game theoretic perspective.
@@ -63,7 +63,7 @@ of the replicator dynamics and introduce a new replicator dynamics model for con
 strategy spaces. Experiments show that the new model outperforms existing models in a
 simple game.
 
-在“离散和连续策略空间中的复制器动力学”中，Karl Tuyls 和 Ronald Westra 从博弈论的角度研究了多代理进化动力学。作者模拟并分析了具有离散和连续策略空间的多智能体博弈的属性和渐近行为。为此，他们使用了现有的复制器动力学模型，并为连续策略空间引入了新的复制器动力学模型。实验表明，新模型在简单游戏中的性能优于现有模型。
+在“离散和连续策略空间中的复制器动力学”中，Karl Tuyls 和 Ronald Westra 从博弈论的角度研究了多代理进化动力学。作者仿真并分析了具有离散和连续策略空间的多智能体博弈的属性和渐近行为。为此，他们使用了现有的复制器动力学模型，并为连续策略空间引入了新的复制器动力学模型。实验表明，新模型在简单游戏中的性能优于现有模型。
 
  
 > Finally, in “Stigmergic Cues and Their Uses in Coordination: an Evolutionary Approach”,
@@ -79,6 +79,6 @@ agent sends a message about what kind of resources are available (stigmergic com
 tion), the simulations offer a precise analysis of the difference between traces that are signs
 with a behavioral content and traces that are signals with a behavioral message.
 
-最后，在“耻辱暗示及其在协调中的用途：一种进化方法”中，Luca Tummolini、Marco Mirolli 和 Cristiano Castelfranchi 探讨了采用模拟方法的耻辱行为的演变。作者模拟了生活在包含安全和有毒水果的虚拟环境中的人工代理群体。代理的行为由人工神经网络控制，其自由参数（即网络连接的权重）编码在代理的基因组中，并通过遗传算法进化。通过从智能体单独寻找资源的 MAS 过渡到每个智能体间接与其他智能体所做的事情协调（耻辱性自我调整），最后，过渡到每个智能体发送关于可用资源类型的信息（耻辱性通信）的情况，模拟提供了对具有行为内容的标志的痕迹和作为信号的痕迹之间的差异的精确分析带有行为信息。
+最后，在“耻辱暗示及其在协调中的用途：一种进化方法”中，Luca Tummolini、Marco Mirolli 和 Cristiano Castelfranchi 探讨了采用仿真方法的耻辱行为的演变。作者仿真了生活在包含安全和有毒水果的虚拟环境中的人工代理群体。代理的行为由人工神经网络控制，其自由参数（即网络连接的权重）编码在代理的基因组中，并通过遗传算法进化。通过从智能体单独寻找资源的 MAS 过渡到每个智能体间接与其他智能体所做的事情协调（耻辱性自我调整），最后，过渡到每个智能体发送关于可用资源类型的信息（耻辱性通信）的情况，仿真提供了对具有行为内容的标志的痕迹和作为信号的痕迹之间的差异的精确分析带有行为信息。
 
 

@@ -25,15 +25,15 @@
 
 > 1. <b> MAS for studying Complexity</b>. Examples are social models (e.g., Schelling’s segregation model [Schelling, 1971], or Ormerod’s low-dimensional paradigm [Ormerod, 2007]), artificial life (e.g., Axtell’s Sugarscape [Epstein and Axtell, 1996] or Reynold’s Boids [Reynolds, 1987] models) or logistics (e.g., Traffic Simulations [Burmeister et al., Feb 1997]). Such models use very simple agents which engage in little, if any, planning or coordination. The models are interpreted usually via some quantitative (average life expectancy, average queuing time, etc.) or qualitative (emergent segregation patterns, emergent flocking, etc.) observation at the macro-level of the population itself.
 
-1. 研究复杂性的 MAS。例如社会模型（例如，Schelling 的隔离模型 [Schelling， 1971]，或 Ormerod 的低维范式 [Ormerod， 2007]）、人工生命（例如，Axtell 的 Sugarscape [Epstein 和 Axtell， 1996] 或 Reynold's Boids [Reynolds， 1987] 模型）或物流（例如，交通模拟 [Burmeister et al.， Feb 1997]）。此类模型使用非常简单的代理，这些代理很少（如果有的话）进行规划或协调。这些模型通常通过在种群本身的宏观层面进行一些定量（平均预期寿命、平均排队时间等）或定性（紧急隔离模式、紧急植群等）观察来解释。
+1. 研究复杂性的 MAS。例如社会模型（例如，Schelling 的隔离模型 [Schelling， 1971]，或 Ormerod 的低维范式 [Ormerod， 2007]）、人工生命（例如，Axtell 的 Sugarscape [Epstein 和 Axtell， 1996] 或 Reynold's Boids [Reynolds， 1987] 模型）或物流（例如，交通仿真 [Burmeister et al.， Feb 1997]）。此类模型使用非常简单的代理，这些代理很少（如果有的话）进行规划或协调。这些模型通常通过在种群本身的宏观层面进行一些定量（平均预期寿命、平均排队时间等）或定性（紧急隔离模式、紧急植群等）观察来解释。
 
 > 2. <b>MAS for studying Distributed Intelligence.</b> Examples range from planning (e.g., Blocksworld [Fahlman, 1973], Tileworld [Pollack and Ringuette, 1990]), to more cognitively ‘accurate’ social simulations (as advocated by researchers such as Nigel Gilbert [Gilbert, 2005], John Doran [Doran, 2001] or Ron Sun [Sun, 2001]) all the way up to research in to human cognition itself (such as the work of the CoSY project [Hawes et al., 2007], or of researchers like Aaron Sloman [Sloman and Logan, 1999] or Mattias Scheutz [Scheutz and Logan, 2001]). Such models use internally complex, situated, communicating agents, and are often designed to study the behavior of one particular cognitive formalism such as SOAR [Wray and Jones, 2005], ACT-R [Taatgen et al., 2005] or BDI [Rao and Georgeoff, 1995].
 
-2. MAS 用于研究分布式智能。例子范围从规划（例如，Blocksworld [Fahlman， 1973]、Tileworld [Pollack and Ringuette， 1990]）到更认知“准确”的社会模拟（如 Nigel Gilbert [Gilbert， 2005]、John Doran [Doran， 2001] 或 Ron Sun [Sun， 2001] 等研究人员所倡导的那样），一直到人类认知本身的研究（例如 CoSY 项目的工作 [Hawes et al..， 2007 年]，或者像 Aaron Sloman [Sloman 和 Logan， 1999] 或 Mattias Scheutz [Scheutz 和 Logan， 2001] 这样的研究人员。这种模型使用内部复杂的、定位的、通信的代理，并且通常旨在研究一种特定认知形式主义的行为，例如 SOAR [Wray 和 Jones， 2005]、ACT-R [Taatgen et al.， 2005] 或 BDI [Rao and Georgeoff， 1995]。 
+2. MAS 用于研究分布式智能。例子范围从规划（例如，Blocksworld [Fahlman， 1973]、Tileworld [Pollack and Ringuette， 1990]）到更认知“准确”的社会仿真（如 Nigel Gilbert [Gilbert， 2005]、John Doran [Doran， 2001] 或 Ron Sun [Sun， 2001] 等研究人员所倡导的那样），一直到人类认知本身的研究（例如 CoSY 项目的工作 [Hawes et al..， 2007 年]，或者像 Aaron Sloman [Sloman 和 Logan， 1999] 或 Mattias Scheutz [Scheutz 和 Logan， 2001] 这样的研究人员。这种模型使用内部复杂的、定位的、通信的代理，并且通常旨在研究一种特定认知形式主义的行为，例如 SOAR [Wray 和 Jones， 2005]、ACT-R [Taatgen et al.， 2005] 或 BDI [Rao and Georgeoff， 1995]。 
 
 > 3. Development of Software MAS. These toolkits provide support for building software agents such as those described by Wooldridge & Jennings [Jennings et al., 1998], Franklin & Gaesser [Franklin and Graesser, 1996] or as implied by the FIPA [Foundation for Intelligent Physical Agents FIPA] or KQML [Finin et al., 1994] standards. Typical applications are Semantic Web agents, Beliefs-Desires-Intentions (BDI) agents in expert systems, or agents for network meta-management (e.g., load-balancing or service discovery). Many of these toolkits include a pre-deployment environment for debugging or verification of the implemented MAS which may be considered equivalent to a simulation engine.
 
-3. 软件 MAS 的开发。这些工具包为构建软件代理提供了支持，如Wooldridge & Jennings [Jennings et al.， 1998]， Franklin & Gaesser [Franklin and Graesser， 1996]所描述的那些，或者FIPA [智能物理代理基金会FIPA] 或KQML [Finin et al.， 1994] 标准所暗示的那些。典型应用包括语义 Web 代理、专家系统中的信念-愿望-意图 （BDI） 代理或网络元管理代理（例如，负载平衡或服务发现）。其中许多工具包包括一个预部署环境，用于调试或验证已实施的 MAS，这可能被认为等同于模拟引擎。
+3. 软件 MAS 的开发。这些工具包为构建软件代理提供了支持，如Wooldridge & Jennings [Jennings et al.， 1998]， Franklin & Gaesser [Franklin and Graesser， 1996]所描述的那些，或者FIPA [智能物理代理基金会FIPA] 或KQML [Finin et al.， 1994] 标准所暗示的那些。典型应用包括语义 Web 代理、专家系统中的信念-愿望-意图 （BDI） 代理或网络元管理代理（例如，负载平衡或服务发现）。其中许多工具包包括一个预部署环境，用于调试或验证已实施的 MAS，这可能被认为等同于仿真引擎。
 
 > These different target applications have an obvious impact on the modeling facilities offered by a toolkit in order to develop MAS models. However, they also have implications for the type of simulation engine that will be used (and usually packaged along with the toolkit itself) to execute the models.
 
@@ -41,7 +41,7 @@
 
 > The first two types provide an execution environment which would be most widely recognizable as a simulation engine. That is, a virtual machine with a notion of logical time advancing in discrete steps. This reflects the fact that, with these applications parameterization, repeatability and introspection are key to understanding the model’s behavior, whether this be at a micro- or macro-level.
 
-前两种类型提供了一个执行环境，该环境将被广泛识别为模拟引擎。也就是说，具有逻辑时间概念的虚拟机以离散步骤前进。这反映了这样一个事实，即在这些应用程序中，参数化、可重复性和内省是理解模型行为的关键，无论是在微观层面还是宏观层面。
+前两种类型提供了一个执行环境，该环境将被广泛识别为仿真引擎。也就是说，具有逻辑时间概念的虚拟机以离散步骤前进。这反映了这样一个事实，即在这些应用程序中，参数化、可重复性和内省是理解模型行为的关键，无论是在微观层面还是宏观层面。
 
 > In contrast the types of execution environment which support development platforms
 for software agents are primarily concerned with controlled emulation of a real execution
@@ -53,14 +53,14 @@ or parameterizable behaviors are less of a concern.
 
 > On this basis, the remainder of this chapter will focus on the type of execution environments which genuinely constitute simulation engines. This being those found in toolkits supporting the experimental development of multi-agent models as in types 1 and 2 above.
 
-在此基础上，本章的其余部分将重点介绍真正构成模拟引擎的执行环境类型。这是在支持上述类型 1 和 2 中的多代理模型实验开发的工具包中发现的那些。
+在此基础上，本章的其余部分将重点介绍真正构成仿真引擎的执行环境类型。这是在支持上述类型 1 和 2 中的多代理模型实验开发的工具包中发现的那些。
 
 
 ## 3.3 Discrete Event Simulation Engines for MAS / 用于 MAS 的离散事件仿真引擎
 
 > MAS Simulation toolkits, in the interests of robustness, repeatability and micro-scale analysis of the model, generally conceive of the model as a discrete system, transitioning through time in discrete steps. Toolkits of this type are discussed in this Section, but first it is important to establish the common paradigm - independent from MAS modeling specifically - which is generally used to simulate discrete systems: Discrete Event Simulation.
 
-MAS Simulation 工具包，为了实现模型的稳健性、可重复性和微观尺度分析，通常将模型视为一个离散系统，以离散步骤随时间过渡。本节将讨论这种类型的工具包，但首先重要的是要建立通常用于模拟离散系统的通用范式 - 专门独立于 MAS 建模：离散事件仿真。
+MAS Simulation 工具包，为了实现模型的稳健性、可重复性和微观尺度分析，通常将模型视为一个离散系统，以离散步骤随时间过渡。本节将讨论这种类型的工具包，但首先重要的是要建立通常用于仿真离散系统的通用范式 - 专门独立于 MAS 建模：离散事件仿真。
 
 ### 3.3.1 The Discrete Event Simulation Paradigm / 离散事件仿真范式
 
@@ -73,7 +73,7 @@ in time at which a transition has semantic significance. This is a more flexible
 (which is, of course, capable of simulating a Time-Stepped approach via a linearly spaced
 sequence of events).
 
-离散事件仿真 （DES） [Fishman， 1978] 是离散（或离散化）系统仿真的常见范例。DES 是更通用的离散时间仿真方法（例如时间步进方法）的一种特例，其中状态转换是瞬间发生的，而不是随时间连续发生。在 DES 范式下，这些转换不是作为线性间隔的步骤序列发生的，而是发生在转换具有语义意义的时刻。这是一种更灵活的范式（当然，它能够通过线性间隔的事件序列来模拟 Time-Stepped 方法）。
+离散事件仿真 （DES） [Fishman， 1978] 是离散（或离散化）系统仿真的常见范例。DES 是更通用的离散时间仿真方法（例如时间步进方法）的一种特例，其中状态转换是瞬间发生的，而不是随时间连续发生。在 DES 范式下，这些转换不是作为线性间隔的步骤序列发生的，而是发生在转换具有语义意义的时刻。这是一种更灵活的范式（当然，它能够通过线性间隔的事件序列来仿真 Time-Stepped 方法）。
 
 > DES engines are generally implemented as a queue of events (commonly implemented as
 a heap) each having a logical timestamp. A loop iterates over the queue, at each iteration
@@ -107,7 +107,7 @@ cold which the model wishes to represent.
 
 > This Section surveys the simulation engines integrated in to many of the most popular and influential toolkits for building MAS simulations. This survey is not exhaustive due to the unavailability of technical detail for some popular, closed-source toolkits (eg. NetLogo), however it does provide a good coverage of the various engineering options when implementing a DES engine for MAS models.
 
-本节调查了集成到许多最流行和最有影响力的工具包中用于构建 MAS 模拟的仿真引擎。
+本节调查了集成到许多最流行和最有影响力的工具包中用于构建 MAS 仿真的仿真引擎。
 由于无法获得一些流行的闭源工具包的技术细节，因此该调查并不详尽（例如。NetLogo），
 但是，在为 MAS 模型实施 DES 引擎时，它确实很好地涵盖了各种工程选项。
 
@@ -115,7 +115,7 @@ cold which the model wishes to represent.
 > The LEE (Latent Energy Environment) toolkit [Menczer and Belew, 1993] is implemented in C and targets research on evolutionary complex systems. Its underlying assumptions regarding the structure of agents, their actions, and their environment are therefore highly specific: Agents consist of a user-defined neural network that uses sensor information and the internal state to trigger actions. Agents may only interact with their environment, which is a two-dimensional toroidal grid. Each cell of the grid may contain consumable elements that provide the agents with energy. This model of a multi-agent system is combined with a genetic algorithm approach that allows individual agents to proliferate or die. A replenishment function is used to generate new consumable elements and place them on the grid, while a reaction table defines which elements react with each other, so that agents can combine elements to increase their energy consumption. The simulation is executed in a Time-Stepped manner. At every step, each agent has a certain chance of being executed. This ‘virtual concurrency’ mechanism was devised to model the parallel execution of agents in an unbiased serial way. The LEE has been successfully applied to model the co-evolution of motor-sensor systems [Dagorn et al., 2000]. Figure 3.2 shows a screenshot of the LEE graphical user interface (GUI).
 > ![img_1.png](img_1.png)
 
-LEE （Latent Energy Environment） 工具包 [Menczer 和 Belew， 1993] 用 C 语言实现，针对进化复杂系统的研究。因此，它对代理的结构、操作和环境的基本假设是非常具体的：代理由用户定义的神经网络组成，该网络使用传感器信息和内部状态来触发操作。代理只能与其环境交互，环境是二维环形网格。网格的每个单元都可以包含为代理提供能量的消耗元件。这种多代理系统模型与允许单个代理增殖或死亡的遗传算法方法相结合。补充功能用于生成新的消耗元素并将其放置在网格上，而反应表定义哪些元素相互反应，以便代理可以组合元素以增加其能耗。模拟以 Time-Stepped 方式执行。在每一步中，每个代理都有一定的执行机会。这种 “虚拟并发” 机制旨在以无偏见的串行方式对代理的并行执行进行建模。LEE 已成功应用于模拟电机传感器系统的协同进化 [Dagorn et al.， 2000]。图 3.2 显示了 LEE 图形用户界面 （GUI） 的屏幕截图。
+LEE （Latent Energy Environment） 工具包 [Menczer 和 Belew， 1993] 用 C 语言实现，针对进化复杂系统的研究。因此，它对代理的结构、操作和环境的基本假设是非常具体的：代理由用户定义的神经网络组成，该网络使用传感器信息和内部状态来触发操作。代理只能与其环境交互，环境是二维环形网格。网格的每个单元都可以包含为代理提供能量的消耗元件。这种多代理系统模型与允许单个代理增殖或死亡的遗传算法方法相结合。补充功能用于生成新的消耗元素并将其放置在网格上，而反应表定义哪些元素相互反应，以便代理可以组合元素以增加其能耗。仿真以 Time-Stepped 方式执行。在每一步中，每个代理都有一定的执行机会。这种 “虚拟并发” 机制旨在以无偏见的串行方式对代理的并行执行进行建模。LEE 已成功应用于仿真电机传感器系统的协同进化 [Dagorn et al.， 2000]。图 3.2 显示了 LEE 图形用户界面 （GUI） 的屏幕截图。
 
 #### JAMES II
 > JAMES II (Java-based Agent Modeling Environment for Simulation) [Himmelspach and
@@ -130,11 +130,11 @@ Petri Nets, Cellular Automata, and several process algebras, e.g., Space-π. The
 in principle be used to model large sets of simple, reactive agents situated within a 3-
 dimensional environment (e.g., the ’swarm’ of Euglena cells in [John et al., 2008]).
 
-JAMES II（基于 Java 的智能体建模模拟环境）[Himmelspach 和 Uhrmacher，2007 年] 多年来已成为一个通用的建模和模拟系统，但仍然提供了多种功能，以满足智能体建模和模拟的需求。在 JAMES II 中，代理需要以用户选择的形式进行建模。该系统提供了 DEVS [Zeigler et al.， 2000] 形式的各种扩展（例如，ml-DEVS [Uhrmacher et al.， 2007]），以支持多级建模、动态结构、广播以及外部流程（如规划器或完整代理）的集成 [Himmelspach and Uhrmacher， 2004]。其他支持的形式是 StateCharts、Petri Nets、Cellular Automata 和几个过程代数，例如 Space-π。后者原则上可用于模拟位于 3 维环境中的大量简单反应性代理（例如，[John et al.， 2008] 中的裸藻细胞“群”）。
+JAMES II（基于 Java 的智能体建模仿真环境）[Himmelspach 和 Uhrmacher，2007 年] 多年来已成为一个通用的建模和仿真系统，但仍然提供了多种功能，以满足智能体建模和仿真的需求。在 JAMES II 中，代理需要以用户选择的形式进行建模。该系统提供了 DEVS [Zeigler et al.， 2000] 形式的各种扩展（例如，ml-DEVS [Uhrmacher et al.， 2007]），以支持多级建模、动态结构、广播以及外部流程（如规划器或完整代理）的集成 [Himmelspach and Uhrmacher， 2004]。其他支持的形式是 StateCharts、Petri Nets、Cellular Automata 和几个过程代数，例如 Space-π。后者原则上可用于仿真位于 3 维环境中的大量简单反应性代理（例如，[John et al.， 2008] 中的裸藻细胞“群”）。
 
 > It is also possible to run a simulation in paced mode, i.e., in sync with the wallclock time. This is useful for testing an existing agent software within a controlled environment [Gierke et al., 2006]. Under these circumstances, JAMES II could also be viewed as a real-time execution engine, consisting of the model simulated by JAMES II on the one hand, and some external processes on the other.
 
-也可以在 paced 模式下运行模拟，即与挂钟时间同步。这对于在受控环境中测试现有代理软件非常有用 [Gierke et al.， 2006]。在这种情况下，JAMES II 也可以被视为一个实时执行引擎，一方面由 JAMES II 模拟的模型组成，另一方面由一些外部过程组成。
+也可以在 paced 模式下运行仿真，即与挂钟时间同步。这对于在受控环境中测试现有代理软件非常有用 [Gierke et al.， 2006]。在这种情况下，JAMES II 也可以被视为一个实时执行引擎，一方面由 JAMES II 仿真的模型组成，另一方面由一些外部过程组成。
 
 > When using DEVS to model agents, however, there is no notion of space, i.e., situational
 agent models require an explicit, user-defined model of the environment. As DEVS is a
@@ -147,7 +147,7 @@ More details on JAMES II can be found in Section 3.4.3. A screenshot of the JAME
 GUI showing a 2D visualization is shown in Figure 3.3.
 ![img_2.png](img_2.png)
 
-然而，当使用 DEVS 对智能体进行建模时，没有空间的概念，即情境智能体模型需要一个明确的、用户定义的环境模型。由于 DEVS 是一种离散事件形式，因此系统提供的所有 DEVS 仿真算法本质上都是离散事件模拟器，具有不同的性能配置文件和功能，例如，关于模型的结构和执行模式（顺序/分布式）。代理的调度取决于模型，必须由用户定义。模型本身作为 Java 子类或包含 Java 代码的 XML 文件实现。有关 JAMES II 的更多详细信息，请参见 Section 3.4.3。图 3.3 显示了 JAMES II GUI 的 2D 可视化屏幕截图。
+然而，当使用 DEVS 对智能体进行建模时，没有空间的概念，即情境智能体模型需要一个明确的、用户定义的环境模型。由于 DEVS 是一种离散事件形式，因此系统提供的所有 DEVS 仿真算法本质上都是离散事件仿真器，具有不同的性能配置文件和功能，例如，关于模型的结构和执行模式（顺序/分布式）。代理的调度取决于模型，必须由用户定义。模型本身作为 Java 子类或包含 Java 代码的 XML 文件实现。有关 JAMES II 的更多详细信息，请参见 Section 3.4.3。图 3.3 显示了 JAMES II GUI 的 2D 可视化屏幕截图。
 
 #### SeSAm
 
@@ -162,7 +162,7 @@ research and teaching, often for modeling social systems like the behavior of ho
 consumers in a supermarket. A screenshot of the SeSAm GUI is shown in Figure 3.4.
 ![img_3.png](img_3.png)
 
-SeSAm（模拟代理系统的外壳）[kl ̈ugl 和 Puppe，1998 年;Kl ̈ugl et al.， 2006] 是一个用 Java 编写的用于多智能体系统的成熟模拟系统。它具有强大的图形用户界面，无需编程即可对多代理系统进行建模。在 SeSAm 中，代理嵌入在二维或三维网格中。代理由传感器和效应器以及用于选择适当操作的内部功能定义。模拟器以离散的时间步长进行。但是，有一个插件使系统能够以离散事件方式处理模型。SeSAm 已广泛用于研究和教学，通常用于对社会系统进行建模，例如蜜蜂或超市中消费者的行为。SeSAm GUI 的屏幕截图如图 3.4 所示。
+SeSAm（仿真代理系统的外壳）[kl ̈ugl 和 Puppe，1998 年;Kl ̈ugl et al.， 2006] 是一个用 Java 编写的用于多智能体系统的成熟仿真系统。它具有强大的图形用户界面，无需编程即可对多代理系统进行建模。在 SeSAm 中，代理嵌入在二维或三维网格中。代理由传感器和效应器以及用于选择适当操作的内部功能定义。仿真器以离散的时间步长进行。但是，有一个插件使系统能够以离散事件方式处理模型。SeSAm 已广泛用于研究和教学，通常用于对社会系统进行建模，例如蜜蜂或超市中消费者的行为。SeSAm GUI 的屏幕截图如图 3.4 所示。
 
 #### RePast
 
@@ -183,7 +183,7 @@ model. Figure 3.5 shows a screenshot of the RePast GUI controls being used to ma
 GIS-based MAS simulation.
 ![img_4.png](img_4.png)
 
-RePast （递归 Porus 代理模拟工具包） [项目;North et al.， 2006] 是一个免费的开源工具包，具有多种语言的实现，其中最受欢迎的是纯 Java 版本。RePast 大量借鉴了 Swarm 框架，并针对与 Swarm 框架类似的模型（见下文）。RePast 实现了一个完整的离散事件调度程序 （DES），允许以 BasicAction 实例的形式调度事件，这些实例可以执行任意代码，包括调度中的未来事件。RePast 的特定计划实现包括用于以一定频率自动重新安排事件和随机化逻辑并发事件执行顺序的工具，后者是上述 LEE 案例中虚拟并发的另一个示例。尽管从建模的角度来看，RePast 提供了几个组件（例如 2D 或 3D 网格、网络和 GIS（地理信息系统）环境），这些组件通常可用于将社会现象建模为多代理系统，但引擎内部没有对模型的结构或行为做出假设。图 3.5 显示了用于管理基于 GIS 的 MAS 模拟的 RePast GUI 控件的屏幕截图。
+RePast （递归 Porus 代理仿真工具包） [项目;North et al.， 2006] 是一个免费的开源工具包，具有多种语言的实现，其中最受欢迎的是纯 Java 版本。RePast 大量借鉴了 Swarm 框架，并针对与 Swarm 框架类似的模型（见下文）。RePast 实现了一个完整的离散事件调度程序 （DES），允许以 BasicAction 实例的形式调度事件，这些实例可以执行任意代码，包括调度中的未来事件。RePast 的特定计划实现包括用于以一定频率自动重新安排事件和随机化逻辑并发事件执行顺序的工具，后者是上述 LEE 案例中虚拟并发的另一个示例。尽管从建模的角度来看，RePast 提供了几个组件（例如 2D 或 3D 网格、网络和 GIS（地理信息系统）环境），这些组件通常可用于将社会现象建模为多代理系统，但引擎内部没有对模型的结构或行为做出假设。图 3.5 显示了用于管理基于 GIS 的 MAS 仿真的 RePast GUI 控件的屏幕截图。
 
 
 #### Swarm
@@ -285,7 +285,7 @@ concerned with making very large (in terms of required memory and required CPU-t
 computations tractable, rather than concerns of interoperability between simulation models
 (see Section 3.4.2 below).
 
-离散事件模拟的并行形式（DES，在上面的第 3.3.2 节中讨论）由 Chandy 和 Misra 在 [Chandy 和 Misra， 1981] 中正式引入，作为 PDES 范式。与一般的并行执行算法一样，PDES 主要关注使非常大（就所需内存和所需 CPU 时间而言）计算易于处理，而不是关注仿真模型之间的互操作性（请参阅下面的第 3.4.2 节）。
+离散事件仿真的并行形式（DES，在上面的第 3.3.2 节中讨论）由 Chandy 和 Misra 在 [Chandy 和 Misra， 1981] 中正式引入，作为 PDES 范式。与一般的并行执行算法一样，PDES 主要关注使非常大（就所需内存和所需 CPU 时间而言）计算易于处理，而不是关注仿真模型之间的互操作性（请参阅下面的第 3.4.2 节）。
 
 > In PDES the simulation model is decomposed in to many <I> Logical Processes </I> (LPs) which
 each represent a closed subsystem. Each LP is internally driven by a standard DES scheduling 
@@ -382,7 +382,7 @@ manager via a port. When the environment manager is started it contacts the agen
 and sends agent code to them. The agent manager is also sent limited environmental
 information from the environment manager.
 
-DGensim （Distributed Gensim） [Anderson， 2000] 在 Linux 下用 Allegro Common Lisp （ACL） 开发，是原始 Gensim 的扩展，作者指出开发的动机是提高原始 Gensim 的保真度。作者还指出了分发的其他动机：计算能力的提高;更好的实验控制;以及减少分时开销。DGensim 中的主要变化与物理组织和执行层有关。DGensim 将模拟划分到 n 个节点处理器上，其中 n − 1 个处理器执行代理的内部和一个代理管理器。其余处理器执行环境管理器。当模拟开始时，每个代理进程都会启动其代理管理器，该代理管理器通过端口连接到环境管理器。当环境管理器启动时，它会联系代理管理员并将代理代码发送给他们。代理管理器还会从环境管理器向代理管理器发送有限的环境信息。
+DGensim （Distributed Gensim） [Anderson， 2000] 在 Linux 下用 Allegro Common Lisp （ACL） 开发，是原始 Gensim 的扩展，作者指出开发的动机是提高原始 Gensim 的保真度。作者还指出了分发的其他动机：计算能力的提高;更好的实验控制;以及减少分时开销。DGensim 中的主要变化与物理组织和执行层有关。DGensim 将仿真划分到 n 个节点处理器上，其中 n − 1 个处理器执行代理的内部和一个代理管理器。其余处理器执行环境管理器。当仿真开始时，每个代理进程都会启动其代理管理器，该代理管理器通过端口连接到环境管理器。当环境管理器启动时，它会联系代理管理员并将代理代码发送给他们。代理管理器还会从环境管理器向代理管理器发送有限的环境信息。
 
 > In the original Gensim, changes made by agents are processed on an agent-by-agent basis
 cyclically. This has the undesired effect that the results of certain agents actions become
@@ -398,7 +398,7 @@ agents can make decisions at any point, the result of the decision will not be p
 the environment until the environment’s simulation time reaches the timestamp associated
 with that particular decision.
 
-在原始 Gensim 中，代理所做的更改是逐个代理循环处理的。这会产生不良影响，即在任何一个周期中，某些代理操作的结果会先于其他代理操作变得明显。代理具有其环境的本地视图，这些视图由感知代理维护。每个感知代理都向环境管理器注册，说明它需要感官信息的频率。然后，本地 DGensim 代理通过其自己的感知代理感知其环境。在 DGensim 中，代理将其决策（带有时间戳）异步发送到环境管理器内的操作监控代理。操作监控代理的工作是使用关联的时间戳对传入的决策重新排序。尽管代理在 DGensim 中异步做出决策，但环境管理器是一个时间驱动的模拟。虽然代理可以随时做出决策，但在环境的模拟时间达到与该特定决策关联的时间戳之前，环境不会处理决策的结果。
+在原始 Gensim 中，代理所做的更改是逐个代理循环处理的。这会产生不良影响，即在任何一个周期中，某些代理操作的结果会先于其他代理操作变得明显。代理具有其环境的本地视图，这些视图由感知代理维护。每个感知代理都向环境管理器注册，说明它需要感官信息的频率。然后，本地 DGensim 代理通过其自己的感知代理感知其环境。在 DGensim 中，代理将其决策（带有时间戳）异步发送到环境管理器内的操作监控代理。操作监控代理的工作是使用关联的时间戳对传入的决策重新排序。尽管代理在 DGensim 中异步做出决策，但环境管理器是一个时间驱动的仿真。虽然代理可以随时做出决策，但在环境的仿真时间达到与该特定决策关联的时间戳之前，环境不会处理决策的结果。
 
 > The model in DGensim is susceptible to network delays, it is possible that an agent
 decision might be delayed enough to affect the sensory actions in the future, i.e., network
@@ -419,7 +419,7 @@ sensory information. The authors do point out that the mechanisms DGensim provid
 dealing with delay are not ideal. For their own experiments they use a small dedicated
 network and hence delays are rare and so not an issue.
 
-DGensim 中的模型容易受到网络延迟的影响，代理决策可能会延迟到足以影响未来的感官动作，即网络延迟可能会打破局部因果约束。小的延迟由安全窗口考虑，这是环境管理器使用的时间步长。也就是说，如果处理了代理决策并且发生了轻微的延迟，只要在同一时间步长内收到该决策，操作监控代理就会将操作重新排列为正确的顺序。如果延迟足够长，以至于在未来的时间步长中接收到操作，则解决方案会稍微复杂一些。DGensim 在这种情况下提供了多种选择，首先，一个动作可以被无效，就好像它从未发生过一样。第二个选项是处理事件，就好像它是在收到事件时发生的，而不是在发送事件时发生的事件。尽管这两种选择都不是理想的，但作者更喜欢此选项，而不是使用某种回滚方法。第三个也是最后一个选项涉及代理定期传输他们的操作，并在收到一整套操作后由环境处理它们。DGensim 还允许每个操作都有一个关联的时间段，即执行操作所需的模拟时间单位数。这避免了代理在内部执行得太快而丢失感官信息。作者确实指出，DGensim 提供的用于处理延迟的机制并不理想。对于他们自己的实验，他们使用一个小型专用网络，因此延迟很少见，因此不是问题。
+DGensim 中的模型容易受到网络延迟的影响，代理决策可能会延迟到足以影响未来的感官动作，即网络延迟可能会打破局部因果约束。小的延迟由安全窗口考虑，这是环境管理器使用的时间步长。也就是说，如果处理了代理决策并且发生了轻微的延迟，只要在同一时间步长内收到该决策，操作监控代理就会将操作重新排列为正确的顺序。如果延迟足够长，以至于在未来的时间步长中接收到操作，则解决方案会稍微复杂一些。DGensim 在这种情况下提供了多种选择，首先，一个动作可以被无效，就好像它从未发生过一样。第二个选项是处理事件，就好像它是在收到事件时发生的，而不是在发送事件时发生的事件。尽管这两种选择都不是理想的，但作者更喜欢此选项，而不是使用某种回滚方法。第三个也是最后一个选项涉及代理定期传输他们的操作，并在收到一整套操作后由环境处理它们。DGensim 还允许每个操作都有一个关联的时间段，即执行操作所需的仿真时间单位数。这避免了代理在内部执行得太快而丢失感官信息。作者确实指出，DGensim 提供的用于处理延迟的机制并不理想。对于他们自己的实验，他们使用一个小型专用网络，因此延迟很少见，因此不是问题。
 
 > In DGensim perception occurs at a point between the agent decision making components
 and the environment. Most of the agents’ perception is performed on the agent node by the
@@ -440,7 +440,7 @@ Poli, 1996] toolkit developed at Birmingham University (see Section 3.3.2) which
 sim agent simulations to be distributed across a network using the HLA (see Section
 3.4.2).
 
-HLA_Agent [Lees et al.， 2002， 2003， 2004] 是伯明翰大学开发的 SIM_AGENT [Sloman and Poli， 1996] 工具包的扩展（参见第 3.3.2 节），它允许使用 HLA 在网络中分发 sim 代理模拟（参见第 3.4.2 节）。
+HLA_Agent [Lees et al.， 2002， 2003， 2004] 是伯明翰大学开发的 SIM_AGENT [Sloman and Poli， 1996] 工具包的扩展（参见第 3.3.2 节），它允许使用 HLA 在网络中分发 sim 代理仿真（参见第 3.4.2 节）。
 
 > In SIM_AGENT each HLA federate corresponds to a single SIM_AGENT process and is responsible 
 both for simulating the local objects forming its own part of the global simulation,
@@ -448,7 +448,7 @@ and for maintaining proxy objects which represent objects of interest being simu
 other federates. The SIM_AGENT toolkit has been adapted in four different areas for use
 with HLA:
 
-SIM_AGENT每个 HLA 联合对应于单个 SIM_AGENT 进程，并且负责模拟构成其自身全局模拟部分的局部对象，并负责维护表示其他联合正在模拟的感兴趣对象的代理对象。SIM_AGENT 工具包已在四个不同的领域进行了调整，以用于 HLA：
+SIM_AGENT每个 HLA 联合对应于单个 SIM_AGENT 进程，并且负责仿真构成其自身全局仿真部分的局部对象，并负责维护表示其他联合正在仿真的感兴趣对象的代理对象。SIM_AGENT 工具包已在四个不同的领域进行了调整，以用于 HLA：
 
 > 1. Extended SIM_AGENT to hold federate and federation information.
 > 2. Object creation, deletion and attribute updates are transparently forwarded to
@@ -463,7 +463,7 @@ SIM_AGENT每个 HLA 联合对应于单个 SIM_AGENT 进程，并且负责模拟�
 1. 扩展了 SIM_AGENT 以保存联合和联合信息。
 2. 对象创建、删除和属性更新以透明方式转发到 RTI。
 3. 修改了调度程序，以便仅在本地计算机上执行本地（非代理）对象。调度程序现在还处理由第 2 步（上述）中进行的 RTI 调用创建的所有回调，即来自对象创建、删除和属性更新的回调。
-4. 添加了初始化 HLA_Agent 模拟所需的启动和同步代码。
+4. 添加了初始化 HLA_Agent 仿真所需的启动和同步代码。
 
 > HLA_Agent uses external calls to C functions and a series of FIFO queues written in
 C to communicate with the RTI. This enables SIM_AGENT to request callbacks when it is
@@ -511,7 +511,7 @@ SIM_AGENT以时间步长的周期工作，每个代理在每个周期中感知�
    3. 运行代理的 rule-system 以更新代理的内部数据库，并确定代理在此周期将执行哪些操作（如果有）。这可能会更新代理的内部数据库，例如，包含有关此周期的环境状态或当前所选操作等的信息。
 3. 在此周期上运行所有代理后，调度程序将处理每个代理的消息和操作队列，将传出消息传输到收件人的输入消息缓冲区，以便在下一个周期进行处理，并运行操作以更新环境中的对象和/或代理的公开可见属性。这可以触发对 RTI 的进一步调用以传播新值。
 4. 然后，我们处理此周期的对象发现和删除回调。对于在此周期中其他联合创建的所有新对象，我们将创建一个代理。如果其他联合已删除对象，我们将删除本地代理。
-5. 最后，我们处理此循环的属性更新回调，并使用此信息更新在此联合中模拟的本地对象和代理的插槽。在此阶段执行的更新不会转发到 RTI，否则会触发进一步的回调。
+5. 最后，我们处理此循环的属性更新回调，并使用此信息更新在此联合中仿真的本地对象和代理的插槽。在此阶段执行的更新不会转发到 RTI，否则会触发进一步的回调。
 6. 重复。
 
 > HLA_Agent has been tested using the SIM_Tileworld testbed on Linux clusters with
@@ -524,7 +524,7 @@ intensive (heavyweight) agents. The results also show however that communication
 becomes a dominating factor with relatively small numbers of nodes.
 > ![img_8.png](img_8.png)
 
-HLA_Agent 已在具有不同节点数的 Linux 集群上使用 SIM_Tileworld 测试台进行了测试，图 3.8 显示了该系统正在运行的实例的屏幕截图。在 SIM_Tileworld 联合中，环境通常由单个联合体模拟，并且代理体分布在集群节点上的一个或多个联合体中。在 [Lees et al.， 2004] 中，结果表明系统为轻量级和重量级代理获得了性能提升。该系统使用 CPU 密集型（重量级）代理实现最佳加速。然而，结果还表明，通信开销成为节点数量相对较少的主导因素。
+HLA_Agent 已在具有不同节点数的 Linux 集群上使用 SIM_Tileworld 测试台进行了测试，图 3.8 显示了该系统正在运行的实例的屏幕截图。在 SIM_Tileworld 联合中，环境通常由单个联合体仿真，并且代理体分布在集群节点上的一个或多个联合体中。在 [Lees et al.， 2004] 中，结果表明系统为轻量级和重量级代理获得了性能提升。该系统使用 CPU 密集型（重量级）代理实现最佳加速。然而，结果还表明，通信开销成为节点数量相对较少的主导因素。
 
 #### HLA_RePast
 
@@ -536,7 +536,7 @@ time-stepped. RePast itself was developed for large-scale social simulations of 
 provides a collection of tools and structures useful for agent simulation. More information
 on RePast can be found in Section 3.3.2.
 
-HLA_RePast是伯明翰大学开发的另一个支持 HLA 的代理工具包 [Minson 和 Theodoropoulos，2004]。它基于 RePast 代理工具包，该工具包针对 HLA 合规性进行了扩展。HLA_RePast 和 HLA_Agent 之间的主要区别在于，HLA_RePast 基于离散事件代理仿真，而 HLA_Agent 是时间步进的。RePast 本身是为代理的大规模社交模拟而开发的，它提供了一系列可用于代理模拟的工具和结构。有关 RePast 的更多信息，请参见 Section 3.3.2。
+HLA_RePast是伯明翰大学开发的另一个支持 HLA 的代理工具包 [Minson 和 Theodoropoulos，2004]。它基于 RePast 代理工具包，该工具包针对 HLA 合规性进行了扩展。HLA_RePast 和 HLA_Agent 之间的主要区别在于，HLA_RePast 基于离散事件代理仿真，而 HLA_Agent 是时间步进的。RePast 本身是为代理的大规模社交仿真而开发的，它提供了一系列可用于代理仿真的工具和结构。有关 RePast 的更多信息，请参见 Section 3.3.2。
 
 > HLA_RePast is implemented as middleware between the sequential RePast executive (a
 standard heap-based DES engine - see Section 3.3) and the HLA’s RTI executive. Each
@@ -558,7 +558,7 @@ great flexibility, it adds complexity to the HLA integration. The HLA_RePast sys
 constrains the traditional RePast event system so that it is possible for the system to
 observe state transitions and propagate these throughout the HLA federation.
 
-RePast 对单个事件中可以发生的状态更新数量没有限制。可以将整个模拟实现为单个事件。虽然这提供了极大的灵活性，但也增加了 HLA 集成的复杂性。因此，HLA_RePast 系统限制了传统的 RePast 事件系统，以便系统可以观察状态转换并将这些转换传播到整个 HLA 联合中。
+RePast 对单个事件中可以发生的状态更新数量没有限制。可以将整个仿真实现为单个事件。虽然这提供了极大的灵活性，但也增加了 HLA 集成的复杂性。因此，HLA_RePast 系统限制了传统的 RePast 事件系统，以便系统可以观察状态转换并将这些转换传播到整个 HLA 联合中。
 
 > To pass state changes between RePast and the RTI HLA_RePast defines a PublicObject
 and PublicVariable class. These classes and their children have wrapped primitives which
@@ -590,7 +590,7 @@ scheduler class, this new scheduler only executes events at time t if it is poss
 no future events will arrive with time < t. This guarantee is satisfied by using an HLA time
 advance to time t − 1 with a lookahead of one.
 
-HLA_RePast 的主要目标之一是集成尽可能透明，因此应该可以毫不费力地将现有的 RePast 模拟与 HLA_RePast 中间件一起使用。因此，HLA_RePast 使用保守的同步算法，因为这样就不需要在用户模型中实现回滚算法。为此，RePast 实现了一个继承自现有调度程序类的新类，如果可以确保没有未来的事件会随着时间 < t 到达，这个新的调度程序仅在时间 t 执行事件。通过使用时间 t − 1 的 HLA 时间提前和前瞻 1 来满足此保证。
+HLA_RePast 的主要目标之一是集成尽可能透明，因此应该可以毫不费力地将现有的 RePast 仿真与 HLA_RePast 中间件一起使用。因此，HLA_RePast 使用保守的同步算法，因为这样就不需要在用户模型中实现回滚算法。为此，RePast 实现了一个继承自现有调度程序类的新类，如果可以确保没有未来的事件会随着时间 < t 到达，这个新的调度程序仅在时间 t 执行事件。通过使用时间 t − 1 的 HLA 时间提前和前瞻 1 来满足此保证。
 
 > The results in [Minson and Theodoropoulos, 2004] are arrived at using a RePast implementation 
 of the Tileworld testbed. The results found in this context are qualitatively
@@ -606,7 +606,7 @@ in a Grid environment. The HLA_Grid_RePast project [Zhang et al., 2005; Theodoro
 et al., 2006] ran a federated simulation between sites in Singapore and Birmingham,
 UK using grid services to provide RTI connectivity.
 
-HLA_RePast 还被用作在网格环境中运行分布式模拟的测试平台应用程序。HLA_Grid_RePast 项目 [Zhang et al.， 2005;Theodoropoulos et al.， 2006] 在新加坡和英国伯明翰的站点之间运行了联合模拟，使用网格服务提供 RTI 连接。
+HLA_RePast 还被用作在网格环境中运行分布式仿真的测试平台应用程序。HLA_Grid_RePast 项目 [Zhang et al.， 2005;Theodoropoulos et al.， 2006] 在新加坡和英国伯明翰的站点之间运行了联合仿真，使用网格服务提供 RTI 连接。
 
 #### HLA JADE
 
@@ -625,7 +625,7 @@ to reduce bandwidth-utilization based on the DDM (Data Distribution Management) 
 of HLA. There are also schemes for conflict resolution[Wang et al., 2004b] and agent
 communication[Wang et al., 2004a].
 
-在 [Wang et al.， 2003a] 中，提出了一个将 HLA 与 JADE（Java 代理开发）[Bellifemine et al.， 1999] 代理平台集成的系统。JADE 为代理开发和测试提供 FIPA 兼容的中间件。该系统由一系列在不同机器上运行的 JADE 实例组成。JADE 的每个实例（可能有多个代理）都通过网关联合与 RTI 连接。网关联合负责将 JADE 的输出转换为特定的 RTI 调用。网关联合还处理通过联合代表从 RTI 接收的任何回调。每个网关联合都驻留在与 JADE 实例相同的 JVM （Java 虚拟机） 上，这避免了由于 Java RMI 调用而导致的任何额外开销。每个联合每个模拟周期保守地同步两个时间步。已对该系统应用了各种扩展。这些方法包括基于 HLA 的 DDM（数据分发管理）服务的利益管理方法[Wang et al.， 2003b]，以降低带宽利用率。还有冲突解决方案[Wang et al.， 2004b] 和代理通信[Wang et al.， 2004a]。
+在 [Wang et al.， 2003a] 中，提出了一个将 HLA 与 JADE（Java 代理开发）[Bellifemine et al.， 1999] 代理平台集成的系统。JADE 为代理开发和测试提供 FIPA 兼容的中间件。该系统由一系列在不同机器上运行的 JADE 实例组成。JADE 的每个实例（可能有多个代理）都通过网关联合与 RTI 连接。网关联合负责将 JADE 的输出转换为特定的 RTI 调用。网关联合还处理通过联合代表从 RTI 接收的任何回调。每个网关联合都驻留在与 JADE 实例相同的 JVM （Java 虚拟机） 上，这避免了由于 Java RMI 调用而导致的任何额外开销。每个联合每个仿真周期保守地同步两个时间步。已对该系统应用了各种扩展。这些方法包括基于 HLA 的 DDM（数据分发管理）服务的利益管理方法[Wang et al.， 2003b]，以降低带宽利用率。还有冲突解决方案[Wang et al.， 2004b] 和代理通信[Wang et al.， 2004a]。
 
 #### JAMES II
 
@@ -639,7 +639,7 @@ server, which manages all other nodes available for simulation. A client starts 
 by sending the model to the master server.
 > ![img_10.png](img_10.png)
 
-如第 3.3.2 节所述，JAMES II 是一个基于 Java 的通用仿真系统，它为 MAS 仿真提供了多种工具，例如，支持并行 DEVS （PDEVS） 建模形式。JAMES II 中 PDEVS 模型的分布式仿真从模型和相关模拟器（原子）或协调器（耦合）的分布开始，它们在节点之间执行模型（图 3.10）。模拟中的每个节点都执行 JAMES II 程序的副本。单个节点被定义为主服务器，它管理可用于仿真的所有其他节点。客户端通过将模型发送到主服务器来启动模拟。
+如第 3.3.2 节所述，JAMES II 是一个基于 Java 的通用仿真系统，它为 MAS 仿真提供了多种工具，例如，支持并行 DEVS （PDEVS） 建模形式。JAMES II 中 PDEVS 模型的分布式仿真从模型和相关仿真器（原子）或协调器（耦合）的分布开始，它们在节点之间执行模型（图 3.10）。仿真中的每个节点都执行 JAMES II 程序的副本。单个节点被定义为主服务器，它管理可用于仿真的所有其他节点。客户端通过将模型发送到主服务器来启动仿真。
 
 > The master server determines an appropriate partition of the simulation across the simulation 
 servers [Ewald et al., 2006b]. Then it sends the model, the partition information, and
@@ -651,7 +651,7 @@ continue to distribute it recursively. Upon completion of the distribution, each
 this is propagated back through to the head node and then on to the master node, which
 then initiates the execution of the simulation.
 
-主服务器确定跨模拟服务器的模拟的适当分区 [Ewald et al.， 2006b]。然后，它将模型、分区信息和仿真服务器的地址发送到单个仿真服务器。这个单一的 simulation server 托管 root coordinator 并将子分区信息传播到托管相应 sub-coordinator （或 simulators） 的 simulation 服务器，而 sub-coordinator 又将继续递归地分发它。分配完成后，每个子节点（从叶子开始）都会通知其父节点分配已完成。最终，这会传播回头节点，然后传播回主节点，然后主节点启动模拟的执行。
+主服务器确定跨仿真服务器的仿真的适当分区 [Ewald et al.， 2006b]。然后，它将模型、分区信息和仿真服务器的地址发送到单个仿真服务器。这个单一的 simulation server 托管 root coordinator 并将子分区信息传播到托管相应 sub-coordinator （或 simulators） 的 simulation 服务器，而 sub-coordinator 又将继续递归地分发它。分配完成后，每个子节点（从叶子开始）都会通知其父节点分配已完成。最终，这会传播回头节点，然后传播回主节点，然后主节点启动仿真的执行。
 
 > The distribution of such PDEVS model trees implies a hierarchical communication scheme
 between nodes, which simplifies movement of agents between models. However, conservative
@@ -662,7 +662,7 @@ which may lead to a significant slow-down when simulating large sets of heavily 
 agents. To alleviate the former problem, a load balancing scheme that distributes PDEVS-models 
 according to their inherent parallelism has been developed [Ewald et al., 2006c].
 
-此类 PDEVS 模型树的分布意味着节点之间的分层通信方案，这简化了模型之间代理的移动。但是，保守的 PDEVS 仿真仅在事件发生在完全相同的时间戳时并行处理事件，因此通常只有模型的某些部分可以并发执行。此外，PDEVS 的同步协议涉及大量的通信，这可能会导致在模拟大量高度交互的代理时显着减慢。为了缓解前一个问题，已经开发了一种负载平衡方案，该方案根据 PDEVS 模型的固有并行性分配 PDEVS 模型 [Ewald et al.， 2006c]。
+此类 PDEVS 模型树的分布意味着节点之间的分层通信方案，这简化了模型之间代理的移动。但是，保守的 PDEVS 仿真仅在事件发生在完全相同的时间戳时并行处理事件，因此通常只有模型的某些部分可以并发执行。此外，PDEVS 的同步协议涉及大量的通信，这可能会导致在仿真大量高度交互的代理时显着减慢。为了缓解前一个问题，已经开发了一种负载平衡方案，该方案根据 PDEVS 模型的固有并行性分配 PDEVS 模型 [Ewald et al.， 2006c]。
 
 #### SPADES
 
@@ -671,7 +671,7 @@ engine designed for modeling Robocup teams. It uses a <I>Software-in-the-loop</I
 for modeling agent thinking time, which assumes a sense-think-act cycle for agents and
 that the time it takes an agent to think is non-negligible.
 
-黑桃 [Riley 和 Riley，2003 年;Riley， 2003] 是一个保守的并行离散事件模拟引擎，专为 Robocup 团队建模而设计。它使用<I> Software-in-the-loop </I>来模拟代理的思考时间，该方法假设代理的感知-思考-行动周期，并且代理思考所需的时间是不可忽略的。
+黑桃 [Riley 和 Riley，2003 年;Riley， 2003] 是一个保守的并行离散事件仿真引擎，专为 Robocup 团队建模而设计。它使用<I> Software-in-the-loop </I>来仿真代理的思考时间，该方法假设代理的感知-思考-行动周期，并且代理思考所需的时间是不可忽略的。
 
 > SPADES adopts the PDES paradigm for synchronization, though it does allow some out-of-order 
 event processing. Agent communication in SPADES is done using a communication
@@ -683,7 +683,7 @@ in the same process. SPADES provides a series of C++ classes which world model o
 inherit from to interact with the simulation engine.
 ![img_11.png](img_11.png)
 
-SPADES 采用 PDES 范例进行同步，尽管它确实允许一些无序事件处理。SPADES 中的 Agent 通信是通过每个包含 Agent 的处理器上的通信服务器完成的（参见图 3.11）。代理通过 Unix 管道与通信服务器通信，允许用任何支持 pipes 的语言编写代理。然后，链接到仿真引擎库的用户代码创建世界模型，从而使仿真引擎和世界模型在同一进程中运行。SPADES 提供了一系列 C++ 类，世界模型对象从这些类继承以与模拟引擎交互。
+SPADES 采用 PDES 范例进行同步，尽管它确实允许一些无序事件处理。SPADES 中的 Agent 通信是通过每个包含 Agent 的处理器上的通信服务器完成的（参见图 3.11）。代理通过 Unix 管道与通信服务器通信，允许用任何支持 pipes 的语言编写代理。然后，链接到仿真引擎库的用户代码创建世界模型，从而使仿真引擎和世界模型在同一进程中运行。SPADES 提供了一系列 C++ 类，世界模型对象从这些类继承以与仿真引擎交互。
 
 > From the agent’s perspective the interaction with the communication server is a three
 stage process:
@@ -798,7 +798,7 @@ partition the population of agents amongst the LPs leaving a large amount of sha
 this property of MAS simulations leads to multiple engineering challenges which are the
 subject of current ongoing research.
 
-因此，MAS 模拟的并行实现是不寻常的，因为它们通常在 LP 之间划分代理群体，留下大量共享状态（共享资源、通信媒体、物理空间等），代理 LP 同时观察（读取）和修改（写入）。当它们在并行环境中执行时，MAS 仿真的这一特性会导致多个工程挑战，这是当前正在进行的研究的主题。 
+因此，MAS 仿真的并行实现是不寻常的，因为它们通常在 LP 之间划分代理群体，留下大量共享状态（共享资源、通信媒体、物理空间等），代理 LP 同时观察（读取）和修改（写入）。当它们在并行环境中执行时，MAS 仿真的这一特性会导致多个工程挑战，这是当前正在进行的研究的主题。 
 
 #### Shared State and Data Distribution / 共享状态和数据分发
 
@@ -814,7 +814,7 @@ the current state of the shared data items. In this situation much of the commun
 spent updating data items is wasted if only a small proportion of the items are accessed by
 the simulation process at each LP.
 
-当仿真中的数据项需要由多个 LP 同时读取和写入时，使这些数据在分布式设置中可用的机制可能非常重要。数据分配问题 - 数据存储在哪些节点，在什么情况下需要节点之间的通信？- 在分布式内存模型、分布式虚拟环境等领域已经拥有丰富的研究语料库。Section 3.4.3 中调查的并行引擎都采用了在所有仿真节点上完全复制所有共享状态的方法。一个节点通常负责环境的持续维护（例如，用于建模状态随时间的变化），但所有节点都会复制共享数据项的当前状态。在这种情况下，如果每个 LP 的模拟过程只访问一小部分项目，则更新数据项所花费的大部分通信都会被浪费。
+当仿真中的数据项需要由多个 LP 同时读取和写入时，使这些数据在分布式设置中可用的机制可能非常重要。数据分配问题 - 数据存储在哪些节点，在什么情况下需要节点之间的通信？- 在分布式内存模型、分布式虚拟环境等领域已经拥有丰富的研究语料库。Section 3.4.3 中调查的并行引擎都采用了在所有仿真节点上完全复制所有共享状态的方法。一个节点通常负责环境的持续维护（例如，用于建模状态随时间的变化），但所有节点都会复制共享数据项的当前状态。在这种情况下，如果每个 LP 的仿真过程只访问一小部分项目，则更新数据项所花费的大部分通信都会被浪费。
 
 > Interest Management (IM) is a field of research associated with both Distributed Simulation 
 [Morse, 2000; Tacic and Fujimoto, 1998; Rak et al., 1997] and with Distributed
@@ -825,7 +825,7 @@ and computation load of the system. Such an approach is particularly appropriate
 simulations in which agents are physically situated and therefore have a limited perceptual
 range.
 
-兴趣管理 （IM） 是与分布式仿真相关的研究领域 [Morse， 2000;Tacic 和 Fujimoto，1998 年;Rak et al.， 1997] 和分布式虚拟环境 （DVE） [Abrams et al.， 1998;Barrus et al.， 1996;Morgan 等人]。IM 寻求在分布式系统中分发有关数据项的信息，以便可以利用访问模式中固有的位置来减少系统的总通信和计算负载。这种方法特别适用于 MAS 模拟，其中代理位于物理位置，因此感知范围有限。
+兴趣管理 （IM） 是与分布式仿真相关的研究领域 [Morse， 2000;Tacic 和 Fujimoto，1998 年;Rak et al.， 1997] 和分布式虚拟环境 （DVE） [Abrams et al.， 1998;Barrus et al.， 1996;Morgan 等人]。IM 寻求在分布式系统中分发有关数据项的信息，以便可以利用访问模式中固有的位置来减少系统的总通信和计算负载。这种方法特别适用于 MAS 仿真，其中代理位于物理位置，因此感知范围有限。
 
 > The exploitation of this property using IM has been explored by the PDES-MAS project
 at the Universities of Birmingham and Nottingham, UK [Logan and Theodoropoulos, 2001;
@@ -838,7 +838,7 @@ state variables. When a write occurs the value of the variable is updated at the
 responsible for that variable. When a read occurs, the event travels to the relevant CLP, 
 retrieves the value, and travels back to the issuing ALP.
 
-英国伯明翰大学和诺丁汉大学的 PDES-MAS 项目已经探索了使用 IM 开发这一特性 [Logan 和 Theodoropoulos，2001 年;Lees et al.， 2006;Ewald 等人，2006a;Oguara et al.， 2005]。PDES-MAS 架构假设两类 LP，一种是模拟环境中代理程序操作的代理逻辑进程 （ALP），另一种是维护代表模拟共享状态的一组数据项的通信逻辑进程 （CLP）。在 ALP 和 CLP 之间传递的事件采用单个共享状态变量的单独读取和写入的形式。发生写入时，变量的值将在负责该变量的 CLP 上更新。当读取发生时，事件将传输到相关的 CLP，检索值，然后返回发出的 ALP。
+英国伯明翰大学和诺丁汉大学的 PDES-MAS 项目已经探索了使用 IM 开发这一特性 [Logan 和 Theodoropoulos，2001 年;Lees et al.， 2006;Ewald 等人，2006a;Oguara et al.， 2005]。PDES-MAS 架构假设两类 LP，一种是仿真环境中代理程序操作的代理逻辑进程 （ALP），另一种是维护代表仿真共享状态的一组数据项的通信逻辑进程 （CLP）。在 ALP 和 CLP 之间传递的事件采用单个共享状态变量的单独读取和写入的形式。发生写入时，变量的值将在负责该变量的 CLP 上更新。当读取发生时，事件将传输到相关的 CLP，检索值，然后返回发出的 ALP。
 
 > This paradigm allows the PDES-MAS architecture to reduce irrelevant communication as
 a result of updates to shared state. However, the CLP now becomes a bottleneck as the
@@ -868,12 +868,12 @@ read (similar to the PDES-MAS architecture). This technique is extended in [Mins
 Theodoropoulos, 2007] to support range-query operations similar to those encountered in
 MAS simulations or DVEs.
 
-在 Minson 和 Theodoropoulos [Minson 和 Theodoropoulos， 2005] 的工作中，已经采取了类似的在线适应访问模式以实现可扩展性的方法。该框架使用启发式技术在两种形式的更新处理之间进行选择：推送处理在写入变量时发送更新消息（类似于 Section 3.4.3 中调查的大多数工具包）;pull-processing 在读取变量时发送请求消息（类似于 PDES-MAS 体系结构）。该技术在 [Minson 和 Theodoropoulos， 2007] 中得到了扩展，以支持类似于 MAS 模拟或 DVE 中遇到的范围查询操作。
+在 Minson 和 Theodoropoulos [Minson 和 Theodoropoulos， 2005] 的工作中，已经采取了类似的在线适应访问模式以实现可扩展性的方法。该框架使用启发式技术在两种形式的更新处理之间进行选择：推送处理在写入变量时发送更新消息（类似于 Section 3.4.3 中调查的大多数工具包）;pull-processing 在读取变量时发送请求消息（类似于 PDES-MAS 体系结构）。该技术在 [Minson 和 Theodoropoulos， 2007] 中得到了扩展，以支持类似于 MAS 仿真或 DVE 中遇到的范围查询操作。
 
 > This area of research in to adaptive, scalable data distribution techniques for parallel
 MAS simulations and similar application areas is the subject of considerable ongoing work.
 
-这个研究领域是针对并行 MAS 模拟和类似应用领域的自适应、可扩展数据分发技术，是大量正在进行的工作的主题。
+这个研究领域是针对并行 MAS 仿真和类似应用领域的自适应、可扩展数据分发技术，是大量正在进行的工作的主题。
 
 #### Shared State and Conflict Resolution / 共享状态和冲突解决
 
@@ -884,7 +884,7 @@ testbed, Tile objects are a shared state resource which can be modified (picked 
 by multiple agents. However, the actual effects carry model-specific semantics (a tile
 should only be successfully picked up by one of the many agents that attempt to do so).
 
-当模拟模型（如 MAS 模型）涉及共享资源的并发修改时，有必要定义控制此并发的语义，以产生正确且可重复的结果。例如，在 TileWorld MAS 测试平台中，Tile 对象是一个共享的状态资源，可以被多个代理同时修改（拾取）。但是，实际效果带有特定于模型的语义（图块只能由尝试这样做的众多代理之一成功拾取）。
+当仿真模型（如 MAS 模型）涉及共享资源的并发修改时，有必要定义控制此并发的语义，以产生正确且可重复的结果。例如，在 TileWorld MAS 测试平台中，Tile 对象是一个共享的状态资源，可以被多个代理同时修改（拾取）。但是，实际效果带有特定于模型的语义（图块只能由尝试这样做的众多代理之一成功拾取）。
 
 > Since different models may need to represent different semantics for different types of
 shared resource, it is not possible to define a single policy by which all concurrent 
@@ -917,7 +917,7 @@ a very small part may be of interest. The user should be able to choose which en
 their sub-states shall be observed. This would decrease the amount of unnecessarily stored
 result data and hence could speed up simulation significantly.
 
-要可视化模拟运行的数据，需要首先从模拟模型中观察数据。已经提出了模型插桩的方法，即观察者与模型的某些部分的关联（例如，[Dalle 和 Mrabet，2007]），但在 MAS 模拟的上下文中，问题甚至加剧了：由于在模拟期间可能随时创建代理，因此 MAS 模型在更改其状态后必须不断重新插桩， 用户需要指定要通过通用规则观察的实体。此外，代理可以具有复杂的状态，其中只有很小一部分可能值得关注。用户应该能够选择应观察哪些实体及其子状态。这将减少不必要存储的结果数据量，从而可以显著加快仿真速度。
+要可视化仿真运行的数据，需要首先从仿真模型中观察数据。已经提出了模型插桩的方法，即观察者与模型的某些部分的关联（例如，[Dalle 和 Mrabet，2007]），但在 MAS 仿真的上下文中，问题甚至加剧了：由于在仿真期间可能随时创建代理，因此 MAS 模型在更改其状态后必须不断重新插桩， 用户需要指定要通过通用规则观察的实体。此外，代理可以具有复杂的状态，其中只有很小一部分可能值得关注。用户应该能够选择应观察哪些实体及其子状态。这将减少不必要存储的结果数据量，从而可以显著加快仿真速度。
 
 #### Symbiotic Simulation for MAS / MAS 的共生仿真
 
@@ -933,7 +933,7 @@ to gradually increase the reliability of its forecasts. At the same time the sta
 by the simulation can be potentially used to steer the observed system as well as the data
 selection process.
 
-这是一种将系统数据吸收到系统仿真中，以便不断使模型适应现实的方法，如有必要，可以更改其所基于的假设。这种数据驱动的模型改编的目的是逐渐提高其预测的可靠性。同时，模拟预测的状态可用于指导观察到的系统以及数据选择过程。
+这是一种将系统数据吸收到系统仿真中，以便不断使模型适应现实的方法，如有必要，可以更改其所基于的假设。这种数据驱动的模型改编的目的是逐渐提高其预测的可靠性。同时，仿真预测的状态可用于指导观察到的系统以及数据选择过程。
 
 > Symbiotic simulation is increasingly being deployed in simulations of social or socio-technical 
 systems where the presence of MAS models present new challenges. Issues such
@@ -943,7 +943,7 @@ heart of research on DDDAS for social-technical simulations. This is the primary
 AIMSS project at Birmingham, UK∗[Kennedy et al., 2007b,a; Kennedy and Theodoropou-
 los, 2006a,b, 2005; Darema, 2005].
 
-共生仿真越来越多地部署在社会或社会技术系统的仿真中，其中 MAS 模型的存在带来了新的挑战。诸如为认知丰富的代理模型同化定性数据、自动一致性检查以及 MAS 事件和状态与数据的语义匹配等问题是用于社会技术模拟的 DDDAS 研究的核心。这是英国伯明翰 AIMSS 项目的主要目标∗[Kennedy et al.， 2007b，a;Kennedy 和 Theodoropou- los， 2006a，b， 2005;Darema，2005 年]。
+共生仿真越来越多地部署在社会或社会技术系统的仿真中，其中 MAS 模型的存在带来了新的挑战。诸如为认知丰富的代理模型同化定性数据、自动一致性检查以及 MAS 事件和状态与数据的语义匹配等问题是用于社会技术仿真的 DDDAS 研究的核心。这是英国伯明翰 AIMSS 项目的主要目标∗[Kennedy et al.， 2007b，a;Kennedy 和 Theodoropou- los， 2006a，b， 2005;Darema，2005 年]。
 
 > Symbiotic simulation imposes new requirements on the underlying simulation engine. To
 support the data-driven adaptation of the model the simulation engine should incorporate
