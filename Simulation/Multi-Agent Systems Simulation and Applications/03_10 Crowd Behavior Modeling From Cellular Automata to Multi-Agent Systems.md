@@ -315,12 +315,12 @@ SCA 代理由 3 元组 ⟨ s， p， τ ⟩ 定义，其中 τ 是代理类型�
 
 > The behavior of each type of SCA agent can be specified using a language that defines the following primitives:
 > - <I>emit(s, f , p)</I>: to <I>start the diffusion of a field f</I>  from site <I>p</I>, where the agent is situated;
-> - <I>react(s, ap1, ap2, . . . , apn, s′)</I>: it allows the specification of a <I>coordinated change 
-    of state</I> among adjacent agents. In order to preserve agents’ autonomy, a compatible primitive 
+> - <I>react(s, ap1, ap2, . . . , apn, s′)</I>: it allows the specification of a <I>coordinated change of state </I> 
+    among adjacent agents. In order to preserve agents’ autonomy, a compatible primitive 
     must be included in the behavioral specification of all the involved agents; 
     moreover when this coordination process takes place, every involved agents may dynamically decide 
     to effectively agree to perform this operation;
-> - <I>transport(p, f , q)</I>: it allows one to <I>define agent movement</I> from site p to site q (that must be adjacent and vacant);
+> - <I>transport(p, f , q) </I>: it allows one to <I>define agent movement</I> from site p to site q (that must be adjacent and vacant);
 > - <I>trigger(s, f , s′)</I>: it specifies that an agent must <I>change its state</I> when it senses 
     a particular condition in its local context (i.e., its own site and the adjacent ones); 
     this operation has the same effect of a reaction, but does not require a coordination with other agents.
@@ -497,5 +497,222 @@ the specific situation.
 必须在另一个代理中指定兼容的 react action（可以是相同类型，也可以是非相同类型）。
 这两个操作的效果是将代理体 a 的状态从 s<sub>1</sub> 更改为 s<sub>2</sub>，但在不同的条件下并利用不同的基元。
 必须注意的是，这些只是示例操作规范，可以定义其他条件元素以更好地适应特定情况。
+
+
+## 10.4 A Pedestrian Modeling Scenario / 行人建模场景
+
+### 10.4.1 The Scenario
+
+> An underground station is an environment where various crowd behaviors take place. Passengers’ 
+behaviors are difficult to predict, because crowd dynamics emerge from interactions
+between passengers, and between single passengers and parts of the environment, such as
+signals (e.g., current stop indicator), doors, seats and handles. The behavior of passengers
+changes noticeably in relation to the different priorities that characterize each phase of their
+trips. That means, for instance, that passengers close to each other may display very different 
+behaviors because of their distinct aims in that moment. Passengers on board may
+have to get off and thus try to reach for the door, while other ones are instead looking
+for a seat or standing beside a handle. Moreover when trains stop and doors open very
+complex crowd dynamics happen, as people that have to get on the train have to allow the
+exit of passengers that are getting off. Passengers have to match their own priority with
+the obstacles of the environment, with the intentions of other passengers, and with implicit
+behavioral rules that govern the social interaction in those kind of transit stations, in a
+mixture of competition and collaboration, to avoid stall situations. Given the complexity of
+the overall scenario, we decided to focus on a specific portion of this environment in which
+some of the most complex patterns of interaction take place: the part of the platform in the
+presence of a standing wagon from which some passengers are attempting to get off while
+other waiting travelers are trying to get on.
+
+地铁站是发生各种人群行为的环境。乘客的行为很难预测，因为人群动态来自乘客之间的互动，以及单个乘客与环境的某些部分，
+例如信号（例如，当前停止指示器）、门、座椅和把手。乘客的行为会随着他们旅行每个阶段的不同优先事项而发生显着变化。
+这意味着，例如，彼此靠近的乘客可能会因为他们在那一刻的不同目标而表现出非常不同的行为。车上乘客可能不得不下车，
+从而试图伸手去碰门，而其他人则在寻找座位或站在把手旁边。此外，当火车停下来，车门打开时，会发生非常复杂的人群动态，
+因为必须上车的人必须允许下车的乘客离开。乘客必须将自己的优先级与环境障碍、其他乘客的意图以及控制此类中转站社交互动的隐含行为规则相匹配，
+在竞争和合作的混合中，以避免停滞情况。考虑到整体场景的复杂性，我们决定关注此环境的特定部分，其中发生了一些最复杂的交互模式：
+站台上有一辆站立的货车的部分，一些乘客试图从该车上下车，而其他等待的旅客则试图上车。
+
+### 10.4.2 The Modeling Assumptions / 模型假设
+
+> To build up our simulation we made some behavioral assumptions, now we will make some
+brief examples of the kind of behaviors we wanted to capture. Passengers that do not have
+to get off at a train stop tend to remain still, if they do not constitute an obstacle to
+the passengers that are descending. Passengers will move only to give way to a descending
+passenger, to reach some seat that has became available, or to reach a better position like
+places at the side of the doors or close to the handles. On the other hand in very crowded
+situations it often happens that people that do not have to get off can constitute an obstacle
+to the descent of other passengers, and they “are forced to” get off and wait for the moment
+to get on the wagon again. Passengers that have to get off have a tendency to go around
+still agents to find their route toward the exit, if it is possible. Once the train is almost
+stopped the waiting passengers on the platform identify the entrance that is closer to them,
+and try to move toward it. If they perceive some passengers bound to get off, they first let
+them get off and then get on the wagon.
+
+为了构建我们的模拟，我们做了一些行为假设，现在我们将制作一些我们想要捕获的行为类型的简短示例。
+不必在火车站下车的乘客往往会保持静止，如果他们不会对正在下车的乘客构成障碍。乘客只会移动以让路给下车的乘客，
+到达一些已经可用的座位，或者到达更好的位置，例如门侧面或靠近把手的地方。另一方面，在非常拥挤的情况下，
+经常会发生不必下车的人会成为其他乘客下降的障碍，他们“被迫”下车并等待再次上车的时刻。如果可能的话，
+必须下车的乘客往往会绕过工作人员寻找通往出口的路线。一旦火车几乎停下来，站台上等待的乘客会识别离他们更近的入口，
+并尝试向入口移动。如果他们察觉到有乘客要下车，就先让他们下车，再上车。
+
+### 10.4.3 The Environment 
+
+> In reference to the modeling approach stated in the previous paragraph, to build an environment 
+suitable for SCA platform, first of all we need to define a discrete structure
+representing the actual space in which the simulation is set. In our case study we started
+from an available diagram of an underground wagon. A discrete abstraction of this map
+was defined, devoting to each node the space generally occupied by one standing person, as
+shown in Figure 10.5.
+> ![img_18.png](img_18.png)
+> FIGURE 10.5 在支持模拟空间定义的工具中，将环境的一部分离散化，并扩展与货车门相关的字段。
+
+参考上一段所述的建模方法，要构建一个适合 SCA 平台的环境，首先我们需要定义一个离散结构，表示设置仿真的实际空间。
+在我们的案例研究中，我们从地下货车的可用图表开始。定义了这张地图的离散抽象，为每个节点分配了一个站立的人通常占据的空间，
+如图 10.5 所示。
+
+> The elements of the environment that were considered relevant in determining the crowd
+dynamics of this scenario are the following: <I>Station Exits</I>, <I>Doors</I>, <I>Seats</I> and <I>Handles </I> (see
+Figure 10.6 for their disposition). Station exits emit fixed fields, constant in intensity and in
+emission, that will be exploited by agents headed toward the exit of the station, that perceive
+them as attractive. Agent-doors emit another type of field which can guide passengers that
+have to get off the wagon, toward the platform, and passengers that are on the platform
+and are bound to get in the wagon. Seats may instead have two states: occupied and free.
+In the second state they emit a field that indicates their presence, and that is perceived as
+attractive by passengers, and they become occupied by reacting with agents that effectively
+occupy them. Handles also emit a field type very similar to the one emitted by seats, whose
+attractive effect is however less intense.
+> ![img_19.png](img_19.png)
+> 图 10.6 环境中的不动活动元素。
+
+被认为与确定此场景的人群动态相关的环境元素如下：车站出口、门、座椅和把手（它们的配置见图 10.6）。
+空间站出口会发出固定的磁场，强度和发射量是恒定的，这些磁场将被前往空间站出口的特工利用，
+这些agent认为它们很有吸引力。代理门发出另一种类型的磁场，可以引导必须下车的乘客前往平台，
+以及在平台上必然进入车厢的乘客。席位可能有两种状态：occupied 和 free。在第二种状态下，他们发出一个场，
+表明他们的存在，并且被乘客认为很有吸引力，他们通过与有效地占据他们的代理人做出反应而被占据。
+手柄还会发出与 seats 发出的字段类型非常相似的字段类型，但其吸引人的效果不那么强烈。
+
+### 10.4.4 The Passengers
+
+> The above introduced elements support the definition of agents able to move in this environment 
+evaluating the related signals according to their attitudes. We have identified
+the following attitudes for agent of type passengers: <I>waiting (w)</I>, <I>passenger (p)</I>, <I>get-off (g)</I>,
+<I>seated (s)</I>, <I>exiting (e)</I>. In relation to its attitude, an agent will be sensitive to some fields,
+and not to others, and attribute different relevance to the perceived signals. In this way,
+the changing of attitude will determine a change of priorities. Attitude w is associated to
+an agent that is waiting to enter in the wagon. In this condition, agents perceive the fields
+generated by the doors as attractive, but they also perceive as repulsive the fields generated
+by passengers that are getting off, in other words those in attitude g. In attitude w the
+agent “ignores” (is not sensitive to) the fields generated by other active elements of the environment, 
+such as exits’ attractive fields, chairs attractive field and so on. Once inside the
+wagon, w agents change their attitude to <I>p (passenger)</I>, through a <I>trigger</I> action activated
+by the perception of the maximum intensity of field generated by agent-door type. Agent
+in attitude <I>p</I> is attracted by fields generated by seats and handles, and repulsed by fields
+related to passengers that are getting off. In attitude <I>g</I> the agent will instead emit a field
+warning other agents of its presence, while it is attracted by fields generated by the doors.
+Once passed through the wagon door a <I>g</I> agent changes its attitude to <I>e (exiting)</I> and its
+priority will become to find the exits of the station. Figure 10.7 summarizes the various
+agent attitudes and the allowed transitions among them (that are modeled by means of
+<I>trigger or react actions</I>).
+![img_20.png](img_20.png)
+
+上面介绍的元素支持智能体的定义，即能够在这种环境中移动，根据他们的态度评估相关信号。
+我们已经确定了乘客类型代理的以下态度：等待 （w）、乘客 （p）、下车 （g）、坐着 （s）、离开 （e）。
+就其态度而言，代理者将对某些字段敏感，而对其他字段不敏感，并将不同的相关性归因于感知到的信号。
+这样，态度的改变将决定优先事项的变化。态度 w 与等待进入货车的代理相关联。在这种情况下，智能体认为车门产生的场很有吸引力，
+但他们也认为下车的乘客产生的场是令人排斥的，换句话说，那些处于姿态 g 的乘客。在态度 w 中，
+代理者“忽略”（对环境的其他活动元素）产生的场，例如出口的吸引力场、椅子的吸引力场等。一旦进入货车，
+w 代理就会通过触发动作改变他们对 p（乘客）的态度，该动作是由代理门类型产生的最大场强度感知激活的。
+姿态 p 中的代理被座椅和手柄生成的场吸引，并被与下车乘客相关的场排斥。
+在姿态 g 中，代理将发出一个场，警告其他代理它的存在，同时它被门产生的场所吸引。
+一旦通过货车门，g 代理就会改变对 e（出口）的态度，其优先级将变为找到车站的出口。
+图 10.7 总结了各种代理态度以及它们之间允许的转换（通过 trigger 或 react 动作建模）。
+
+> Table 10.1 describes instead the sensitiveness of the passenger to various fields in relation
+to their attitude. The table’s cells provide also the indication about if the perceived field
+is considered attractive or repulsive, as well as the relevance associated to that field type.
+This table can be used as a guide for the definition of the utility function associated to the
+transport action characterizing passenger agents.
+> ![img_21.png](img_21.png)
+
+表 10.1 描述了乘客对与其态度相关的各个领域的敏感性。
+该表的单元格还指示感知的字段是有吸引力还是令人排斥，以及与该字段类型相关的相关性。
+此表可用作与描述客运代理的运输行动相关的效用函数定义的指南。
+
+> It must be noted that all passengers, except those in state g, emit a field of type Presence
+that generally has a repulsive effect, but a much lesser one with respect to the one generated
+by fields of type Exit pressure emitted by agents in get-off state.
+
+必须注意的是，除了处于状态 g 的乘客外，所有乘客都会发出一个 Presence 类型的字段，
+该字段通常具有排斥效果，但相对于由处于起步状态的代理发出的 Exit pressure 类型的字段生成的字段，该字段要小得多。
+
+### 10.4.5 Simulation Results
+
+> A simulator implementing the previously introduced model was realized exploiting the SCA
+model: only a subset of the overall introduced model was implemented, and more precisely
+active objects of the environment and passenger agents in state w, g, e, p. State s was
+omitted, to focus on the conflicts between agents in state w and g, which represent the
+most characteristic element of the overall system dynamic.
+
+利用 SCA 模型实现了实现先前引入的模型的模拟器：仅实现了整个引入模型的子集，更准确地说，
+环境的活动对象和处于状态 w、g、e、p 的乘客代理。状态 s 被省略，以关注状态 w 和 g 中代理之间的冲突，
+这代表了整个系统动态中最具特征的元素。
+
+> Figure 10.8 shows a screen-shot of this simulation system, in which waiting agents move
+to generate room for passenger agents that are going to get off the train. The system is 
+synchronous, meaning that every agent performs one single action per turn; the turn duration
+is about one–fourth of second of simulated time. The goal of a small experimentation as this
+one is to qualitatively evaluate the modeling of the scenario and the developed simulator.
+The execution and analysis of several simulations shows that the overall system dynamics
+and the behavior of the agents in the environment is consistent with a realistic scenario,
+and fits with our expectations. To determine this evaluation, we executed over 100 simulations 
+in the same starting configuration, which provides 6 passengers located on a metro
+train in state g (i.e., willing to get off), and 8 agents that are outside the train in state w
+(i.e., waiting to get on). A campaign of tests was necessary since in this specific application
+pedestrians perform a non-deterministic choice whenever they can move to different sites
+characterized by the same utility value.
+> ![img_22.png](img_22.png)
+
+
+图 10.8 显示了此模拟系统的屏幕截图，其中候补代理移动，为即将下火车的乘客代理腾出空间。
+该系统是同步的，这意味着每个代理每回合执行一个动作;回合持续时间约为模拟时间的 1-4 秒。
+像这样的小型实验的目标是定性地评估场景和开发的模拟器的建模。几次模拟的执行和分析表明，
+整体系统动力学和环境中代理的行为与现实场景一致，符合我们的预期。为了确定这一评估，
+我们在相同的起始配置中执行了 100 多次模拟，其中提供了 6 名位于状态为 g 的地铁列车上的乘客（即愿意下车），
+以及 8 名位于状态为 w 的列车外的座席（即等待上车）。一系列测试是必要的，因为在这个特定的应用中，
+行人只要可以移动到具有相同效用值的不同地点，就会执行非确定性选择。
+
+> In all simulations the agents achieved their goals (i.e., get on the train or get out of
+the station) in a number of turns between 40 and 60, with an average of about 50 turns.
+Nonetheless we noticed some undesired transient effects, and precisely oscillations, “forth
+and back” movements and in few simulations static forms providing “groups” facing themselves 
+for a few turns, until the groups dispersed because of the movement of a peripheral element. 
+These phenomena, which represent minor glitches under the described initial conditions, 
+could lead to problems in case of high pedestrian density in the simulated environment.
+
+在所有模拟中，智能体在 40 到 60 轮之间多次实现他们的目标（即上火车或出站），平均约为 50 轮。尽管如此，
+我们注意到了一些不需要的瞬态效果，准确地说是振荡、“前后”运动，在少数模拟中，静态形式提供了面向自己的“组”几轮，
+直到这些组由于外围元件的运动而分散。这些现象在所述初始条件下表示小毛刺，在模拟环境中行人密度较高的情况下可能会导致问题。
+
+
+> Instead of modifying the general model, in order to introduce a sort of agent “facing” (not
+provided by the SCA model), we allowed agents to keep track of their previous position,
+in order to understand if a certain movement is a step back. The utility of this kind of
+movement can thus be penalized. Instead, in order to avoid stall situations, the memory of
+the past position can also be exploited to penalize immobility, lowering the utility of the site
+currently occupied by the agent whenever it was also its previous position. These correctives
+were introduced in the behavioral specification of mobile agents, and a new campaign of
+tests was performed to evaluate the effect of these modifications in the overall system
+dynamics. By introducing these correctives, the occurrence of oscillating agent movement
+was drastically reduced, and the penalization of immobility simplified the solution of stall
+situations among facing groups. In all simulations the agents were able to achieve their
+goals, but the number of turns required to complete agents movement is between 20 and
+40, with an average of about 30 turns. The analysis and identification of other significant
+parameters to be monitored, in this specific simulation context and in general for crowding
+situations, are objects of future developments.
+
+为了引入一种 “faceing” 智能体（不是由 SCA 模型提供），我们没有修改通用模型，而是允许智能体跟踪他们之前的位置，
+以便理解某个运动是否是后退。因此，这种运动的效用可能会受到惩罚。相反，为了避免失速情况，也可以利用过去位置的记忆来惩罚不动性，
+降低代理当前占据的站点的效用，只要它也是它之前的位置。这些纠正措施被引入移动代理的行为规范中，并执行了一项新的测试活动，
+以评估这些修改对整个系统动态的影响。通过引入这些纠正措施，振荡剂运动的发生大大减少，并且对不动的惩罚简化了面对组之间失速情况的解决方案。
+在所有模拟中，代理都能够实现他们的目标，但完成代理移动所需的回合数在 20 到 40 之间，平均约为 30 回合。在这种特定的模拟环境中，
+以及一般在拥挤的情况下，分析和确定其他需要监测的重要参数是未来发展的目标。
 
 
