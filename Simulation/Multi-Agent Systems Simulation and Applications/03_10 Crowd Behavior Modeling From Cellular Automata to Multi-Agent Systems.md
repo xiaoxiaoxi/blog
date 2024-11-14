@@ -716,3 +716,360 @@ situations, are objects of future developments.
 以及一般在拥挤的情况下，分析和确定其他需要监测的重要参数是未来发展的目标。
 
 
+## 10.5 From a SCA Model to Its Implementation / 从 SCA 模型到其实现
+
+> To effectively realize a simulator based on the introduced MAS model, even before considering 
+the possibility of realizing tools supporting the specific aspects of its application to
+pedestrian dynamics, we considered several existing software frameworks for agent–based
+simulation systems.
+
+为了有效地实现基于引入的 MAS 模型的模拟器，甚至在考虑实现支持其应用于行人动力学的特定方面的工具的可能性之前，
+我们就考虑了几个现有的基于代理的模拟系统的软件框架。
+
+> This kind of framework comprises abstractions and mechanisms for the specification of
+agents and their environments, to support their interaction, but also additional functionalities 
+such as the management of the simulation (e.g., set-up, configuration, turn management), 
+its visualization, monitoring and the acquisition of data about the simulated
+dynamics. We will not introduce a detailed review of the current state of the art in this
+sector, but we will introduce some classes of instruments that have been considered for the
+implementation of SCA-based simulations.
+
+这种框架包括用于规范代理及其环境的抽象和机制，以支持它们的交互，还包括附加功能，例如模拟管理（例如，设置、配置、轮次管理）、
+其可视化、监控和有关模拟动力学的数据采集。我们不会详细回顾该领域的当前技术水平，但我们将介绍一些已考虑用于实施基于 SCA 
+的仿真的仪器类别。
+
+> A first category of these tools provides <I>general purpose frameworks</I> in which agents mainly
+represent <I>passive abstractions</I>, sort of data structures that are manipulated by an overall
+simulation process. A successful representative of such tools is NetLogo∗, a dialect of the
+Logo language specifically aimed at modeling phenomena characterized by a decentralized,
+interconnected nature. NetLogo does not even adopt the term agent to denote individuals,
+but it rather calls them <I>turtles</I>; a typical simulation consists in a cycle choosing and 
+performing an action for every turtle, considering its current situation and state. The choice of
+a very simple programming language that does not require a background on informatics, the
+possibility to deploy in a very simple way simulations as Java applets, and the availability
+of simple yet effective visualization tools, made NetLogo extremely popular.
+
+这些工具的第一类提供了通用框架，其中 agent 主要表示被动抽象，即由整个仿真过程操纵的数据结构。
+NetLogo∗ 是此类工具的成功代表，它是 Logo 语言的一种方言，专门用于对具有分散、互连性质特征的现象进行建模。
+NetLogo 甚至没有采用 agent 一词来表示个人，而是称他们为海龟;典型的模拟包括一个周期，为每只海龟选择和执行一个动作，
+考虑其当前情况和状态。选择一种非常简单的编程语言，不需要信息学背景，可以以非常简单的方式将模拟部署为 Java 小程序，
+以及简单而有效的可视化工具的可用性，使 NetLogo 非常受欢迎。
+
+> A second category of these tools is frameworks that are developed with a similar rationale,
+providing for very similar support tools, but these instruments are based on <I>general purpose
+programming languages  </I>(generally object oriented). Repast∗ [North et al., 2006], represents
+a successful representative of this category, being a widely employed agent-based simulation
+platform based on the Java language. The object-oriented nature of the underlying programming 
+language supports the definition of computational elements that make these agents
+more autonomous, closer to the common definitions of agents, supporting the encapsulation 
+of state (and state manipulation mechanisms), actions and action choice mechanism in
+the agent’s class. The choice of adopting a general purpose programming language, on one
+hand, makes the adoption of these instruments harder for modelers without a background
+in informatics but, on the other, it simplifies the integration with external and existing 
+libraries. Repast, in its current version, can be easily connected to instruments for statistical
+analysis, data visualization, reporting and also Geographic Information Systems.
+
+这些工具的第二类是具有类似基本原理开发的框架，提供非常相似的支持工具，但这些工具基于通用编程语言（通常是面向对象的）。
+Repast∗ [North et al.， 2006] 代表了这一类别的成功代表，它是一个基于 Java 语言的基于代理的广泛使用的模拟平台。
+底层编程语言的面向对象特性支持计算元素的定义，使这些代理更加自主，更接近代理的常见定义，支持在代理的类中封装状态、
+（和状态操作机制）、操作和操作选择机制。选择采用通用编程语言，一方面使没有信息学背景的建模者更难采用这些工具，
+但另一方面，它简化了与外部和现有库的集成。Repast在其当前版本中，可以轻松连接到用于统计分析、数据可视化、
+报告以及地理信息系统的仪器。
+
+> While the above introduced frameworks offer functionalities that are surely important in
+simplifying the development of an effective simulator, it must be noted that their neutrality
+with respect to the specific adopted agent model leads to a necessary preliminary phase of
+adaptation of the platform to the specific features of the model that is being implemented.
+If the latter defines specific abstractions and mechanisms for agents, their decision making
+activities, their environment and the way they interact, then the modeler must in general
+develop proper computational supports to be able to fruitfully employ the platform. These
+platforms, in fact, are not endowed with specific supports to the realization of agent 
+deliberation mechanisms or infrastructures for interaction models, either direct or indirect (even
+if it must be noted that all the above platforms generally provide some form of support to
+agent environment definition, such as grid-like or graph structures).
+
+虽然上面介绍的框架提供了对于简化有效模拟器的开发肯定很重要的功能，但必须注意的是，
+它们相对于特定采用的代理模型的中立性导致平台适应正在实施的模型的特定功能的必要初步阶段。
+如果后者为代理、他们的决策活动、他们的环境和他们的交互方式定义了特定的抽象和机制，
+那么建模者通常必须开发适当的计算支持才能有效地使用该平台。
+事实上，这些平台并没有被赋予直接或间接实现代理审议机制或交互模型基础设施的具体支持
+（即使必须注意，上述所有平台通常都为代理环境定义提供某种形式的支持，例如网格状或图形结构）。
+
+> These considerations are the main motivations for the efforts that lead to the development
+of tools belonging to a third category of frameworks, providing a <I>higher level linguistic
+support</I> in an effort aimed at reducing the distance between agent-based models and their
+implementations. The latest version of Repast, for instance, is characterized by the presence
+of a high level interface for “point-and-click” definition of agent’s behaviors, that is based
+on a set of primitives for the specification of agent’s actions. <I>SimSesam∗∗</I> [Kl¨ugl et al., 2003]
+defines a set of <I>primitive functions</I> as basic elements for describing agents’ behaviors, and it
+also provides visual tools supporting model implementation. At the extreme border of this
+category, we can mention efforts that are specifically aimed at supporting the development
+of simulations based on a precise agent model, approach and sometimes even for a specific
+area of application.
+
+这些考虑是导致开发属于第三类框架的工具的主要动机，提供更高级别的语言支持，旨在缩短基于代理的模型与其实现之间的距离。
+例如，最新版本的 Repast 的特点是存在一个高级接口，用于代理行为的“点击式”定义，该接口基于一组用于规范代理操作的原语。
+SimSesam∗∗ [Kl ̈ugl et al.， 2003] 定义了一组原始函数作为描述智能体行为的基本元素，它还提供了支持模型实现的可视化工具。
+在这个类别的极端边界，我们可以提到专门针对支持基于精确代理模型、方法的模拟开发的努力，有时甚至针对特定的应用领域。
+
+> Given the overall aims of this research effort, the availability of a formal model that can
+represent a proper level for the specification of agents and their behaviors, our choice for the
+implementation of a simulator based on the SCA model was to realize an ad hoc framework,
+specifically suited to this model, the introduced abstractions and mechanisms.
+
+考虑到这项研究工作的总体目标，以及可以代表代理及其行为规范的适当级别的形式模型的可用性，
+我们选择基于 SCA 模型的模拟器实现是实现一个特别适合该模型的临时框架，引入的抽象和机制。
+
+> ![img_23.png](img_23.png)
+> - http://ccl.northwestern.edu/netlogo/
+> - http://repast.sourceforge.net/
+> - http://www.simsesam.de/
+
+## 10.5.1 Supporting and Executing SCA Models / 支持和执行 SCA 模型
+
+> The framework that we developed for this project is essentially a library developed in
+C++ providing proper classes to realize notions and mechanisms related to the SCA and
+MMASS models; this library is based on a previous experience [Bandini et al., 2006a], in
+which a Java framework for MMASS models was developed. The reason for this change
+in the adopted programming language was mainly the need of integrating the simulation
+model with an effective realtime 3D engine, to realize a module for an effective visualization
+of the dynamics generated by the simulation models. In particular, to realize the second
+component we adopted Irrlicht∗, an open-source 3D engine and usable in C++ language.
+It is cross-platform and it provides a performance level that we considered suitable for our
+requirements. It provides a high level API that was adopted for several projects related to
+3D and 2D applications like games or scientific visualizations.
+
+我们为该项目开发的框架本质上是一个用 C++ 开发的库，提供适当的类来实现与 SCA 和 MMASS 模型相关的概念和机制;
+该库基于以前的经验 [Bandini et al.， 2006a]，其中开发了用于 MMASS 模型的 Java 框架。
+采用编程语言进行这种变化的原因主要是需要将仿真模型与有效的实时 3D 引擎集成，以实现一个模块，以有效可视化仿真模型生成的动态。
+特别是，为了实现第二个组件，我们采用了 Irrlicht∗，这是一个开源的 3D 引擎，可在 C++ 语言中使用。
+它是跨平台的，它提供了我们认为适合我们要求的性能水平。它提供了一个高级 API，该 API 被用于与 3D 和 2D 应用程序
+（如游戏或科学可视化）相关的多个项目。
+
+> In particular, a simplified class diagram of the framework is shown in Figure 10.10 on the
+left. The lower part of the diagram is devoted to the environment, and it is built around the
+BasicSite class. The latter is essentially a graph node (i.e., it inherits from the GraphNode
+class) that is characterized by the association with a FieldManager. The latter provides the
+services devoted to field management (diffusion, composition and comparison, defined as abstract 
+classes). An abstract space is essentially an aggregation of sites, whose concretizations
+define proper adjacency geometries (e.g., regular spaces characterized by a Von Neumann
+adjacency or possibly irregular graphs). An abstract agent is necessarily situated in exactly
+one site. Concrete agents defined for this specific framework are active objects (that are used
+to define concrete points of interest/reference to be adopted in a virtual environment) and
+pedestrians (that are basic agents capable of moving in the environment). Actual pedestrians 
+and mobile agents that a developer wants to include to the virtual environment must be
+defined as subclasses of Pedestrian, overriding the basic behavioral methods and specifically
+the action method. Figure 10.11 shows the methods defined by the AbstractAgent class,
+on the left, and the pseudo-code description of the Pedestrian agent action method, on the
+right. This particular method encapsulates the sub-steps that are carried out by an agent
+every time it evaluates what action should be performed. In particular, in the underground
+simulation example, the agent must (i) process the relevant perceptions (i.e., essentially
+gather the perceivable fields in the site it occupies and on the adjacent ones), (ii) evaluate
+the possibility to alter its own attitude, (iii) choose the destination site and (iv) move to
+it. It must be noted that in this application, the pedestrian agents automatically emit a
+presence field every turn, before their actions are effectively triggered.
+> 
+> ![img_24.png](img_24.png)
+> 图 10.10 简化的类图分别与框架中专门用于实现 MMASS 概念和机制的部分（左侧）和右侧用于管理模型生成的动态的可视化相关。
+> ![img_25.png](img_25.png)
+> 图 10.11 左侧为 AbstractAgent 类定义的方法，右侧为 Pedestrian 代理操作方法的伪代码描述。
+>
+
+特别是，图 10.10 的左侧显示了该框架的简化类图。该图的下半部分专门用于环境，它是围绕 BasicSite 类构建的。
+后者本质上是一个图形节点（即，它继承自 GraphNode 类），其特征是与 FieldManager 的关联。
+后者提供专门用于字段管理（扩散、组合和比较，定义为抽象类）的服务。抽象空间本质上是站点的集合，
+其具体化定义了适当的邻接几何图形（例如，以冯·诺依曼邻接或可能不规则图形为特征的规则空间）。
+抽象代理必须位于一个站点中。为此特定框架定义的具体代理是主动对象（用于定义要在虚拟环境中采用的具体兴趣点/参考点）
+和行人（是能够在环境中移动的基本代理）。开发人员想要包含在虚拟环境中的实际行人和移动代理必须定义为 Pedestrian 的子类，
+从而覆盖基本行为方法，特别是操作方法。图 10.11 左侧显示了 AbstractAgent 类定义的方法，右侧显示了 Pedestrian 代理
+操作方法的伪代码描述。此特定方法封装了代理每次评估应执行的操作时执行的子步骤。特别是，在地下模拟示例中，代理必须 
+- （i） 处理相关的感知（即，基本上收集它所占据的站点和相邻站点上的可感知场），
+- （ii） 评估改变自身态度的可能性，
+- （iii） 选择目标站点，以及 
+- （iv） 移动到它。  
+
+必须注意的是，在此应用程序中，行人代理在有效触发其操作之前，每个回合都会自动发出一个存在字段。
+
+> While the previous elements of the framework are devoted to the management of the
+behaviors of autonomous entities and of the environment in which they are situated, another
+relevant part of the described framework is devoted to the visualization of these dynamics.
+More than entering in the details of how the visualization library was employed in this
+specific context, we will now focus on how the visualization modules were integrated with the
+previously introduced MMASS framework in order to obtain indications on the scene that
+must be effectively visualized. Figure 10.10, on the right, shows a simplified class diagram
+of the main elements of the 3D Engine Library. The diagram also includes the main classes
+that are effectively in charge of inspecting the state of the MMASS environment and agents,
+and of providing the relevant information to the SceneManager that will translate it into
+a scene to be visualized. The Project class acts as a container of the 3D models providing
+the graphical representation of the virtual environment (Model3D objects), as well as the
+graph related to the adopted discretization of this physical space (a Graph object visually
+representing the previously discussed physical layer). It also includes a set of Avatar objects,
+that are three dimensional representations of Pedestrian objects (introduced in the previous
+subsection).
+
+虽然该框架的前面元素专门用于管理自治实体的行为及其所处的环境，但所描述框架的另一个相关部分专门用于这些动态的可视化。
+除了详细介绍如何在此特定上下文中使用可视化库之外，我们现在还将关注可视化模块如何与之前介绍的 MMASS 框架集成，
+以便在场景中获得必须有效可视化的指示。图 10.10 右侧显示了 3D 引擎库主要元素的简化类图。该图还包括主要类，
+这些类实际上负责检查 MMASS 环境和代理的状态，并向 SceneManager 提供相关信息，以便将其转换为要可视化的场景。
+Project 类充当 3D 模型的容器，提供虚拟环境的图形表示（Model3D 对象），以及与该物理空间采用的离散化相关的图形
+（直观地表示前面讨论的物理层的 Graph 对象）。它还包括一组 Avatar 对象，这些对象是 Pedestrian 对象的三维表示形式
+（在上一小节中介绍）。
+
+> The framework must be able to manage in a coordinated way the execution of the model
+defined for the specific virtual environment and the updating of its visualization. To manage
+this coordinated execution of different modules and procedures three main operative modes
+have been defined and are supported by the framework. The first two are characterized by
+the fact that agents are not provided with a thread of control of their own. A notion of turn
+is defined and agents are activated to execute one action per turn, in a sequential way or in
+a conceptually parallel way (as for a Cellular Automaton). In this case, respectively after
+each agent action or after a whole turn the scene manager can update the visualization. On
+the other hand, agents might be associated with a thread of control of their own and no
+particular fairness policy is enforced. The environment, and more precisely the sites of the
+MMASS space, is in charge of managing possible conflicts on the shared resource. However,
+in order to support a fluid visualization of the dynamics generated by the execution of the
+MAS, the Pedestrian object before executing an action must coordinate with the related
+Avatar: the Pedestrian action will be temporarily blocked until the visualization engine has
+updated the scene, moving the Avatar according to the previous Pedestrian movement. It
+must be noted that in all the introduced activation modes the environment is in charge
+of a regulation function [Bandini and Vizzari, 2007] limiting agents’ autonomy for sake of
+managing the consistency of the overall model or to manage a proper form of visualization.
+
+框架必须能够以协调的方式管理为特定虚拟环境定义的模型的执行及其可视化的更新。为了管理不同模块和程序的协调执行，
+已经定义了三种主要的操作模式，并得到了框架的支持。前两个的特点是代理没有自己的控制线程。定义了回合的概念，
+并激活代理以每回合执行一个动作，以顺序方式或概念上平行的方式（如细胞自动机）。在这种情况下，
+场景管理器可以分别在每个代理操作之后或整个回合后更新可视化效果。另一方面，代理可能与自己的控制线程相关联，
+并且没有强制执行特定的公平策略。环境（更准确地说是 MMASS 空间的站点）负责管理共享资源上可能发生的冲突。
+但是，为了支持执行 MAS 生成的动态的流畅可视化，行人对象在执行操作之前必须与相关的 Avatar 协调：
+行人操作将被暂时阻止，直到可视化引擎更新场景，根据之前的行人移动移动 Avatar。必须注意的是，在所有引入的激活模式中，
+环境都负责调节功能 [Bandini 和 Vizzari， 2007]，限制代理的自主性，以便管理整体模型的一致性或管理适当的可视化形式。
+
+> The framework was also applied in the underground simulation example; some screenshots
+of this application are shown in Figure 10.12. The framework comprises tools supporting
+the definition of the spatial structure of the environment and for positioning and configuring
+active elements of the environment, as well as agents included in a pre-defined library. In
+the future, we aim at supporting the dynamic configuration of pedestrian agents’ behaviors
+as well. The visualization can show or hide the discrete structure of the environment, and
+it can use visually effective or simplified models for pedestrians. Additional examples of
+applications of this framework are presented in [Vizzari et al., 2008].
+> ![img_26.png](img_26.png)
+
+## 10.6 Conclusions / 结论
+
+> The chapter has introduced and discussed issues and approaches to the modeling and simulation 
+of crowds of pedestrians. A brief discussion of the existing modeling approaches was
+provided, and a modeling approach for the representation of crowds with SCAs has been
+described and adopted in the sample simulation scenario. Preliminary results of this case
+study have also been illustrated and discussed. Finally different approaches to the generation 
+of an effective 3D visualization of simulated dynamics, that can be used for a more
+effective communication of simulation results, have been described.
+
+本章介绍并讨论了对行人人群进行建模和仿真的问题和方法。简要讨论了现有的建模方法，并在示例仿真场景中描述并采用了
+一种用于表示 SCA 的人群的建模方法。本案例研究的初步结果也得到了说明和讨论。最后，描述了生成仿真动力学的有效 
+3D 可视化的不同方法，这些方法可用于更有效地传达仿真结果。
+
+> The model has been applied to paradigmatic cases and it was able to generate dynamics
+and phenomena (i.e., formation of lanes in corridors, freezing by heating) that were previously 
+by models adopting different approaches [Bandini et al., 2007]. On the other hand, the
+SCA model supports the definition of heterogeneous agent types, and thus of different types
+of pedestrians, and it was adopted to design and realize tools supporting the definition and
+execution of SCA based pedestrian simulations.
+
+该模型已应用于范式案例，并且能够生成以前采用不同方法的模型所采用的动力学和现象（即，在走廊中形成车道，通过加热冻结）
+[Bandini et al.， 2007]。另一方面，SCA 模型支持异构代理类型的定义，从而支持不同类型的行人定义，
+并被用于设计和实现支持基于 SCA 的行人模拟定义和执行的工具。
+
+> In this line of research, we proposed a possible enhancement of the described modeling
+approach to improve its expressive power, starting from the representation of the environment. 
+In particular, by adopting the MMASS multilayered environmental structure, the
+different points of interest/reference might be represented on a graph whose links represent
+proximity or direct reachability relations among the related points, realizing a sort of abstract 
+map of the environment. This layer might be interfaced to the previously introduced
+more fine-grained representation of the environment (i.e., the physical layer), and it could
+be the effective source of fields generated by infrastructural elements, that are diffused to
+the physical layer by means of interfaces. A sample diagram illustrating this approach to
+the modeling of a physical environment is shown in Figure 10.13: the bottom layer is a fine
+grained discretization of Scala Square, and the top layer represents its points of interest that
+are associated with agents emitting a proper distinctive presence field. The abstract map
+could also be (at least partly) known by an agent, that could thus make decisions on what
+attitude toward movement should be selected according to its own goals and according to
+the current context by reasoning on/about the map, instead of following a predefined script.
+These kinds of considerations do not only emphasize the possible use of a multiple layered
+representations of the environment, but they also point out the possibility of enhancing the
+current agents (that are characterized by a reactive architecture) by endowing them with
+proper forms of deliberation, toward a hybrid agent architecture. A complete definition of
+these deliberative elements of the situated agents is the object of current and future works.
+> ![img_27.png](img_27.png)
+
+在这一研究领域，我们提出了一种可能增强的建模方法，以提高其表现力，从环境的表示开始。特别是，通过采用 MMASS 多层环境结构，
+不同的兴趣点/参考点可以在图表上表示，该图表的链接表示相关点之间的接近或直接可达关系，从而实现一种抽象的环境地图。
+该层可以与前面介绍的更细粒度的环境表示（即物理层）接口，并且它可以是基础设施元素生成的场的有效来源，这些场通过接口扩散到物理层。
+图 10.13 显示了说明这种物理环境建模方法的示例图：底层是 Scala Square 的细粒度离散化，
+顶层表示与发出适当独特存在场的代理相关的兴趣点。抽象地图也可以（至少部分）被代理人知道，
+因此代理人可以通过对地图进行推理来决定应该根据自己的目标和当前上下文选择对运动的态度，而不是遵循预定义的脚本。
+这些类型的考虑不仅强调了环境的多层表示的可能性，而且还指出了通过赋予当前代理（以响应式架构为特征）
+进行适当形式的考虑来增强当前代理的可能性，以实现混合代理架构。
+对所处主体的这些深思熟虑的要素的完整定义是当前和未来作品的对象。
+
+
+### 10.7 Discussion and Future Research Directions / 讨论和未来的研究方向
+
+> One of the future trends of research related to the topic of pedestrian and crowd modeling
+and simulation is focused on *data acquisition*: the current landscape on approaches to data
+acquisition about crowds of pedestrians is quickly evolving, due to the growing availability
+of innovative localization technologies (GPS, RFID, UWB) and to the improvement of
+existing techniques based on analysis of video footage. However, proper methodologies for
+the acquisition of data to characterize crowds of pedestrians in complex situations are still
+missing.
+
+与行人和人群建模和仿真主题相关的未来研究趋势之一集中在数据采集上：由于创新定位技术（GPS、RFID、UWB）
+的日益普及和基于视频片段分析的现有技术的改进，当前行人人群数据采集方法的前景正在迅速发展。
+然而，仍然缺乏适当的方法来获取数据以描述复杂情况下的行人人群。
+
+> Moreover, the presence of (i) recent works focusing on the analysis of the (empirical)
+relation between density and velocity of pedestrians [Seyfried et al., 2005] (also as a very
+general test for the evaluation of the currently available pedestrian simulation models and
+platforms) and (ii) contrasting models taking a very different perspective on pedestrians’
+movement conflicts, some preventing them, by activating asynchronously agents in a random
+order (i.e., shuffling) [Kl¨upfel, 2003], other ones considering conflicts a relevant phenomenon
+to be modeled and considered [Kirchner et al., 2003], suggests the fact that there are still
+open *methodological issues* to be clarified.
+
+此外，存在 （i） 最近的工作专注于分析行人密度和速度之间的（实证）关系 [Seyfried et al.， 2005]
+（也是评估当前可用的行人模拟模型和平台的非常通用的测试）和 （ii） 对比模型对行人的运动冲突采取非常不同的观点， 
+一些通过以随机顺序异步激活代理（即洗牌）来阻止它们 [Kl ̈upfel， 2003]，另一些则认为冲突是一个需要建模和考虑
+的相关现象 [Kirchner et al.， 2003]，这表明仍然存在悬而未决的方法论问题有待澄清。
+
+> These two lines of research will hopefully converge and provide new results that will
+support the definition of proper methodological framework for pedestrian modeling and
+simulation, and more effective *validation techniques* [Kl¨ugl, 2008] that would help the
+field in advancing beyond the already empirically studied paradigmatic cases [Helbing et al.,
+2001].
+
+这两条研究方向有望融合并提供新的结果，以支持为行人建模和模拟定义适当的方法框架，
+以及更有效的验证技术 [Kl ̈ugl， 2008]，这将有助于该领域超越已经实证研究的范式案例 
+[Helbing et al.， 2001]。
+
+> Finally, a very lively and promising research trend is focused on the integration of 
+*psycho/sociological considerations* in crowd models. Most models of pedestrian behaviors
+effectively disregard differences among individuals that make up a crowd. The integration
+of psycho/sociological considerations on human behavior (such as the inclusion of emotions
+and their effects influencing pedestrian movement) could provide an improvement to the
+expressiveness of crowd models that could also extend the range of applications, for instance
+toward the modeling of consumers’ behaviors in shopping spaces.
+
+最后，一个非常活跃和有前途的研究趋势集中在将心理/社会学考虑整合到人群模型中。
+大多数行人行为模型实际上忽略了构成人群的个体之间的差异。整合对人类行为的心理/社会学考虑
+（例如包含情绪及其影响行人运动的影响）可以提高人群模型的表现力，也可以扩大应用范围，
+例如对消费者在购物空间中的行为进行建模。
+
+## Acknowledgements
+
+> The work presented in this chapter has been partially funded by the University of 
+MilanoBicocca within the project ‘Fondo d’Ateneo per la Ricerca - anno 2007’. We wish to thank
+Mizar Luca Federici for the fruitful discussions on multi-agent simulation of crowds of
+pedestrians. We also thank the anonymous referees for their comments and suggestions.
+
+本章介绍的工作由米兰比可卡大学在“Fondo d'Ateneo per la Ricerca - anno 2007”项目中部分资助。
+我们要感谢 Mizar Luca Federici 就行人人群的多智能体模拟进行的富有成效的讨论。
+我们还感谢匿名审稿人的意见和建议。
+
