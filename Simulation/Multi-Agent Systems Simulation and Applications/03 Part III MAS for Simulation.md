@@ -25,7 +25,9 @@ distributed concurrent entities that interact with their physical environment. T
 constitutes a consequent progression of micro-oriented modeling, whereas the latter builds
 on distributed and online simulation approaches.
 
-多智能体系统在建模和仿真中用作隐喻。在建模级别，它支持将所研究的系统视为交互的自主实体的社区。在仿真级别，它有助于将仿真系统设计为与物理环境交互的分布式并发实体。前者构成了面向微观建模的后续发展，而后者则建立在分布式和在线仿真方法之上。
+多智能体系统在建模和仿真中用作隐喻。在建模级别，它支持将所研究的系统视为交互的自主实体的社区。
+在仿真级别，它有助于将仿真系统设计为与物理环境交互的分布式并发实体。
+前者构成了面向微观建模的后续发展，而后者则建立在分布式和在线仿真方法之上。
 
 > The agent metaphor has particularly propelled research on human behavior modeling.
 Technical questions such as how to facilitate the modeling and simulation of multiple deliberative
