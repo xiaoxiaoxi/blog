@@ -1151,16 +1151,757 @@ SeSAm 的应用范围已经扩大，使用更复杂的代理模型的经验证�
 由于 SeSAm 不提供任何形式的基于逻辑的情况描述，也不提供任何基于前条件和后条件的适当原始特征，
 因此这种复杂的架构基本上是不可能的。
 
+## 16.4 Users, Tasks, and SeSAm
+
+> For actually implementing a model using this SeSAm core language, several user interfaces
+are supporting different tasks during a simulation study.
+
+为了使用这种 SeSAm 核心语言实际实现模型，在仿真研究期间，多个用户界面支持不同的任务。
+
+> Developing such interfaces within the same visual framework is not an easy task. Much of
+the advance of the SeSAm system during the last year is related to these developments. The
+following sections will contain a short, sketchy treatment of the different elements of the
+overall SeSAm model development and simulation platform offered for the different tasks
+mentioned above: visual modeling environment, standard animation, online aggregation and
+visualization of key values during simulation, interactive simulation and "agent playing"
+environment.
+
+在同一个可视化框架中开发这样的界面并不是一件容易的事。去年 SeSAm 系统的大部分进步都与这些发展有关。
+以下部分将包含对整个 SeSAm 模型开发和仿真平台的不同元素的简短粗略处理，这些元素为上述不同任务提供：
+可视化建模环境、标准动画、仿真过程中关键值的在线聚合和可视化、交互式仿真和“代理播放”环境。
+
+### 16.4.1 Principles
+
+> As mentioned in the introduction we had several, partially conflicting goals for developing
+SeSAm. We wanted to build a system that concurrently enables beginners to implement
+their model and that can be used as a fast prototyping tool for experts. Therefore the
+system had to fulfill the following general requirements:
+> - Hide potential model complexity from beginners
+> - Support beginners while learning to implement a model
+> - Make all aspects of a model accessible to experts
+> - Support experts while implementing a complex, large model
+
+正如引言中提到的，我们开发 SeSAm 有几个部分相互冲突的目标。
+我们想构建一个系统，让初学者能够同时实现他们的模型，并且可以用作专家的快速原型设计工具。
+因此，系统必须满足以下一般要求：
+- 向初学者隐藏潜在的模型复杂性
+- 在学习实现模型的同时为初学者提供支持
+- 让专家可以访问模型的所有方面
+- 在实施复杂的大型模型时为专家提供支持
+
+> Thus for beginners the main issue is simplicity and consistency – for experts it is scalability
+of modeling and simulation. In more detail, the following ideas and principles were pursued,
+partially motivated by [Green and Petre, 1996] or [Kuljis, 1994].
+> 
+> - The main difficulty lies in selecting the appropriate primitives: therefore an
+    expert may choose to use a different set of primitives than a beginner. The latter
+    may use more abstract primitives that encapsulate more functionality than the
+    former who may like to completely control every detail and search for the most
+    effective implementation of the particular problem at hand. Good examples are
+    movement primitives. Whereas the expert may use more basic primitives like
+    `changeDirection`, `moveWithSpeed` or `observeObjectsInDirection`, a beginner
+    would be happy with a primitive like `moveWhileAvoidingCollisionsWith`...
+> - Having learned how to deal with one editor, this experience can be used for all
+    editors for similar elements, as GUI interaction remains the same.
+> - Including automatic syntax checks or missing opportunities to input something
+    syntactically wrong.
+> - Functionality as provided by modern software development platforms makes it
+    easy to change model design decisions. Examples are refactoring actions or
+    navigation means, like searching for references or direct connection to definitions
+    of model elements. Also support for model versioning is important for model
+    implementation.
+> - Documentation facilities should be possible for any element of the model for
+    recording why things are formulated as they are. Colors etc. can be used to
+    mark model elements where the modeler wants to include more detail. Thus the
+    modeler does not have to memorize a lot, but can augment the model with free
+    text about his thoughts.
+> - Structuring language elements like sub-programs or modules are available in the
+    form of user primitives, features or partial situations. Thus modeling becomes
+    more scalable for the expert user. Predefined modules support the novice.
+
+因此，对于初学者来说，主要问题是简单性和一致性 - 对于专家来说，是建模和仿真的可扩展性。
+更详细地说，遵循以下想法和原则，部分受到 [Green and Petre， 1996] 或 [Kuljis， 1994] 的推动。
+
+- 主要困难在于选择合适的原语：因此，专家可能会选择使用与初学者不同的原语集。
+  后者可能使用更抽象的原语，这些原语封装了比前者更多的功能，
+  前者可能希望完全控制每个细节并寻找手头特定问题的最有效实现。很好的示例是移动基元。
+  虽然专家可能会使用更基本的基元，如 changeDirection、moveWithSpeed 或 observeObjectsInDirection，
+  但初学者会对 moveWhileAvoidingCollisionsWith...
+- 在学会了如何处理一个编辑器之后，这种体验可以用于类似元素的所有编辑器，因为 GUI 交互保持不变。
+- 包括自动语法检查或错过输入语法错误的机会。
+- 现代软件开发平台提供的功能使更改模型设计决策变得容易。
+  例如，重构操作或导航方式，例如搜索引用或直接连接到模型元素的定义。
+  此外，对模型版本控制的支持对于模型实现也很重要。
+- 模型的任何元素都应该有文档工具，用于记录事物为何如此表述。
+  颜色等可用于标记建模者想要包含更多细节的模型元素。因此，建模者不必记住很多，
+  但可以用关于他的想法的自由文本来增强模型。
+- 构建语言元素（如子程序或模块）以用户原语、功能或部分情况的形式提供。
+  因此，对于专家用户来说，建模变得更加可扩展。预定义的模块支持新手。
+
+### 16.4.2 Developing a Conceptual Model
+
+> This task is not directly supported by SeSAm. One may argue that the high-level model
+representations – the classification in agents and resources, the way behavior is characterized
+– may support structured thinking about elements of a model. A basic idea of SeSAm is to
+bridge the gap between model specification and implementation.
+
+SeSAm 不直接支持此任务。有人可能会争辩说，高级模型表示 – 代理和资源的分类，行为的表征方式 
+– 可能支持对模型元素的结构化思考。SeSAm 的一个基本思想是弥合模型规范和实现之间的差距。
+
+### 16.4.3 Visual Programming for Model Implementation
+
+> In our description of the SeSAm system we will first concentrate on the task of model
+implementation. Providing a visual programming environment for this task was basically
+driven by the idea to make model logics accessible to all interested people, not only model
+configuration, model-produced simulation runs or data. Introductory material concerning
+visual programming can be found in [Chang, 1990] or more recently in [Lieberman et al.,
+2006].
+
+在我们对 SeSAm 系统的描述中，我们将首先专注于模型实现的任务。
+为这项任务提供可视化编程环境基本上是由让所有感兴趣的人都可以访问模型逻辑的想法驱动的，
+而不仅仅是模型配置、模型生成的仿真运行或数据。
+有关视觉编程的介绍性材料可以在 [Chang， 1990] 或最近的 [Lieberman et al.， 2006] 中找到。
+
+> In general one must admit that programming using a well-known textual programming
+language in a good environment for development may result in a more efficient modeling
+and simulation for the experienced programmer. Even for a person experienced as modeler
+using some programming language and class libraries, model implementation supported by
+a visual programming environment has many advantages ranging from explainability to
+accessibility.
+
+一般来说，我们必须承认，在良好的开发环境中使用众所周知的文本编程语言进行编程可能会为
+有经验的程序员带来更高效的建模和模拟。即使对于使用某些编程语言和类库的建模者来说，
+可视化编程环境支持的模型实现也具有许多优势，从可解释性到可访问性。
+
+#### Primitive Call Specification / 原始调用规范
+
+> The basic building block of the visual SeSAm programming environment is the specification
+of primitives and primitive calls: There is only one way to specify how a primitive is used. It
+is used whenever a nested primitive call has to be specified: in the basic behavior description
+of activities, in formulating the predicates of rules or user macros, for giving a procedure
+to compute initial values, ... to experiment and analysis declaration. This dialog element is
+shown in a screenshot in Figure 16.6.
+> ![img_38.png](img_38.png)
+> FIGURE 16.6 Screenshot of a dialog for specifying primitive calls. This basic dialog element is used
+everywhere in the system when this task has to be done. It consists of three parts: the current status of
+specification in the left half of the dialog, directly insertable values in the upper right and available primitive
+on the right lower half. When clicking on a primitive call, a similar dialog opens resulting in a cascade of
+dialogs as indicated by the arrow from one dialog to the other.
+> 图 16.6 用于指定原始调用的对话框的屏幕截图。当必须完成此任务时，此基本对话框元素在系统中的任何地方都使用。
+> 它由三部分组成： 对话框左半部分的规范当前状态，右上半部分的直接可插入值和右下半部分的可用基元。
+> 单击原始调用时，将打开一个类似的对话框，从而产生一系列对话框，如从一个对话框到另一个对话框的箭头所示。
+
+可视化 SeSAm 编程环境的基本构建块是基元和基元调用的规范：只有一种方法可以指定如何使用基元。
+每当必须指定嵌套原始调用时，都会使用它：在活动的基本行为描述中，在制定规则或用户宏的谓词时，
+用于提供计算初始值的过程，...实验和分析声明。此 dialog 元素如图 16.6 中的屏幕截图所示。
+
+> Using such a basic element, a modeler can completely specify behavior without programming
+in a traditional language. The particular procedure for selecting and configuring
+reduces syntax error proneness as the user cannot select a primitive that returns a wrong
+type. Another element that deals with reducing potential errors is the way in which nested
+calls are to be edited. In this case the parent call is no longer accessible for manipulation
+which avoids inconsistencies.
+
+使用这样的基本元素，建模者可以完全指定行为，而无需使用传统语言进行编程。
+选择和配置的特定过程降低了语法错误的可能性，因为用户无法选择返回错误类型的原语。
+处理减少潜在错误的另一个元素是编辑嵌套调用的方式。在这种情况下，父调用不再可用于操作，从而避免了不一致。
+
+> In the right lower corner – mostly hidden in Figure 16.6 – three elements support fast
+selection by providing a short cut search item, enlarging the primitive set with “expert-mode
+primitives”, like loops or roulette wheel functionality. A small button – the “Edgar” button
+in the corner right on the bottom – allows for textual search for appropriate primitive. All
+documentation and hints given in the primitive declaration are available there. Edgar also
+justifies why certain primitives are not currently available for insertion.
+
+在右下角 - 大部分隐藏在图 16.6 中 - 三个元素支持快速选择，通过提供一个快捷方式搜索项，
+用 “专家模式基元” 扩大基元集，如循环或轮盘赌功能。一个小按钮 - 底部角落的 “Edgar” 按钮 - 允许文本搜索合适的原语。
+原始声明中给出的所有文档和提示都在那里可用。Edgar 还解释了为什么某些原语当前无法插入。
+
+#### Forms and Tables / 表单和表格
+
+> A typical means for specifying object instances – class declarations as well as agent instances
+in the model configuration – are forms where every attribute can be input using appropriate
+dialog items [Bamberger et al., 1997]. Forms are used in SeSAm for all fixed meta information
+for model elements – for example in specifying a body variable description as visible on the
+right side of Figure 16.7.
+
+指定对象实例的典型方法 - 类声明以及模型配置中的代理实例 - 是可以使用适当的对话框项输入每个属性的形式
+[Bamberger et al.， 1997]。在 SeSAm 中，表单用于模型元素的所有固定元信息——例如，
+在指定 body 变量 description 时，如图 16.7 右侧所示。
+
+> ![img_39.png](img_39.png)
+> FIGURE 16.7 Screenshot of a dialog for specifying body variables. This basic dialog element is used
+everywhere in the system when language elements that are in a set, have to be specified. This dialog element
+has two parts: on the left the list is given, the pane on the right changes with selection of a list element for
+enabling the modeler to manipulate the selected element.
+> 图 16.7 用于指定主体变量的对话框的屏幕截图。当必须指定集合中的语言元素时，
+> 此基本 dialog 元素在系统中的任何地方都使用。此对话框元素包含两个部分：
+> 左侧给出了列表，右侧的窗格随着列表元素的选择而变化，以便建模者能够操作所选元素。
+> 
+> Tables can serve as a more compact representation of object attributes, if the data struc-
+tures to represent in one cell are not too complicated. We use tables, for example, to specify
+the object instance declarations where the set of object variables that have to be set is not
+given, but depends on the class-level declaration.
+
+如果在一个单元格中表示的数据结构不太复杂，则表格可以用作对象属性的更紧凑表示。
+例如，我们使用表格来指定对象实例声明，其中没有给出必须设置的对象变量集，而是取决于类级声明。
+
+#### Edit List Elements
+
+> Another structure that is used at many places is depicted in screenshot 16.7. On the left
+a list of elements is given; by selecting an item, all information about it is displayed on
+the right and can be edited. This dialog form is used for body variables, specification of
+simObject instances, analysis items, etc.
+> 
+> A direct combination of list elements and pure primitive specification can be found on
+several occasions. Examples are the list of user functions, the analysis items when instru-
+mentation is specified, action sequences in activities, object lists in situations, etc. Once a
+modeler has learned how to deal with these modeling elements, this experience is useful all
+over SeSAm.
+
+屏幕截图 16.7 中描述了另一种在许多地方使用的结构。
+左侧给出了元素列表;通过选择项目，有关该项目的所有信息都显示在右侧，
+并且可以进行编辑。此对话框表单用于主体变量、simObject 实例的规范、分析项等。
+
+列表元素和纯原始规范的直接组合可以在多个场合找到。
+例如，用户功能列表、指定说明时的分析项、活动中的操作序列、情境中的对象列表等。
+一旦建模者学会了如何处理这些建模元素，这种体验在整个 SeSAm 中都很有用。
+
+#### Behavior Specification 
+
+> The primitive specification forms sketched above are used as low-level building blocks for
+defining the behavior – basically as atomic statements of the language. The structure of a
+reasoning engine or an activity graph is especially apt for visual constructing using some
+graph structure. Figure 16.8 shows an example screenshot.
+> ![img_40.png](img_40.png)
+> FIGURE 16.8 Screenshot of the pane for specifying the behavior description of an agent.
+> 
+> 图 16.8 用于指定代理行为描述的窗格的屏幕截图。
+> 
+> There are different node shapes in addition to the previously mentioned start node, end
+node or nested activity graphs - for depicting specific properties. These additional shapes
+– shown in Figure 16.9 do not result in different forms of treatment in the simulator, but
+merely support clarification of functionality for transparency reasons. Exceptions are the
+documentation nodes which are ignored. Only one look at the behavior describing graph
+is necessary to identify decision, sensing activities, etc. For additional overview, different
+colorings of activities are available. For a short look at the activity contents the beginning of
+the action primitive calls are also depicted using a small text size – see activities in Figure
+16.8.
+> ![img_41.png](img_41.png)
+> FIGURE 16.9 Different shapes of activity nodes in reasoning engine modeling. Only composed activity
+nodes – which hide a new activity graph – bear special semantics for interpretation. Documentation nodes
+(the most right ones) are ignored for behavior generation. The others only serve for enable the modeler to
+oversee a complex graph.
+> 
+> 图 16.9 推理引擎建模中不同形状的活动节点。只有组合的活动节点（隐藏新的活动图）才具有用于解释的特殊语义。
+> 文档节点（最右边的）在行为生成时被忽略。其他的仅用于使建模者能够监督复杂的图形。
+> 
+> Edges in the activity graph editor denote rules for terminating their predecessor and ini-
+tiating their successor activity. The subtitles of these edges are generated from the primitive
+combination that forms the condition of the rules. These generated texts can however be
+replaced by the modeler. Thus the modeler has several options for implementing a well-
+structured and clearly structured activity graph.
+
+上面草拟的基元规范形式被用作定义行为的低级构建块 —— 基本上是语言的原子语句。
+推理引擎或活动图的结构特别适合使用某些图形结构进行可视化构建。图 16.8 显示了一个示例屏幕截图。
+
+除了前面提到的开始节点、结束节点或嵌套活动图之外，还有不同的节点形状 - 用于描述特定属性。
+这些额外的形状 – 如图 16.9 所示，在模拟器中不会导致不同形式的处理，而只是出于透明原因支持功能澄清。
+例外情况是被忽略的文档节点。只需看一眼行为描述图即可识别决策、感知活动等。
+有关其他概述，可以使用不同颜色的活动。为了简要地了解活动内容，
+动作原语调用的开头也使用较小的文本大小来描述 - 参见图 16.8 中的活动。
+
+活动图编辑器中的边表示终止其前置活动并启动其后续活动的规则。
+这些边缘的子标题是从构成规则条件的原始组合生成的。但是，这些生成的文本可以由建模器替换。
+因此，建模者有多种选择来实现结构良好且结构清晰的活动图。
+
+#### Configuration of Start Situations
+> Without additional plugins the start situation merely consists of the description of one
+world instance and of a set of agent and resource class instances. This is done using already
+known lists and tables.
+
+如果没有额外的插件，启动情况仅包括一个世界实例和一组代理和资源类实例的描述。这是使用已知的列表和表格完成的。
+ 
+> Additionally editors coming with one of the spatial plugins play a particular role, as they
+allow positioning on maps using drag and drop functionality.
+
+此外，其中一个空间插件附带的编辑器也发挥着特殊的作用，因为它们允许使用拖放功能在地图上进行定位。
+
+#### Accessibility and Documentation  辅助功能和文档
+
+> Two important issues in a visual programming system are navigation and documentation.
+One prerequisite for useful development environments for programming is the way to find the
+elements that the user wants to edit. The user should not be required to memorize names,
+but to have directly at hand all necessary information for manipulating an element. For
+example, when formulating an agent’s behavior, variables of the agent should be accessible
+with one click when they are missing or are set to the wrong data type. Also the user
+should not need to memorize the exact functionality of a user function, but should be able
+to immediately access it.
+
+可视化编程系统中的两个重要问题是导航和文档。有用的编程开发环境的一个先决条件是找到用户想要编辑的元素的方法。
+不应要求用户记住名称，而是直接掌握操作元素所需的所有信息。例如，在制定代理的行为时，
+如果代理的变量缺失或设置为错误的数据类型，则只需单击一下即可访问这些变量。
+此外，用户不需要记住用户函数的确切功能，但应该能够立即访问它。
+
+> In SeSAm tool tips can be edited directly by the modeler for augmenting the documen-
+tation of the model. A right click always leads to a context menu where related elements of
+the definition are accessible. Every element – from user primitive to status variable to ac-
+tivities – can be given additional, explanatory text. These modeling GUI elements increase
+scalability of the implementation which is particularly important for complex multi-agent
+simulation models.
+
+在 SeSAm 中，建模者可以直接编辑工具提示，以增强模型的文档。
+右键单击始终指向一个上下文菜单，可在其中访问定义的相关元素。
+每个元素 - 从用户基元到状态变量再到活动 - 都可以被赋予额外的解释性文本。
+这些建模 GUI 元素提高了实现的可扩展性，这对于复杂的多智能体仿真模型尤为重要。
+
+### 16.4.4 Experiment Scripting and DAVINCI for Experimenters / 实验脚本和实验人员的 DAVINCI
+
+> The second task that has to be executed during a simulation study is extensive experimentation.
+It is basically done for model testing and – after the necessary model quality has
+been guaranteed – for making the actual deployment runs generating the intended results.
+Whereas programming and formalization expertise can be seen as a prerequisite for users
+fulfilling the role of a modeler, pure experimentation contains a lot of rather simple
+operations with several repetitions – if the configuration to be run is known. The main intelligence
+in the experimentation task however has to be used for an intelligent design of experiments
+as well as for analyzing the output data in order to initiate additional simulation runs.
+
+在仿真研究期间必须执行的第二项任务是广泛的实验。它基本上是为了模型测试而完成的，
+并且在保证必要的模型质量之后，用于使实际部署运行产生预期的结果。
+虽然编程和形式化专业知识可以被视为用户履行建模者角色的先决条件，
+但纯粹的实验包含许多相当简单的操作，并且需要多次重复 - 如果要运行的配置是已知的。
+然而，实验任务中的主要智能必须用于实验的智能设计以及分析输出数据，以便启动额外的模拟运行。
+
+> It is absolutely unacceptable to trigger all necessary simulation runs manually. Therefore
+the configuration of experiment scripts is or at least should be part of every modeling and
+simulation framework. In SeSAm there are two ways of defining and controlling simulation
+experimentation: the first consists of basically a script using additional primitives that
+operate on situation configurations, simulation run definitions. These primitives may set
+the random seed for ensuring exact reproducibility of results or may initiate runs based
+on systematic parameter variations. As the user interface is similar to all primitive call
+specification dialogs, the original modeler can easily input such experimentation scripts.
+
+手动触发所有必要的仿真运行是绝对不可接受的。因此，实验脚本的配置是或至少应该是每个建模和仿真框架的一部分。
+在 SeSAm 中，有两种定义和控制仿真实验的方法：第一种基本上由一个脚本组成，该脚本使用额外的基元来操作情况配置、
+仿真运行定义。这些基元可以设置随机种子以确保结果的精确可重复性，或者可以根据系统参数变化启动运行。
+由于用户界面与所有基元调用规范对话框类似，因此原始建模者可以轻松输入此类实验脚本。
+
+> The second possibility was developed for supporting calibration in the PhD thesis of M.
+Fehler [Fehler, 2008 or 2009]. Besides other methodological advances, he developed a tool
+named DAVINCI that allows automatic parameter optimization for adjusting the model for
+maximizing a model-specific function that expresses some degree of validity of the current
+simulation configuration. Information about concepts and technologies behind the tool can
+be found in [Fehler et al., 2006] or [Fehler et al., 2005]. DAVINCI can be used more generally
+for systematic parameter screening as well as for all kinds of optimization based on methods
+ranging from tabu search to genetic algorithms. Therefore it forms a highly valuable tool
+for an experimenter. Due to the conceptual complexity for configuring all elements of the
+optimization algorithms, such as input parameter, evaluation function, parameter of the
+optimization, and parameter of the result presentation, this tool is implemented like a
+wizard that guides the user through complex configurations.
+
+第二种可能性是为支持 M. Fehler 的博士论文 [Fehler， 2008 或 2009] 中的校准而开发的。
+除了其他方法上的进步外，他还开发了一个名为 DAVINCI 的工具，该工具允许自动优化参数以调整模型，
+以最大化模型特定功能，从而表达当前仿真配置的一定程度的有效性。有关该工具背后的概念和技术的信息，
+请参见 [Fehler et al.， 2006] 或 [Fehler et al.， 2005]。DAVINCI 可以更普遍地用于系统
+参数筛选以及基于从禁忌搜索到遗传算法的各种方法的优化。因此，它为实验者提供了非常有价值的工具。
+由于配置优化算法的所有元素（例如输入参数、评估函数、优化参数和结果表示参数）的概念复杂性，
+因此该工具的实现类似于向导，可指导用户完成复杂的配置。
+
+### 16.4.5 Online Aggregated Data Presentation and Animation / 在线聚合数据演示和动画
+
+> Another functionality that is primarily used for testing and analyzing the model dynamics
+is the animation facility and the online visualization of aggregated data during a simulation
+run. These techniques for observing what is happening during a simulation can be seen as a
+standard for simulation environments. Basically every user of the simulation models wants
+to observe animations.
+
+另一个主要用于测试和分析模型动力学的功能是动画设施和仿真运行期间聚合数据的在线可视化。
+这些用于观察模拟过程中发生的情况的技术可以被视为模拟环境的标准。
+基本上，仿真模型的每个用户都希望观察动画。
+
+> When the animation is enabled all changes are shown immediately when they happen. If
+the standard 2d plugin is used, the behavior may be enriched using primitives for updating
+the visualization of an agent, for example by changing the image for its graphical represen-
+tation, its color or intentionally draw lines or circles into the map pane for visualizing paths
+that the agent has followed, etc. Figure 16.10 shows a small part of the animation view of
+a Pedestrian simulation of the SBB Bern Railway Station [Rindsf¨user and Kl¨ugl, 2007].
+> ![img_42.png](img_42.png)
+> FIGURE 16.10 A part of an animation window showing agents with different attributes (colors) and
+their paths. 
+> 
+> 图 16.10 动画窗口的一部分，显示具有不同属性（颜色）的代理及其路径
+
+启用动画后，所有更改都会在发生时立即显示。如果使用标准的 2D 插件，则可以使用基元来丰富行为，
+以更新代理的可视化，例如通过更改图像的图形表示、颜色或有意在地图窗格中绘制线条或圆圈以可视化代理所遵循的路径等。
+图 16.10 显示了 SBB 伯尔尼火车站行人模拟的一小部分动画视图 [Rindsf ̈用户和 Kl ̈ugl，2007 年]。
+
+> As the speed of a simulation run may be too slow for reasonable observation, a recording
+plugin has been developed that allows one to save animations as movie files for later analysis.
+The results of the primitive calls for collecting output data from simulation run can be
+written into a file for later analysis – which is actually done during model deployment. For
+testing, the same data can be shown directly after generating, using either a series chart or
+using a block chart, depending on the volume and dynamics of the data. In Figure 16.11
+the relation between analysis definition and curve is shown.
+> ![img_43.png](img_43.png)
+> FIGURE 16.11 Based on the function specification for output function, aggregated data is shown.  
+> 
+> 图 16.11 根据 output 函数的函数规格，显示聚合数据。
+
+由于模拟运行的速度可能太慢而无法进行合理观察，因此开发了一个录制插件，允许将动画保存为电影文件以供以后分析。
+用于从仿真运行中收集输出数据的基元调用结果可以写入文件以供以后分析，这实际上是在模型部署期间完成的。
+对于测试，可以使用系列图或块状图在生成后直接显示相同的数据，具体取决于数据的数量和动态。
+在图 16.11 中显示了分析定义和曲线之间的关系。
+
+> There is a small enhancement that makes the animation even more valuable: a debugger.
+If a simulation reaches a predefined point in its behavior definition, it stops and the agent
+that caused the break can be analyzed more deeply. A stepper functionality allows action-
+by-action advancement of the simulation execution. Also, debugger and stepper belong to
+the equipment of standard programming environments and thus should be also available for
+testing simulation models.
+
+有一个小的增强功能使动画更有价值：调试器。如果模拟达到其行为定义中的预定义点，它将停止，
+并且可以更深入地分析导致中断的代理。步进功能允许逐个动作推进仿真执行。
+此外，调试器和步进器属于标准编程环境的设备，因此也应该可用于测试仿真模型。
+
+### 16.4.6 Model-Specific Interfaces
+
+> The previous tasks required direct and extensive understanding of the implementation of
+the model. A user that is not involved into implementation and testing of a model, but
+wants to observe its dynamics, needs a model-specific user interface for “playing around”
+with the model. Interaction with the model may take two forms: either as an experimenter
+or observer from outside or alternatively from inside the running simulation. The outside
+view is basically standard: a human observes the dynamics of the model from outside and
+manipulates global parameters or sets local switches in reaction to the observation. The
+inside view is particular for agent-based simulation and is often referred to as participatory
+simulations (see [Guyot and Honiden, 2006]). In this case a human is controlling one agent,
+perceiving what the agent may perceive and manipulating the simulation through the agent’s
+effectors. SeSAm supports both forms of interaction. We first tackle specific model interfaces
+followed by participatory simulation in the next subsection.
+
+前面的任务需要对模型的实现有直接和广泛的了解。不参与模型的实现和测试，但想要观察其动态的用户，
+需要一个特定于模型的用户界面来“玩转”模型。与模型的交互可以采取两种形式：作为外部的实验者或观察者，
+或者从正在运行的模拟内部。外部视图基本上是标准的：人类从外部观察模型的动态，
+并操纵全局参数或设置局部开关以响应观察结果。内部视图特别适用于基于代理的模拟，
+通常被称为参与式模拟（参见 [Guyot 和 Honiden，2006 年]）。在这种情况下，人类控制一个代理，
+感知代理可能感知的内容，并通过代理的效应器操纵模拟。SeSAm 支持两种形式的交互。
+我们首先处理特定的模型接口，然后在下一小节中进行参与式仿真。
+
+> In order to provide functionality of interfaces for observing and controling simulation runs
+in a user-adapted way, we enhanced SeSAm with a graphical GUI builder. We assume that
+this element of SeSAm is actually used by the modeler for providing specific interfaces for
+more or less experienced people using or testing the model. Examples for addressees may
+be stakeholders, but it is also apt for publishing demo versions of a model. Concerning its
+functionality, such a model-specific simulation interface corresponds to the type of model
+interface that a user may know from other simulation tools.
+
+为了提供以用户适应的方式观察和控制仿真运行的界面功能，我们使用图形 GUI 构建器增强了 SeSAm。
+我们假设 SeSAm 的这个元素实际上被建模者用于为或多或少有经验的使用或测试模型的人提供特定的接口。
+收件人的示例可能是利益相关者，但它也适用于发布模型的演示版本。就其功能而言，
+这种特定于模型的仿真接口对应于用户可能从其他仿真工具中了解的模型接口类型。
+
+> The construction of a simulation specific user interface is done in two phases. At first the
+modeler determines the interfaces of the model elements - for example he specifies that the
+variable “storage” is manipulatable by the user and then arranges the pre-defined items to
+an overall user interface. Figure 16.12 shows a screenshot of the visual GUI builder together
+with an instance of the specific user interface.
+>![img_44.png](img_44.png)
+> FIGURE 16.12 A model-specific interface to a simulation run is generated based on an interface configuration.
+> 
+> 图 16.12 根据接口配置生成仿真运行的特定模型接口。
+
+仿真特定用户界面的构建分两个阶段完成。首先，建模者确定模型元素的接口 - 例如，
+他指定变量 “storage” 可由用户操作，然后将预定义的项目安排到整个用户界面中。
+图 16.12 显示了可视化 GUI 构建器的屏幕截图以及特定用户界面的实例。
+
+### 16.4.7 Agent Playing for Advanced Participation / 代理人参与高级参与
+
+> Another development regarding SeSAm interfaces and user task is the so-called “agent
+playing” framework (see [Raupach, 2007]). It basically forms the logical advancement of
+the interactive simulation runs described in the last subsection. There a bird’s eye view is
+used for monitoring the model dynamics from the outside. Agent-based simulation allows
+an inside view when a human is playing one particular agent.
+
+关于 SeSAm 接口和用户任务的另一种发展是所谓的“代理播放”框架（参见 [Raupach， 2007]）。
+它基本上构成了上一小节中描述的交互式模拟运行的逻辑进展。那里的鸟瞰图用于从外部监控模型动态。
+基于代理的模拟允许在人类扮演一个特定代理时获得内部视图。
+
+> This interactive element was developed not for allowing simulation games, but especially
+for supporting plausibility testing and validation on the agent level: we assume that for
+qualitative validation purposes, the modeler needs to perceive the simulated environment
+through the eyes of the agent, immersed into the simulation. While perceiving what the con-
+trolled agent perceives and evaluating its reactions to perceptions, as well as while observing
+the other agents, a human may evaluate whether the observed simulation run actually is
+plausible.
+
+开发此交互式元素不是为了允许模拟游戏，而是为了支持代理级别的合理性测试和验证：
+我们假设出于定性验证目的，建模者需要通过代理的眼睛感知模拟环境，沉浸在模拟中。
+在感知被控主体感知到的东西并评估其对感知的反应时，以及在观察其他主体时，
+人类可以评估观察到的模拟运行是否真的合理。
+
+> The “agent playing” framework consists of two parts: enhancements on the SeSAm side
+and a specialized piece of software that visualizes the perceptions of the agent and its actions
+outside of SeSAm:
+> - SeSAm models have to be enhanced with primitive calls sending and requesting
+    all information marked as necessary.
+> - An additional program has to be developed that receives the information from
+    SeSAm and visualizes this information appropriately. This program may also
+    interpolate between two sets of information – for example, visualizing a smooth
+    movement in a discrete world. It may be used for mere observation, but also for
+    controlling the agents by collecting the commands from the user and thus forcing
+    the agent to do what the human wants the agent to do.
+
+“代理播放”框架由两部分组成：SeSAm 端的增强功能和可视化代理的感知及其在 SeSAm 之外的操作的专用软件：
+
+- SeSAm 模型必须通过原始调用来增强，发送和请求所有标记为必要的信息。
+- 必须开发一个额外的程序来接收来自 SeSAm 的信息并适当地可视化这些信息。
+  该程序还可以在两组信息之间进行插值 - 例如，在离散世界中可视化平滑运动。
+  它可以用于单纯的观察，也可以用于通过收集用户的命令来控制代理，
+  从而迫使代理做人类希望代理做的事情。
+
+> Thus “agent playing” supports conceptual validation of an agent’s behavior, as the experts
+of the original system can adopt the perspective of the agent. Hopefully they can see the
+simulated surroundings of the agent from the same perspective as in real life - resulting in
+more direct, immersive testing by a human expert.
+
+因此，“代理播放”支持对代理行为的概念验证，因为原始系统的专家可以采用代理的视角。
+希望他们能够从与现实生活中相同的角度看到代理的模拟环境，从而由人类专家进行更直接、更身临其境的测试。
+
+## 16.5 Experiences
+
+> Besides use in teaching, SeSAm was and is applied in several simulation projects reaching
+from simulation of social insects, reproduction of shopping behavior to agent-based traffic
+simulation. Beyond such traditional application areas of agent-based simulation, SeSAm
+forms the technical base for virtual high bay warehouses that are used for software tests,
+requirements engineering or employee training. In several of these projects, domain experts
+like biologists, geographers, etc. use SeSAm independently. In other projects we use the tool
+ourselves. The latter allows evaluating usability directly by ourselves.
+
+除了用于教学外，SeSAm 还应用于多个模拟项目，从社交昆虫的模拟、购物行为的再现到基于代理的交通模拟。
+除了基于智能体的仿真的传统应用领域之外，SeSAm 还构成了用于软件测试、需求工程或员工培训的虚拟高架仓库的技术基础。
+在其中一些项目中，生物学家、地理学家等领域专家独立使用 SeSAm。在其他项目中，我们自己使用该工具。
+后者允许我们自己直接评估可用性。
+
+> We can identify three classes of users of SeSAm who are all at least trying to execute
+all tasks listed in Section 16.2.1. First of all there are absolute beginners, for example do-
+main experts who discover simulation as a scientific tool but never or hardly have used
+this methodology and these techniques before. Secondly one may identify a user group
+that has experiences in formalization of software of programs without being familiar to the
+multi-agent system paradigm. The third class of users are those familiar with the modeling
+paradigm, with programming languages as well as with the features of the SeSAm language
+and system. We will shortly discuss what we observed with the first two user classes, followed
+by some general aspects. It is quite obvious that this cannot replace a systematic evalua-
+tion, but may give indications about the feasibility of using SeSAm for doing multi-agent
+simulations beyond mere stability and simulation speed.
+
+我们可以识别出三类 SeSAm 用户，他们至少都在尝试执行 Section 16.2.1 中列出的所有任务。
+首先是绝对的初学者，例如主要专家，他们发现仿真是一种科学工具，但以前从未或几乎没有使用过这种方法和这些技术。
+其次，人们可能会识别出一个用户组，该用户组具有程序软件正规化的经验，但不熟悉多代理系统范式。
+第三类用户是熟悉建模范式、编程语言以及 SeSAm 语言和系统功能的用户。
+我们稍后将讨论我们在前两个 user 类中观察到的情况，然后是一些一般方面。
+很明显，这不能取代系统评估，但可能会表明使用 SeSAm 进行多智能体模拟的可行性，而不仅仅是稳定性和模拟速度。
+
+### 16.5.1 Novices / 新手
+
+> In particular, modeling and implementation novices were one of the premier addressees
+that SeSAm was developed for. In general one must admit that SeSAm is too complex for
+beginners, although the basic language with variables capturing the status of the entities,
+the activity graphs based description was accepted quite easily.
+
+> Modeling and simulation novices with a minimum of formalization training were quite
+successful. As experts in biology, geography or economic processes, they were not familiar
+with particular programming languages, but had a quite clear image of the agent-based
+model that they wanted to develop before starting with SeSAm. Abstraction in general
+was not a problem. Their minimum training consisted of programming courses in school
+or early university studies. Although they could not practically use the learned programming 
+language any more, basic concepts of implementation were still present. Their major
+difficulty in implementation consisted of finding and selecting the appropriate primitive
+from the large set of atomic functions. As they knew rather exactly what they wanted to
+model, they had no conceptual problem and needed only episodic hints how to formulate
+exactly certain aspects. It was basically this user group that requested additional support
+for experimentation, sensitivity analysis, calibration and validation.
+
+> Another novice user group without any remarkable training in abstraction and formalization
+believed the promise of accessibility of agent-based simulation using SeSAm and
+addressed us for support. They also came with a model in mind that, however, was too
+vague to be implementable independent from a particular tool. Support was not restricted
+to how to formulate certain aspects in SeSAm, but started with a more general discussion
+about implementation of models that involves both abstraction and concretization. At
+least in three to four cases, the modeler was individually “mentored” by a computer
+science student who usually also implemented the model to a large extent. The advantage of
+SeSAm here was that the model always remained understandable for the domain modeler
+although he or she was not able to produce the model itself actively. Although the
+modeling novice was merely passive and needed a lot of support, the simulation project itself
+could be successfully terminated as long as the student abstained from biasing the model
+implementation, but thoroughly attended to the aspects that the domain modeler actually
+wanted to express.
+
+> It has been argued that especially the latter user group could be supported by providing
+a more powerful primitive set. By using abstract building blocks, a first model could be
+constructed. When the un-experienced modeler wonders about how certain outcomes were
+produced, the high-level primitives are questioned and replaced by primitive combinations
+that the user itself controlled. The advantage would be that the initial gap when formulating
+a working model is reduced. The idea of building blocks and component-based simulation
+is nothing new, see for example [Barros et al., 2004] or [Valentin et al., 2003], but may also
+be useful in the context of SeSAm.
+
+特别是，建模和实现新手是 SeSAm 开发的主要对象之一。一般来说，必须承认 SeSAm 对于初学者来说太复杂了，
+尽管带有变量的基本语言捕获实体的状态，基于活动图的描述很容易被接受。
+
+建模和仿真新手，经过最低限度的正规化培训，相当成功。作为生物学、地理学或经济过程方面的专家，
+他们不熟悉特定的编程语言，但在开始使用 SeSAm 之前，他们对想要开发的基于代理的模型有相当清晰的印象。
+抽象通常不是一个问题。他们的最低培训包括学校或早期大学学习的编程课程。尽管他们无法再实际使用所学的编程语言，
+但实现的基本概念仍然存在。它们在实现方面的主要困难在于从大量原子函数中查找和选择合适的原语。
+由于他们非常确切地知道他们想要建模什么，因此他们没有概念问题，只需要如何准确构建某些方面的情节提示。
+基本上，正是这个用户组要求为实验、灵敏度分析、校准和验证提供额外支持。
+
+另一个没有接受过任何抽象和形式化培训的新手用户组相信使用 SeSAm 进行基于智能体的仿真的可访问性，
+并向我们寻求支持。他们还考虑了一个模型，但是，该模型过于模糊，无法独立于特定工具实现。
+支持不仅限于如何在 SeSAm 中制定某些方面，而是从关于涉及抽象和具体化的模型实现的更一般性讨论开始。
+至少在三到四种情况下，建模者由计算机科学学生单独“指导”，该学生通常也在很大程度上实施了模型。
+SeSAm 的优势在于，尽管领域建模者无法主动生成模型本身，但他或她始终可以理解模型。
+尽管建模新手只是被动的，需要大量的支持，但只要学生不偏向模型实现，而是彻底关注领域建模者真正想要表达的方面，
+仿真项目本身就可以成功终止。
+
+有人认为，特别是后一个用户组可以通过提供更强大的原始集来支持。通过使用抽象构建块，可以构建第一个模型。
+当没有经验的建模者想知道某些结果是如何产生的时，高级基元会受到质疑，并被用户自己控制的基元组合所取代。
+优点是在制定工作模型时的初始差距会减少。构建块和基于组件的仿真的想法并不是什么新鲜事，
+例如 [Barros et al.， 2004] 或 [Valentin et al.， 2003]，但在 SeSAm 的上下文中也可能有用。
+
+### 16.5.2 Knowledgeable in Implementation, Not in Multi-Agent systems / 了解实施，而不是多代理系统
+
+> Basically, this group of SeSAm users consisted of computer science students attending a
+course on multi-agent systems. They had two problems. First, lack of documentation
+beyond simple tutorials. This information basically confused them as they had certain
+expectations about the platform, but could not identify used concepts. A good example is a
+student that created one class for every agent to be used in the situation mixing classes
+and instances. Several other students had problems in understanding that activity graphs
+denote the complete behavior and are not passed completely once per update cycle.
+
+> Another problem was that in general too much functionality was performed by the global
+world entity that should have assigned to the agents. The SeSAm language does not enforce
+an agent-oriented implementation. Thus, it is possible to let the global entity loop through
+all agents and manipulate their status from this central perspective. The students in the
+Multi-Agent Systems course had problems abandoning the known process-oriented way of
+thinking and replacing it with some interaction-oriented approach, especially when they use
+a graph-based language that is similar to process declarations. A missing clear separation
+of responsibilities of global environmental model and local agent model is a drawback of
+SeSAm for this user group.
+
+基本上，这组 SeSAm 用户由参加多代理系统课程的计算机科学学生组成。
+他们有两个问题。首先，除了简单的教程之外，缺乏文档。这些信息基本上让他们感到困惑，
+因为他们对平台有一定的期望，但无法识别使用的概念。一个很好的例子是，一个学生为每个代理创建了一个类，
+用于混合类和实例的情况。其他几名学生在理解活动图表示完整行为而不是在每个更新周期中完全传递一次时遇到了问题。
+
+另一个问题是，通常，本应分配给代理的 global world 实体执行了太多功能。
+SeSAm 语言不强制实施面向代理的实现。因此，可以让全局实体遍历所有代理并从这个中心视角操纵它们的状态。
+多智能体系统课程的学生在放弃已知的面向流程的思维方式并用一些面向交互的方法取而代之时遇到了问题，
+尤其是当他们使用类似于流程声明的基于图形的语言时。缺少全局环境模型和本地代理模型的明确职责分离是 
+SeSAm 对该用户组的缺点。
 
 
+## 16.6 General Discussion and Future Work
+
+> We believe that with SeSAm an important step was taken toward the advance of simulation
+environments for agent-based models, despite of all its drawbacks. Coupling visual programming
+and simulation makes the agent-based simulation paradigm accessible for a variety of
+modelers that would otherwise not be able or willing to deal with agent-based simulations,
+as bridging the gap between a standard programming language and their model concept
+would be too demanding for them.
+
+> Nevertheless, there are some starting points for future improvements. Clearly, the simulation
+performance of SeSAm should be better. The simulator of SeSAm interprets a behavior
+representation that is compiled from the high-level model description given by the modeler.
+During this compiling step, optimization steps from compiler design are applied. A simulation
+run within the SeSAm framework, however, cannot be as fast as a corresponding direct
+implementation without the SeSAm overhead for example using Java. Clearly, one can also
+implement efficiently using the SeSAm high-level language based on some coarse knowledge
+of lower level primitive implementation which results in reasonable, yet not optimal,
+simulation run times. For testing alternative ways, we already experimented with a tool that
+generates plain Java code out of a SeSAm model [Niederle, 2005]. This tool worked for very
+simple models; however for applying it to more complex models, many generic possibilities
+of SeSAm would have to be re-implemented in that compiler tool causing a tremendous
+development effort with doubtable success. Thus, the starting point for increasing simulation
+speed should be the reduction of overhead by decoupling modeling and runtime environment
+in a more consequent way than done in SeSAm up to now. Additionally, the implementation
+of certain primitives, especially concerning spatial perception, must be improved.
+
+> There are some additional aspects that are seen as suboptimal. Modelers have to get
+used to the prefix notation of primitive calls that is one of the remainders of the original
+Lisp-based system. Another aspect that needed explanation in several cases is the separation
+between class and instance description. Modelers would intuitively like to start with
+(example) configurations, especially when spatially explicit models are to be developed.
+SeSAm however biasses the modeler to start with the basic structures instead of starting
+by arranging entities on a map.
+
+> These aspects can be remedied or avoided with sufficient training (and sufficient
+documentation). This alone however cannot enable a user to develop a successful simulation study
+as SeSAm only covers the implementation, experimentation and analysis of an agent-based
+simulation. The first step is model design. The step after implementation mainly consists
+of testing for validity. These two phases are essential. If one of them fails, the simulation
+study fails all together. It is completely justified that such general methodological aspects
+gain more and more attention, like in [Matteo et al., 2006]. There are two more visionary
+directions that we want to pursue in our future work. We want to investigate new ways of
+modeling for circumventing the design problem and secondly, provide more methodological
+support for all phases in an agent-based simulation study.
+
+>Up to now, when dealing with end user programming, we just considered approaches
+based on visual programming. Research in this direction also proposes learning by
+demonstration as a means for implementing agents directly by users. We want to test these forms
+of supervised learning and also other forms of learning and adaptive agents for supporting
+the development of agent-based models beyond mere implementation and analysis. We are
+performing first experiments with agents controlled by neural networks and by machine
+learning algorithms. The main problem is defining the appropriate perceptions and
+feedback functions that the agents may get from the environment for actually determining the
+direction of adaptation. In these learning agents’ applications, we are not aiming at
+reproducing, for example, evolutionary processes, but trying to develop a tool that, for example,
+automatically generates the behavior of a simulated pedestrian instead of leaving the user
+with the cumbersome trial-and-error procedure for model design finding out which rules are
+the most appropriate.
+
+我们相信，尽管 SeSAm 存在所有缺点，但 SeSAm 还是朝着基于智能体的模型的仿真环境的发展迈出了重要的一步。
+将可视化编程和仿真相结合，使各种建模者可以使用基于智能体的仿真范式，否则这些建模者将无法或不愿意处理
+基于智能体的仿真，因为弥合标准编程语言与其模型概念之间的差距对他们来说要求太高了。
+
+尽管如此，未来仍有一些改进的起点。显然，SeSAm 的仿真性能应该更好。SeSAm 的模拟器解释从建模者给出的
+高级模型描述编译的行为表示。在此编译步骤中，将应用编译器 design 中的优化步骤。但是，如果没有 SeSAm 
+开销（例如使用 Java），在 SeSAm 框架中运行的仿真速度无法与相应的直接实现一样快。
+显然，也可以基于对较低级别 primitive implementation 的一些粗略知识，使用 SeSAm 高级语言有效地实现，
+从而产生合理但不是最佳的仿真运行时间。为了测试替代方法，我们已经试验了一种从 SeSAm 模型生成纯 Java 
+代码的工具 [Niederle， 2005]。这个工具适用于非常简单的模型;然而，要将其应用于更复杂的模型，SeSAm 
+的许多通用可能性必须在该编译器工具中重新实现，这会导致巨大的开发工作，但成功值得怀疑。
+因此，提高仿真速度的起点应该是通过以比目前在 SeSAm 中更后续的方式解耦建模和运行时环境来减少开销。
+此外，必须改进某些基元的实现，尤其是关于空间感知的实现。
+
+还有一些其他方面被视为次优。建模者必须习惯原始调用的前缀表示法，这是原始基于 Lisp 的系统的其余部分之一。
+在一些情况下需要解释的另一个方面是类和实例描述之间的分离。建模者直观地希望从 （示例） 配置开始，
+尤其是在要开发空间显式模型时。然而，SeSAm 使建模者偏向于从基本结构开始，而不是从在地图上排列实体开始。
+
+这些方面可以通过足够的培训（和足够的文档）来补救或避免。然而，仅凭这一点并不能使用户能够开发成功的仿真研究，
+因为 SeSAm 仅涵盖基于智能体的仿真的实现、实验和分析。第一步是模型设计。实施后的步骤主要包括有效性测试。
+这两个阶段是必不可少的。如果其中一个失败，则仿真研究将一起失败。完全有理由认为，
+这种一般的方法论方面得到了越来越多的关注，就像 [Matteo et al.， 2006] 一样。
+在未来的工作中，我们还希望追求两个更有远见的方向。我们希望研究新的建模方法来规避设计问题，
+其次，为基于智能体的仿真研究的所有阶段提供更多的方法支持。
+
+到目前为止，在处理最终用户编程时，我们只考虑基于可视化编程的方法。这个方向的研究还提出了
+通过演示学习作为用户直接实现代理的一种手段。我们希望测试这些形式的监督学习以及其他形式的学习和自适应代理，
+以支持基于代理的模型的开发，而不仅仅是实现和分析。我们正在使用由神经网络和机器学习算法控制的代理进行首次实验。
+主要问题是定义代理可能从环境中获得的适当感知和反馈功能，以实际确定适应的方向。
+在这些学习代理的应用程序中，我们的目标不是复制进化过程，而是尝试开发一种工具，
+例如，自动生成模拟行人的行为，而不是让用户使用繁琐的试错程序进行模型设计，找出哪些规则最合适。
 
 
+## Acknowledgment
 
+> Many people have contributed to create a platform like SeSAm: Christoph Oechslein was
+responsible for the basic implementation of Java-based version. Rainer Herrler technically
+supervised the developments during the last years. Manuel Fehler took care about the
+experimentation framework. Cornelia Triebig currently deals with reusability and Reinhard
+Hatko analyzes the use of adaptive agents. Generations of students have also contributed
+to SeSAm.
 
-
-
-
-
-
-
+许多人为创建像 SeSAm 这样的平台做出了贡献：Christoph Oechslein 负责基于 Java 的版本的基本实现。
+Rainer Herrler 在过去几年中对开发项目进行了技术监督。Manuel Fehler 负责实验框架。
+Cornelia Triebig 目前负责研究可重用性，Reinhard Hatko 分析了适应性代理的使用。
+一代又一代的学生也为 SeSAm 做出了贡献。
 
